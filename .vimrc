@@ -1,80 +1,19 @@
-" ---------------------------------------------------------------------------
-" init configuration.
-" ---------------------------------------------------------------------------
-set shiftwidth=4 " 自动缩进的时候，缩进尺寸为 4 个空格
-set tabstop=4 " Tab 宽度为 4 个字符
-set softtabstop=4
-set expandtab
-set smarttab " 删除Tab一键delete
-set smartindent " 智能对齐
-set linebreak " 数字加空格
-set fo+=mB " 打开断行模块对亚洲语言支持。m 表示允许在两个汉字之间断行，即使汉字之间没有出现空格。B 表示将两行合并为一行的时候，汉字与汉字之间不要补空格。
-set sm " 显示括号配对情况
-set selection=inclusive " 指定在选择文本时，光标所在位置也属于被选中的范围
-set wildmenu " 在命令模式下使用 Tab 自动补全的时候，将补全内容使用一个漂亮的单行菜单形式显示出来
-set mousemodel=popup " 当右键单击窗口的时候，弹出快捷菜单
-" ---------------------------------------------------------------------------
-
+" Copyright 2021 NickDeCodes
 " ---------------------------------------------------------------------------
 " file type configuration.
 " ---------------------------------------------------------------------------
-au FileType php setlocal dict+=~/.vim/ftdetect/dict/php_funclist.dict
-au FileType css setlocal dict+=~/.vim/ftdetect/dict/css.dict
-au FileType c setlocal dict+=~/.vim/ftdetect/dict/c.dict
-au FileType cpp setlocal dict+=~/.vim/ftdetect/dict/cpp.dict
-au FileType scale setlocal dict+=~/.vim/ftdetect/dict/scale.dict
-au FileType javascript setlocal dict+=~/.vim/ftdetect/dict/javascript.dict
-au FileType html setlocal dict+=~/.vim/ftdetect/dict/ftdetectjavascript.dict
-au FileType html setlocal dict+=~/.vim/ftdetect/dict/css.dict
-" ---------------------------------------------------------------------------
-
-" ---------------------------------------------------------------------------
-" view configuration.
-" ---------------------------------------------------------------------------
-syntax on " 语法高亮开启
-set cursorline " 高亮光标所在行
-set cursorcolumn " 高亮光标所在列
-set shortmess=atI " 启动的时候不显示那个援助乌干达儿童的提示  
-set go= " 不要图形按钮  
-color xcodelight " 设置xcodelight背景主题  
-"color xcodedark " 设置xcodedark背景主题
-"set guifont=Courier_New:h10:cANSI " 设置字体  
-"autocmd InsertLeave * se nocul " 不用浅色高亮当前行  
-autocmd InsertEnter * se cursorline " 用浅色高亮当前行  
-set ruler " 显示标尺  
-set showcmd " 输入的命令显示出来，看的清楚些  
-"set whichwrap+=<,>,h,l " 允许backspace和光标键跨越行边界(不建议)  
-set scrolloff=3 " 光标移动到buffer的顶部和底部时保持3行距离  
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")} " 状态行显示的内容  
-set laststatus=2 " 启动显示状态行(1),总是显示状态行(2)  
-"set foldenable " 允许折叠  
-"set foldmethod=manual " 手动折叠  
-set nocompatible " 去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限  
-" 显示中文帮助
-if version >= 603
-	set helplang=cn
-	set encoding=utf-8
-endif
-set autoindent " 自动缩进
-set cindent
-set tabstop=4 " Tab键的宽度
-set softtabstop=4 " 统一缩进为4
-set shiftwidth=4
-set expandtab " 使用空格代替制表符
-set smarttab " 在行和段开始处使用制表符
-set number " 显示行号
-set history=1000 " 历史记录数
-set hlsearch " 搜索逐字符高亮
-set incsearch
-set langmenu=zh_CN.UTF-8 " 语言设置
-set helplang=cn
-set cmdheight=2 " 总是显示状态行
 filetype on " 侦测文件类型
 filetype plugin on " 载入文件类型插件
 filetype indent on " 为特定文件类型载入相关缩进文件
-set viminfo+=! " 保存全局变量
-set iskeyword+=_,$,@,%,#,- " 带有如下符号的单词不要被换行分割
-" 字符间插入的像素行数目
+filetype plugin indent on " Automatically detect file types.
+autocmd FileType php setlocal dict+=~/.vim/ftdetect/dict/php_funclist.dict
+autocmd FileType css setlocal dict+=~/.vim/ftdetect/dict/css.dict
+autocmd FileType c setlocal dict+=~/.vim/ftdetect/dict/c.dict
+autocmd FileType cpp setlocal dict+=~/.vim/ftdetect/dict/cpp.dict
+autocmd FileType scale setlocal dict+=~/.vim/ftdetect/dict/scale.dict
+autocmd FileType javascript setlocal dict+=~/.vim/ftdetect/dict/javascript.dict
+autocmd FileType html setlocal dict+=~/.vim/ftdetect/dict/ftdetectjavascript.dict
+autocmd FileType html setlocal dict+=~/.vim/ftdetect/dict/css.dict
 " ---------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------
@@ -89,8 +28,7 @@ nmap md :!~/.vim/markdown.pl % > %.html <CR><CR>
 nmap fi :!firefox %.html & <CR><CR>
 nmap \ \cc
 vmap \ \cc
-
-"将tab替换为空格
+" 将tab替换为空格
 nmap tt :%s/\t/    /g<CR>
 " ---------------------------------------------------------------------------
 
@@ -148,44 +86,6 @@ autocmd BufNewFile * normal G
 " ---------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------
-" keyboard configuration.
-" ---------------------------------------------------------------------------
-:nmap <silent> <F9> <ESC>:Tlist<RETURN>
-" shift tab pages
-map <S-Left> :tabp<CR>
-map <S-Right> :tabn<CR>
-map! <C-Z> <Esc>zzi
-map! <C-O> <C-Y>,
-map <C-A> ggVG$"+y
-map <Esc><Esc> :w<CR>
-map <F12> gg=G
-map <C-w> <C-w>w
-imap <C-k> <C-y>,
-imap <C-t> <C-q><TAB>
-imap <C-j> <ESC>
-" 选中状态下 Ctrl+c 复制
-"map <C-v> "*pa
-imap <C-v> <Esc>"*pa
-imap <C-a> <Esc>^
-imap <C-e> <Esc>$
-vmap <C-c> "+y
-set mouse=v
-"set clipboard=unnamed
-"去空行  
-nnoremap <F2> :g/^\s*$/d<CR> 
-"比较文件  
-nnoremap <C-F2> :vert diffsplit 
-"nnoremap <Leader>fu :CtrlPFunky<Cr>
-"nnoremap <C-n> :CtrlPFunky<Cr>
-"列出当前目录文件  
-map <F3> :NERDTreeToggle<CR>
-imap <F3> <ESC> :NERDTreeToggle<CR>
-"打开树状文件目录  
-map <C-F3> \be  
-:autocmd BufRead,BufNewFile *.dot map <F5> :w<CR>:!dot -Tjpg -o %<.jpg % && eog %<.jpg  <CR><CR> && exec "redr!"
-" ---------------------------------------------------------------------------
-
-" ---------------------------------------------------------------------------
 " C，C++ 按F5编译运行 configuration.
 " ---------------------------------------------------------------------------
 map <F5> :call CompileRunGcc()<CR>
@@ -207,7 +107,7 @@ function! CompileRunGcc()
     elseif &filetype == 'html'
         exec "!firefox % &"
     elseif &filetype == 'go'
-"        exec "!go build %<"
+    "    exec "!go build %<"
         exec "!time go run %"
     elseif &filetype == 'mkd'
         exec "!~/.vim/markdown.pl % > %.html &"
@@ -254,6 +154,99 @@ endfunction
 " ---------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------
+" view configuration.
+" ---------------------------------------------------------------------------
+syntax on " 语法高亮开启
+" 显示中文帮助
+if version >= 603
+	set helplang=cn
+	set encoding=utf-8
+endif
+set shiftwidth=4 " 自动缩进的时候，缩进尺寸为 4 个空格
+set tabstop=4 " Tab 宽度为 4 个字符
+set softtabstop=4 " 统一缩进为4
+set expandtab " 使用空格代替制表符
+set smarttab " 删除Tab一键delete
+set smartindent " 智能对齐
+set autoindent " 自动缩进
+set cindent
+set linebreak " 数字加空格
+set fo+=mB " 打开断行模块对亚洲语言支持。m 表示允许在两个汉字之间断行，即使汉字之间没有出现空格。B 表示将两行合并为一行的时候，汉字与汉字之间不要补空格。
+set sm " 显示括号配对情况
+set selection=inclusive " 指定在选择文本时，光标所在位置也属于被选中的范围
+set wildmenu " 在命令模式下使用 Tab 自动补全的时候，将补全内容使用一个漂亮的单行菜单形式显示出来
+set mousemodel=popup " 当右键单击窗口的时候，弹出快捷菜单
+set cursorline " 高亮光标所在行
+set cursorcolumn " 高亮光标所在列
+"autocmd InsertLeave * se nocul " 不用浅色高亮当前行  
+autocmd InsertEnter * se cursorline " 用浅色高亮当前行 
+set shortmess=atI " 启动的时候不显示那个援助乌干达儿童的提示  
+set go= " 不要图形按钮  
+" ---------------------------------------------------------------------------
+color xcodelight " 设置xcodelight背景主题  
+"color xcodedark " 设置xcodedark背景主题
+" ---------------------------------------------------------------------------
+"set guifont=Courier_New:h10:cANSI " 设置字体  
+set ruler " 显示标尺  
+set showcmd " 输入的命令显示出来，看的清楚些  
+"set whichwrap+=<,>,h,l " 允许backspace和光标键跨越行边界(不建议)  
+set scrolloff=3 " 光标移动到buffer的顶部和底部时保持3行距离  
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")} " 状态行显示的内容  
+set laststatus=2 " 启动显示状态行(1),总是显示状态行(2)  
+"set foldenable " 允许折叠  
+"set foldmethod=manual " 手动折叠  
+set nocompatible " 去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限  
+set number " 显示行号
+set history=1000 " 历史记录数
+set hlsearch " 搜索逐字符高亮
+set incsearch
+set langmenu=zh_CN.UTF-8 " 语言设置
+set helplang=cn
+set cmdheight=2 " 总是显示状态行
+set viminfo+=! " 保存全局变量
+set iskeyword+=_,$,@,%,#,- " 带有如下符号的单词不要被换行分割
+" 字符间插入的像素行数目
+" ---------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------
+" keyboard configuration.
+" ---------------------------------------------------------------------------
+:nmap <silent> <F9> <ESC>:Tlist<RETURN>
+" shift tab pages
+map <S-Left> :tabp<CR>
+map <S-Right> :tabn<CR>
+map! <C-Z> <Esc>zzi
+map! <C-O> <C-Y>,
+map <C-A> ggVG$"+y
+map <Esc><Esc> :w<CR>
+map <F12> gg=G
+map <C-w> <C-w>w
+imap <C-k> <C-y>,
+imap <C-t> <C-q><TAB>
+imap <C-j> <ESC>
+" 选中状态下 Ctrl+c 复制
+"map <C-v> "*pa
+imap <C-v> <Esc>"*pa
+imap <C-a> <Esc>^
+imap <C-e> <Esc>$
+vmap <C-c> "+y
+set mouse=v
+"set clipboard=unnamed
+"去空行  
+nnoremap <F2> :g/^\s*$/d<CR> 
+"比较文件  
+nnoremap <C-F2> :vert diffsplit 
+"nnoremap <Leader>fu :CtrlPFunky<Cr>
+"nnoremap <C-n> :CtrlPFunky<Cr>
+"列出当前目录文件  
+map <F3> :NERDTreeToggle<CR>
+imap <F3> <ESC> :NERDTreeToggle<CR>
+"打开树状文件目录  
+map <C-F3> \be  
+:autocmd BufRead,BufNewFile *.dot map <F5> :w<CR>:!dot -Tjpg -o %<.jpg % && eog %<.jpg  <CR><CR> && exec "redr!"
+" ---------------------------------------------------------------------------
+
+" ---------------------------------------------------------------------------
 " 实用设置 configuration.
 " ---------------------------------------------------------------------------
 if has("autocmd")
@@ -288,14 +281,12 @@ set linespace=0
 set backspace=2 " 使回格键（backspace）正常处理indent, eol, start等
 set whichwrap+=<,>,h,l " 允许backspace和光标键跨越行边界
 set mouse=a " 可以在buffer的任何地方使用鼠标（类似office中在工作区双击鼠标定位）__
-set selection=exclusive
 set selectmode=mouse,key
 set report=0 " 通过使用: commands命令，告诉我们文件的哪一行被改变过
 set fillchars=vert:\ ,stl:\ ,stlnc:\ " 在被分割的窗口间显示空白，便于阅读
 set showmatch " 高亮显示匹配的括号
 set matchtime=1 " 匹配括号高亮的时间（单位是十分之一秒）
 set scrolloff=3 " 光标移动到buffer的顶部和底部时保持3行距离
-filetype plugin indent on 
 set completeopt=longest,menu " 打开文件类型检测, 加了这句才可以用智能补全
 " ---------------------------------------------------------------------------
 
@@ -346,8 +337,6 @@ autocmd FileType python set omnifunc=pythoncomplete#Complete
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
-
-filetype plugin indent on " required!
 """""""""""""""""""""""""
 "ctrlp设置
 """""""""""""""""""""""""
@@ -361,13 +350,11 @@ let g:ctrlp_extensions = ['funky']
 let NERDTreeIgnore=['\.pyc']
 " ---------------------------------------------------------------------------
 
-set nocompatible " be iMproved, required
-filetype on " Enable file type detection
 " ---------------------------------------------------------------------------
 " Hivim configuration.
 " ---------------------------------------------------------------------------
+set nocompatible " be iMproved, required
 " set the runtime path to include hivim and initialize
-" filetype off " required
 set rtp+=~/.vim/bundle/hivim/
 call hivim#begin()
 " alternatively, pass a path where Hivim should install plugins
@@ -379,6 +366,4 @@ Bundle 'NickDeCodes/auto_pairs'
 Bundle 'NickDeCodes/capture_clipboard'
 
 call hivim#end()
-
-filetype plugin indent on " Automatically detect file types.
-filetype indent on " Automatic indentation
+" ---------------------------------------------------------------------------
