@@ -6,12 +6,12 @@
 " let Hivim manage Hivim, required
 " /*******************************************************(Hivim configuration)*******************************************************"
 " set the runtime path to include hivim and initialize
-set rtp+=~/.vim/bundle/HiManager/
-call himanager#begin()
-Bundle 'NickDeCodes/HiManager'
-"Bundle 'NickDeCodes/auto_pairs'
-"Bundle 'NickDeCodes/capture_clipboard'
-call himanager#end()
+" set rtp+=~/.vim/bundle/hivim/
+" call hivim#begin()
+" Bundle 'NickDeCodes/hivim'
+" Bundle 'NickDeCodes/auto_pairs'
+" Bundle 'NickDeCodes/capture_clipboard'
+" call hivim#end()
 " **********************************************************************************************************************************/"
 " /*****************************************************(view configuration)*********************************************************"
 " ---------------------------syntax configuration----------------------------
