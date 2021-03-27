@@ -1,22 +1,9 @@
 " Copyright 2021 NickDeCodes
-" **********************************************************************************************************************************/"
-" alternatively, pass a path where Hivim should install plugins
-" call vundle#begin('~/some/path/here')
-" Keep Plugin commands between hivim#begin/end.
-" let Hivim manage Hivim, required
-" /*******************************************************(Hivim configuration)*******************************************************"
-" set the runtime path to include hivim and initialize
-" set rtp+=~/.vim/bundle/hivim/
-" call hivim#begin()
-" Bundle 'NickDeCodes/hivim'
-" Bundle 'NickDeCodes/auto_pairs'
-" Bundle 'NickDeCodes/capture_clipboard'
-" call hivim#end()
-" **********************************************************************************************************************************/"
-" /*****************************************************(view configuration)*********************************************************"
+" ======================================================== Vpm configuration =======================================================
+" 
+" ======================================================== view configuration ======================================================
 " ---------------------------syntax configuration----------------------------
 syntax on " 语法高亮开启
-" ---------------------------------------------------------------------------
 " ---------------------------help configuration------------------------------
 " 显示中文帮助
 if version >= 603
@@ -24,7 +11,6 @@ if version >= 603
 	set encoding=utf-8
 endif
 set langmenu=zh_CN.UTF-8 " 语言设置
-" ---------------------------------------------------------------------------
 " ------------------------alignment configuration----------------------------
 set shiftwidth=4 " 自动缩进的时候，缩进尺寸为4个空格
 set tabstop=4 " Tab宽度为4个字符
@@ -40,7 +26,6 @@ set fo+=mB " 打开断行模块对亚洲语言支持。m 表示允许在两个�
 set scrolloff=3 " 光标移动到buffer的顶部和底部时保持3行距离 
 set completeopt=preview,menu " 代码补全 
 set completeopt=longest,menu " 打开文件类型检测, 加了这句才可以用智能补全
-" ---------------------------------------------------------------------------
 " ------------------------highlinght configuration---------------------------
 set cursorline " 高亮光标所在行
 set cursorcolumn " 高亮光标所在列
@@ -50,7 +35,6 @@ set hlsearch " 搜索逐字符高亮
 set incsearch " 显示查找的匹配点
 set showmatch " 高亮显示匹配的括号
 set matchtime=1 " 匹配括号高亮的时间（单位是十分之一秒
-" ---------------------------------------------------------------------------
 " ------------------------status bar configuration---------------------------
 set cmdheight=2 " 总是显示状态行
 set laststatus=2 " 启动显示状态行(1),总是显示状态行(2)  
@@ -59,11 +43,9 @@ set guioptions-=m " 隐藏菜单栏
 set mousemodel=popup " 当右键单击窗口的时候，弹出快捷菜单
 set shortmess=atI " 启动的时候不显示那个援助乌干达儿童的提示 
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")} " 状态行显示的内容
-" ---------------------------------------------------------------------------
 " --------------------------schemes configuration----------------------------
 color xcodelight " 设置xcodelight背景主题  
 "color xcodedark " 设置xcodedark背景主题
-" ---------------------------------------------------------------------------
 " ---------------------------other configuration-----------=-----------------
 "set guifont=Courier_New:h10:cANSI " 设置字体  
 set ruler " 显示标尺  
@@ -81,9 +63,9 @@ if has("autocmd")
         \ endif
 endif
 " 当打开vim且没有文件时自动打开NERDTree
-autocmd vimenter * if !argc() | NERDTree | endif
+" autocmd vimenter * if !argc() | NERDTree | endif
 " 只剩 NERDTree时自动关闭
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 set autoread " 设置当文件被改动时自动载入
 autocmd FileType c,cpp map <buffer> <leader><space> :w<cr>:make<cr> " quickfix模式
 set autowrite " 自动保存
@@ -100,23 +82,20 @@ set selectmode=mouse,key
 set report=0 " 通过使用: commands命令，告诉我们文件的哪一行被改变过
 set fillchars=vert:\ ,stl:\ ,stlnc:\ " 在被分割的窗口间显示空白，便于阅读
 set fileformat=unix " 从Win上复制文件时，避免换行符错误
-" ---------------------------------------------------------------------------
-" **********************************************************************************************************************************/"
-" /*******************************************************(file configuration)*******************************************************"
+" ======================================================== file configuration ======================================================
 " ------------------------file type configuration----------------------------
 filetype on " 侦测文件类型
 filetype plugin on " 载入文件类型插件
 filetype indent on " 为特定文件类型载入相关缩进文件
 filetype plugin indent on " Automatically detect file types.
-autocmd FileType php setlocal dict+=~/.vim/ftdetect/dict/php_funclist.dict
-autocmd FileType css setlocal dict+=~/.vim/ftdetect/dict/css.dict
-autocmd FileType c setlocal dict+=~/.vim/ftdetect/dict/c.dict
-autocmd FileType cpp setlocal dict+=~/.vim/ftdetect/dict/cpp.dict
-autocmd FileType scale setlocal dict+=~/.vim/ftdetect/dict/scale.dict
-autocmd FileType javascript setlocal dict+=~/.vim/ftdetect/dict/javascript.dict
-autocmd FileType html setlocal dict+=~/.vim/ftdetect/dict/ftdetectjavascript.dict
-autocmd FileType html setlocal dict+=~/.vim/ftdetect/dict/css.dict
-" ---------------------------------------------------------------------------
+autocmd FileType php setlocal dict+=~/.vim/dict/php_funclist.dict
+autocmd FileType css setlocal dict+=~/.vim/dict/css.dict
+autocmd FileType c setlocal dict+=~/.vim/dict/c.dict
+autocmd FileType cpp setlocal dict+=~/.vim/dict/cpp.dict
+autocmd FileType scale setlocal dict+=~/.vim/dict/scale.dict
+autocmd FileType javascript setlocal dict+=~/.vim/dict/javascript.dict
+autocmd FileType html setlocal dict+=~/.vim/dict/ftdetectjavascript.dict
+autocmd FileType html setlocal dict+=~/.vim/dict/css.dict
 " ----------------------new file titles configuration------------------------
 " 新建.c,.h,.sh,.java文件，自动插入文件头 
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.rb,*.java,*.py exec ":call SetTitle()" 
@@ -166,7 +145,6 @@ function SetTitle()
 	"新建文件后，自动定位到文件末尾
 endfunction 
 autocmd BufNewFile * normal G
-" ---------------------------------------------------------------------------
 " ---------------------------markdown configuration--------------------------
 autocmd BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
 autocmd BufRead,BufNewFile *.{go} set filetype=go
@@ -178,15 +156,12 @@ nmap \ \cc
 vmap \ \cc
 " 将tab替换为空格
 nmap tt :%s/\t/    /g<CR>
-" ---------------------------------------------------------------------------
-" **********************************************************************************************************************************/"
-" /*****************************************************(keyboard configuration)*****************************************************"
+" ======================================================== keyboard configuration ======================================================
 " ------------------------F2 compiler configuration--------------------------
 nnoremap <F2> :g/^\s*$/d<CR> " 去空行  
 nnoremap <C-F2> :vert diffsplit " 比较文件
 "nnoremap <Leader>fu :CtrlPFunky<Cr>
 "nnoremap <C-n> :CtrlPFunky<Cr>
-" --------------------------------------------------------------------------
 " ------------------------F3 compiler configuration--------------------------
 map <F3> :NERDTreeToggle<CR> " 列出当前目录文件 
 imap <F3> <ESC> :NERDTreeToggle<CR>
@@ -197,9 +172,7 @@ let NERDTreeWinSize=25 " 窗口大小
 " 打开树状文件目录  
 map <C-F3> \be  
 :autocmd BufRead,BufNewFile *.dot map <F5> :w<CR>:!dot -Tjpg -o %<.jpg % && eog %<.jpg  <CR><CR> && exec "redr!"
-" ---------------------------------------------------------------------------
 " ------------------------F4 compiler configuration--------------------------
-" ---------------------------------------------------------------------------
 " ------------------------F5 compiler configuration--------------------------
 map <F5> :call CompileRunGcc()<CR>
 function! CompileRunGcc()
@@ -227,7 +200,6 @@ function! CompileRunGcc()
         exec "!firefox %.html &"
 	endif
 endfunction
-" ---------------------------------------------------------------------------
 " -------------------------F6 formart configuration--------------------------
 map <F6> :call FormartSrc()<CR><CR>
 function FormartSrc()
@@ -252,9 +224,7 @@ function FormartSrc()
     endif
     exec "e! %"
 endfunction
-" ---------------------------------------------------------------------------
-" ------------------------F7 compiler configuration--------------------------
-" ---------------------------------------------------------------------------
+" ------------------------F7 configuration--------------------------
 " ---------------------------F8 gdb configuration----------------------------
 map <F8> :call Rungdb()<CR>
 function! Rungdb()
@@ -265,8 +235,7 @@ endfunction
 " ---------------------------------------------------------------------------
 :nmap <silent> <F9> <ESC>:Tlist<RETURN>
 map <F12> gg=G
-" **********************************************************************************************************************************/"
-" /*****************************************************(keyboard configuration)****************************************************"
+" ======================================================== keyboard configuration ======================================================
 let mapleader="," " 设置 leader
 let g:mapleader = ','
 " 分屏窗口移动, Smart way to move between windows
@@ -277,8 +246,7 @@ map <C-l> <C-W>l
 " 命令行模式增强，ctrl - a到行首， -e 到行尾
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
-" **********************************************************************************************************************************/"
-" /*******************************************************(tags configuration)*******************************************************"
+" ======================================================== tags configuration ======================================================
 " ---------------------------CTags configuration-----------------------------
 let Tlist_Sort_Type = "name" " 按照名称排序  
 let Tlist_Use_Right_Window = 1 " 在右侧显示窗口  
@@ -290,8 +258,7 @@ let Tlist_Exist_OnlyWindow = 1 " 如果只有一个buffer，kill窗口也kill掉
 " 设置tags  
 set tags=tags;  
 set autochdir 
-let Tlist_Auto_Open=0 " 默认打开Taglist 
-" ---------------------------------------------------------------------------
+let Tlist_Auto_Open=0 " 默认打开Taglist
 " --------------------------Tag list configuration---------------------------
 let Tlist_Ctags_Cmd = '/usr/local/bin/ctags' 
 let Tlist_Show_One_File = 1 " 不同时显示多个文件的tag，只显示当前文件的 
@@ -323,7 +290,6 @@ autocmd FileType python set omnifunc=pythoncomplete#Complete
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
-" ---------------------------------------------------------------------------
 " ---------------------------ctrlp configuration-----------------------------
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.png,*.jpg,*.gif " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.pyc,*.png,*.jpg,*.gif " Windows
@@ -333,5 +299,3 @@ let g:ctrlp_custom_ignore = '\v\.(exe|so|dll)$'
 let g:ctrlp_extensions = ['funky']
 
 let NERDTreeIgnore=['\.pyc']
-" ---------------------------------------------------------------------------
-" **********************************************************************************************************************************/"
