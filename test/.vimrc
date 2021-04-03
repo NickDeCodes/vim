@@ -1,11 +1,13 @@
 " Copyright 2021 NickDeCodes
 " ======================================================== pack configuration =======================================================
+packadd auto-pairs " 自动括号补全
+packadd nerdtree " 显示项目树
 " ======================================================== view configuration ======================================================
 " ---------------------------syntax configuration----------------------------
 syntax on " 语法高亮开启
 " ---------------------------help configuration------------------------------
 " 显示中文帮助
-if version >= 603
+if v:version >= 704
 	set helplang=cn
 	set encoding=utf-8
 endif
@@ -46,7 +48,6 @@ set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strf
 color xcodelight " 设置xcodelight背景主题  
 "color xcodedark " 设置xcodedark背景主题
 " ---------------------------other configuration-----------=-----------------
-"set guifont=Courier_New:h10:cANSI " 设置字体  
 set ruler " 显示标尺  
 set showcmd " 输入的命令显示出来，看的清楚些
 set nocompatible " 不要使用vi的键盘模式，而是vim自己的
@@ -56,10 +57,7 @@ set viminfo+=! " 保存全局变量
 set iskeyword+=_,$,@,%,#,- " 带有如下符号的单词不要被换行分割
 " 字符间插入的像素行数目
 if has("autocmd")
-    autocmd BufReadPost *
-        \ if line("'\"") > 0 && line("'\"") <= line("$") |
-        \   exe "normal g`\"" |
-        \ endif
+  	autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 endif
 " 当打开vim且没有文件时自动打开NERDTree
 " autocmd vimenter * if !argc() | NERDTree | endif
@@ -162,15 +160,16 @@ nnoremap <C-F2> :vert diffsplit " 比较文件
 "nnoremap <Leader>fu :CtrlPFunky<Cr>
 "nnoremap <C-n> :CtrlPFunky<Cr>
 " ------------------------F3 compiler configuration--------------------------
-map <F3> :NERDTreeToggle<CR> " 列出当前目录文件 
-imap <F3> <ESC> :NERDTreeToggle<CR>
+map <F3> :NERDTreeToggle<CR> " 列出当前目录文件
 let NERDTreeChDirMode=1
 let NERDTreeShowBookmarks=1 " 显示书签
 let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$'] " 设置忽略文件类型
 let NERDTreeWinSize=25 " 窗口大小
-" 打开树状文件目录  
-map <C-F3> \be  
-:autocmd BufRead,BufNewFile *.dot map <F5> :w<CR>:!dot -Tjpg -o %<.jpg % && eog %<.jpg  <CR><CR> && exec "redr!"
+" 当打开vim且没有文件时自动打开NERDTree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+" 只剩 NERDTree时自动关闭
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 " ------------------------F4 compiler configuration--------------------------
 " ------------------------F5 compiler configuration--------------------------
 map <F5> :call CompileRunGcc()<CR>
@@ -296,5 +295,4 @@ set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.pyc,*.png,*.jpg,*.gif " Windows
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = '\v\.(exe|so|dll)$'
 let g:ctrlp_extensions = ['funky']
-
 let NERDTreeIgnore=['\.pyc']
