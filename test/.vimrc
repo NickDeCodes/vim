@@ -2,6 +2,24 @@
 " ======================================================== pack configuration =======================================================
 packadd auto-pairs " 自动括号补全
 packadd nerdtree " 显示项目树
+packadd vim-airline " 美观的状态栏
+packadd vim-airline-themes " 状态栏主题
+let g:airline_theme='simple'
+packadd CaptureClipboard " 剪贴板捕获
+let g:CaptureClipboard_DefaultDelimiter = "\n"
+let g:CaptureClipboard_EndOfCaptureMarker = '.'
+let g:CaptureClipboard_IsAutoSave = 1
+let g:CaptureClipboard_Register = '+'
+imap <C-R>? <Plug>(CaptureClipboardInsertOne)
+packadd syntastic " 语法检查
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 " ======================================================== view configuration ======================================================
 " ---------------------------syntax configuration----------------------------
 syntax on " 语法高亮开启
@@ -244,6 +262,13 @@ map <C-l> <C-W>l
 " 命令行模式增强，ctrl - a到行首， -e 到行尾
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
+" Esc + 保存
+map <Esc><Esc> :w<CR>
+" 选中状态下 Ctrl+c 复制
+imap <C-v> <Esc>"*pa
+imap <C-a> <Esc>^
+imap <C-e> <Esc>$
+vmap <C-c> "+y
 " ======================================================== tags configuration ======================================================
 " ---------------------------CTags configuration-----------------------------
 let Tlist_Sort_Type = "name" " 按照名称排序  
