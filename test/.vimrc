@@ -1,24 +1,31 @@
 " Copyright 2021 NickDeCodes
 " ======================================================== pack configuration =======================================================
-packadd auto-pairs " 自动括号补全
-packadd nerdtree " 显示项目树
-packadd vim-airline " 美观的状态栏
-packadd vim-airline-themes " 状态栏主题
+" 自动括号补全
+packadd auto-pairs 
+" 显示项目树
+packadd nerdtree 
+" 美观的状态栏
+packadd vim-airline 
+" 状态栏主题
+packadd vim-airline-themes 
 let g:airline_theme='simple'
-packadd CaptureClipboard " 剪贴板捕获
+" 剪贴板捕获
+packadd CaptureClipboard 
 let g:CaptureClipboard_DefaultDelimiter = "\n"
 let g:CaptureClipboard_EndOfCaptureMarker = '.'
 let g:CaptureClipboard_IsAutoSave = 1
 let g:CaptureClipboard_Register = '+'
 imap <C-R>? <Plug>(CaptureClipboardInsertOne)
-packadd syntastic " 语法检查
+" 语法检查
+packadd syntastic 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 " ======================================================== view configuration ======================================================
 " ---------------------------syntax configuration----------------------------
@@ -175,8 +182,6 @@ nmap tt :%s/\t/    /g<CR>
 " ------------------------F2 compiler configuration--------------------------
 nnoremap <F2> :g/^\s*$/d<CR> " 去空行  
 nnoremap <C-F2> :vert diffsplit " 比较文件
-"nnoremap <Leader>fu :CtrlPFunky<Cr>
-"nnoremap <C-n> :CtrlPFunky<Cr>
 " ------------------------F3 compiler configuration--------------------------
 map <F3> :NERDTreeToggle<CR> " 列出当前目录文件
 let NERDTreeChDirMode=1
