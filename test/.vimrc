@@ -8,7 +8,7 @@ packadd nerdtree
 packadd vim-airline 
 " 状态栏主题
 packadd vim-airline-themes 
-let g:airline_theme='simple'
+let g:airline_theme='kolor'
 " 剪贴板捕获
 packadd CaptureClipboard 
 let g:CaptureClipboard_DefaultDelimiter = "\n"
@@ -27,6 +27,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+" 自动补全
+packadd youcompleteme
 " ======================================================== view configuration ======================================================
 " ---------------------------syntax configuration----------------------------
 syntax on " 语法高亮开启
