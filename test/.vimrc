@@ -36,7 +36,7 @@ set mousemodel=popup " 当右键单击窗口的时候，弹出快捷菜单
 " set shortmess=atI " 启动的时候不显示那个援助乌干达儿童的提示 
 set guioptions-=T " 隐藏工具栏
 set guioptions-=m " 隐藏菜单栏
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")} " 状态行显示的内容
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ %=[POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")} " 状态行显示的内容
 
 " [颜色主题]
 color xcodelight " 设置xcodelight背景主题  
