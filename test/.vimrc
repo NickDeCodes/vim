@@ -16,6 +16,7 @@ set smartindent " 智能对齐
 set autoindent " 自动缩进
 set linebreak " 数字加空格
 set wildmenu " 在命令模式下使用 Tab 自动补全的时候，将补全内容使用一个漂亮的单行菜单形式显示出来
+set fo+=mB " 打开断行模块对亚洲语言支持。m 表示允许在两个汉字之间断行，即使汉字之间没有出现空格。B 表示将两行合并为一行的时候，汉字与汉字之间不要补空格
 set scrolloff=3 " 光标移动到buffer的顶部和底部时保持3行距离 
 set completeopt=preview,menu " 代码补全 
 set completeopt=longest,menu " 打开文件类型检测, 加了这句才可以用智能补全
@@ -26,24 +27,49 @@ set cursorcolumn " 高亮光标所在列
 set hlsearch " 搜索逐字符高亮
 set incsearch " 显示查找的匹配点
 set showmatch " 高亮显示匹配的括号
-set matchtime=1 " 匹配括号高亮的时间（单位是十分之一秒
+set matchtime=1 " 匹配括号高亮的时间（单位是十分之一秒)
 
 " [状态栏配置]
 set cmdheight=2 " 总是显示状态行
 set laststatus=2 " 启动显示状态行(1),总是显示状态行(2)  
 set mousemodel=popup " 当右键单击窗口的时候，弹出快捷菜单
-set shortmess=atI " 启动的时候不显示那个援助乌干达儿童的提示 
+" set shortmess=atI " 启动的时候不显示那个援助乌干达儿童的提示 
+set guioptions-=T " 隐藏工具栏
+set guioptions-=m " 隐藏菜单栏
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")} " 状态行显示的内容
 
 " [颜色主题]
 color xcodelight " 设置xcodelight背景主题  
 "color xcodedark " 设置xcodedark背景主题
 
+" [实用配置] 有一些不知道含义
+set nocompatible " 不要使用vi的键盘模式，而是vim自己的
+set iskeyword+=_,$,@,%,#,- " 带有如下符号的单词不要被换行分割
+set autoread " 设置当文件被改动时自动载入
+set autowrite " 自动保存
+set confirm " 在处理未保存或只读文件的时候，弹出确认
+set nobackup " 禁止生成临时文件
+set noswapfile " 禁止文件转换
+" set ignorecase " 搜索忽略大小写
+set backspace=2 " 使回格键（backspace）正常处理indent, eol, start等
+set mouse=a " 可以在buffer的任何地方使用鼠标（类似office中在工作区双击鼠标定位)
+set selectmode=mouse,key " 使用鼠标和命令时用选择模式
+set fillchars=vert:\ ,stl:\ ,stlnc:\ " 在被分割的窗口间显示空白，便于阅读
+set fileformat=unix " 从Win上复制文件时，避免换行符错误
+
 " [文件类型]
 filetype on " 侦测文件类型
 filetype plugin on " 载入文件类型插件
 filetype indent on " 为特定文件类型载入相关缩进文件
 filetype plugin indent on " 自动检测文件类型
+autocmd FileType php setlocal dict+=~/.vim/dict/php_funclist.dict
+autocmd FileType css setlocal dict+=~/.vim/dict/css.dict
+autocmd FileType c setlocal dict+=~/.vim/dict/c.dict
+autocmd FileType cpp setlocal dict+=~/.vim/dict/cpp.dict
+autocmd FileType scale setlocal dict+=~/.vim/dict/scale.dict
+autocmd FileType javascript setlocal dict+=~/.vim/dict/javascript.dict
+autocmd FileType html setlocal dict+=~/.vim/dict/ftdetectjavascript.dict
+autocmd FileType html setlocal dict+=~/.vim/dict/css.dict
 
 " [新建文件，自动插入文件头]
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.py exec ":call SetTitle()" 
@@ -84,3 +110,6 @@ function! SetTitle() abort
 endfunction 
 "新建文件后，自动定位到文件末尾
 autocmd BufNewFile * normal G 
+
+" [键盘配置]
+map <Esc><Esc> :w<CR> " Esc + 保存
