@@ -1,6 +1,50 @@
 " Copyright 2021 NickDeCodes
 " [插件配置]
 
+" [括号匹配] 
+" git clone https://github.com/jiangmiao/auto-pairs
+packadd auto-pairs
+
+" [文件树]
+" git clone https://github.com/scrooloose/nerdtree
+packadd nerdtree
+" Start NERDTree when Vim is started without file arguments.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" [语法检测]
+" git clone https://github.com/scrooloose/syntastic
+packadd syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+" let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_wq = 0
+
+" [自动补全]
+packadd youcompleteme
+
+" [状态栏]
+packadd vim-airline
+let g:airline#extensions#tabline#enabled = 1 " 开启tab栏
+" Separators can be configured independently for the tabline, so here is how you can define "straight" tabs
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+" In addition, you can also choose which path formatter airline uses. This affects how file paths are displayed in each individual tab as well as the current buffer indicator in the upper right. To do so, set the formatter field with
+let g:airline#extensions#tabline#formatter = 'default'
+
+" [状态栏配色]
+" git clone https://github.com/vim-airline/vim-airline-themes
+packadd vim-airline-themes
+let g:airline_theme='simple'
+
+
+
+
 " [视图配置]
 syntax on " 语法高亮开启
 set ruler " 显示标尺 
@@ -84,6 +128,8 @@ function! SetTitle() abort
     call setline(1,"#!/usr/bin/env python")
     call append(line("."),"# coding=utf-8")
     call append(line(".")+1, "")
+  elseif &filetype == 'md'
+    call setline(1,"<head><meta charset=\"UTF-8\"></head>")
   else 
     call setline(1, "/*************************************************************************") 
     call append(line("."), "	> File Name: ".expand("%")) 
@@ -108,9 +154,14 @@ function! SetTitle() abort
     call append(line(".")+7, "#define _".toupper(expand("%:r"))."_H")
     call append(line(".")+8, "#endif")
   endif
+  if &filetype == 'java'
+    call append(line(".")+6,"public class ".expand("%:r"))
+    call append(line(".")+7,"")
+  endif
 endfunction 
 "新建文件后，自动定位到文件末尾
 autocmd BufNewFile * normal G 
 
 " [键盘配置]
 map <Esc><Esc> :w<CR> " Esc + 保存
+map <F3> :NERDTreeToggle<CR> " 列出当前目录文件
