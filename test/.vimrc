@@ -10,6 +10,7 @@ set number " 显示行号
 set shiftwidth=4 " 自动缩进的时候，缩进尺寸为4个空格
 set tabstop=4 " Tab宽度为4个字符
 set softtabstop=4 " 统一缩进为4
+set cino=L0 " 在任意字符后面加冒号不会跳到行首
 set expandtab " 使用空格代替制表符
 set smarttab " 删除Tab一键delete
 set smartindent " 智能对齐
