@@ -21,7 +21,7 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-" let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_wq = 0
 
@@ -42,6 +42,7 @@ let g:airline#extensions#tabline#formatter = 'default'
 packadd vim-airline-themes
 let g:airline_theme='simple'
 
+packadd tagbar
 
 
 
@@ -165,3 +166,4 @@ autocmd BufNewFile * normal G
 " [键盘配置]
 map <Esc><Esc> :w<CR> " Esc + 保存
 map <F3> :NERDTreeToggle<CR> " 列出当前目录文件
+map <F8> :TagbarToggle<CR>
