@@ -51,8 +51,8 @@ hi ModeMsg 		    ctermfg=Cyan ctermbg=NONE cterm=NONE guifg=Cyan guibg=NONE gui=
 hi MoreMsg 		    ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE " 输入栏提示
 hi NonText        ctermfg=DarkGrey ctermbg=NONE cterm=NONE guifg=DarkGrey guibg=NONE gui=NONE " 非文本区（控制字符和一些特殊字符和编辑器空白区等）
 hi Number         ctermfg=Blue ctermbg=NONE cterm=NONE guifg=Blue guibg=NONE gui=NONE " 数字
-hi Operator       ctermfg=DarkMagenta ctermbg=NONE cterm=bold guifg=DarkMagenta guibg=NONE gui=bold " "sizeof"、"+"、"*" 等
-hi Pmenu          ctermfg=DarkGrey ctermbg=NONE cterm=NONE guifg=DarkGrey guibg=NONE gui=NONE "弹出菜单: 普通项目 补全提示行 
+hi Operator       ctermfg=DarkMagenta ctermbg=NONE cterm=bold guifg=DarkMagenta guibg=NONE gui=bold " \"sizeof"、"+"、"*" 等
+hi Pmenu          ctermfg=DarkGrey ctermbg=NONE cterm=NONE guifg=DarkGrey guibg=NONE gui=NONE " 弹出菜单: 普通项目 补全提示行 
 hi PmenuSel       ctermfg=27 ctermbg=Black cterm=inverse guifg=#005fff guibg=Black gui=inverse " 弹出菜单: 选中项目。 补全光标行
 hi PmenuSbar      ctermfg=Red ctermbg=Green cterm=inverse guifg=Red guibg=Green gui=inverse " 弹出菜单: 滚动条
 hi PmenuThumb     ctermfg=Cyan ctermbg=Green cterm=inverse guifg=Cyan guibg=Green gui=inverse " 弹出菜单: 滚动条的拇指 (thumb)
@@ -79,7 +79,7 @@ hi SpecialComment ctermfg=Cyan ctermbg=Blue cterm=NONE guifg=Cyan guibg=Blue gui
 hi Tag            ctermfg=Green ctermbg=Blue cterm=NONE guifg=Green guibg=Blue gui=NONE " 可以使用 CTRL-] 的项目
 hi Todo           ctermfg=203 ctermbg=NONE cterm=NONE guifg=#ff5f5f guibg=NONE gui=inverse,bold,italic " 需要特殊注意的部分；主要是关键字 TODO FIXME 和 XX
 hi Type           ctermfg=DarkMagenta ctermbg=NONE cterm=bold guifg=DarkMagenta guibg=NONE gui=bold " int、void、bool、char等声明语法高亮
-hi Title          ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=bold " ":set all"、":autocmd" 等输出的标题 markdown标题
+hi Title          ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=bold " \":set all"、":autocmd" 等输出的标题 markdown标题
 hi Tooltip	      ctermfg=Cyan ctermbg=Grey cterm=NONE guifg=Cyan guibg=Grey gui=NONE " 当前工具提示的字体、背景色和前景色。也包括工具栏。可用的高亮参数: font、guibg、guifg。
 hi Typedef        ctermfg=DarkMagenta ctermbg=NONE cterm=bold guifg=DarkMagenta guibg=NONE gui=bold " typedef 定义
 hi TabLine        ctermfg=Cyan ctermbg=Grey cterm=NONE guifg=Cyan guibg=Grey gui=NONE " 标签页行，非活动标签页标签
