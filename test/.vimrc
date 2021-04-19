@@ -25,23 +25,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_wq = 0
 
-" [自动补全]
-packadd youcompleteme
-
-" [状态栏]
-packadd vim-airline
-let g:airline#extensions#tabline#enabled = 1 " 开启tab栏
-" Separators can be configured independently for the tabline, so here is how you can define "straight" tabs
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-" In addition, you can also choose which path formatter airline uses. This affects how file paths are displayed in each individual tab as well as the current buffer indicator in the upper right. To do so, set the formatter field with
-let g:airline#extensions#tabline#formatter = 'default'
-
-" [状态栏配色]
-" git clone https://github.com/vim-airline/vim-airline-themes
-packadd vim-airline-themes
-let g:airline_theme='simple'
-
+" [标签设置]
+" git clone https://github.com/majutsushi/tagbar
 packadd tagbar
 
 
@@ -100,7 +85,8 @@ set noswapfile " 禁止文件转换
 set backspace=2 " 使回格键（backspace）正常处理indent, eol, start等
 set mouse=a " 可以在buffer的任何地方使用鼠标（类似office中在工作区双击鼠标定位)
 set selectmode=mouse,key " 使用鼠标和命令时用选择模式
-set fillchars=vert:\ ,stl:\ ,stlnc:\ " 在被分割的窗口间显示空白，便于阅读
+" 在被分割的窗口间显示空白，便于阅读
+set fillchars=vert:\ ,stl:\ ,stlnc:\ 
 set fileformat=unix " 从Win上复制文件时，避免换行符错误
 
 " [文件类型]
@@ -119,9 +105,20 @@ autocmd FileType html setlocal dict+=~/.vim/dict/css.dict
 
 " [新建文件，自动插入文件头]
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.py exec ":call SetTitle()" 
+
+"新建文件后，自动定位到文件末尾
+autocmd BufNewFile * normal G 
+
+" [键盘配置]
+map <Esc><Esc> :w<CR> " Esc + 保存
+map <F2> :TagbarToggle<CR> " 打开标签目录 
+map <F3> :NERDTreeToggle<CR> " 列出当前目录文件
+map <F5> :call CompileRunGcc()<CR> " 快捷键编译
+
+" [定义函数]
 " 定义函数SetTitle，自动插入文件头 
 function! SetTitle() abort 
-"如果文件类型为.sh文件 
+  " 如果文件类型为.sh文件 
   if &filetype == 'sh' 
     call setline(1,"\#!/bin/bash") 
     call append(line("."), "") 
@@ -160,10 +157,29 @@ function! SetTitle() abort
     call append(line(".")+7,"")
   endif
 endfunction 
-"新建文件后，自动定位到文件末尾
-autocmd BufNewFile * normal G 
-
-" [键盘配置]
-map <Esc><Esc> :w<CR> " Esc + 保存
-map <F3> :NERDTreeToggle<CR> " 列出当前目录文件
-map <F8> :TagbarToggle<CR>
+" 快捷键编译 F5自动编译生成可执行文件相同文件名
+function! CompileRunGcc() abort
+	exec "w"
+	if &filetype == 'c'
+		exec "!g++ % -o %<"
+		exec "!time ./%<"
+	elseif &filetype == 'cpp'
+		exec "!g++ % -std=c++11 -o %<"
+		exec "!time ./%<"
+	elseif &filetype == 'java' 
+		exec "!javac %" 
+		exec "!time java %<"
+	elseif &filetype == 'sh'
+		:!time bash %
+	elseif &filetype == 'python'
+		exec "!time python2.7 %"
+    elseif &filetype == 'html'
+        exec "!firefox % &"
+    elseif &filetype == 'go'
+"        exec "!go build %<"
+        exec "!time go run %"
+    elseif &filetype == 'mkd'
+        exec "!~/.vim/markdown.pl % > %.html &"
+        exec "!firefox %.html &"
+	endif
+endfunction
