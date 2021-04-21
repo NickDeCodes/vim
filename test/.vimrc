@@ -29,8 +29,6 @@ let g:syntastic_check_on_wq = 0
 " git clone https://github.com/majutsushi/tagbar
 packadd tagbar
 
-
-
 " [视图配置]
 syntax on " 语法高亮开启
 set ruler " 显示标尺 
@@ -110,6 +108,8 @@ autocmd BufNewFile *.cpp,*.[ch],*.sh,*.py exec ":call SetTitle()"
 autocmd BufNewFile * normal G 
 
 " [键盘配置]
+" 在可视化模式下control+c复制到剪切板
+vmap <C-c> "+y
 map <Esc><Esc> :w<CR> " Esc + 保存
 map <F2> :TagbarToggle<CR> " 打开标签目录 
 map <F3> :NERDTreeToggle<CR> " 列出当前目录文件
