@@ -3,7 +3,7 @@
 
 " [括号匹配] 
 " git clone https://github.com/jiangmiao/auto-pairs
-packadd auto-pairs
+" packadd auto-pairs
 
 " [文件树]
 " git clone https://github.com/scrooloose/nerdtree
@@ -31,61 +31,108 @@ packadd tagbar
 
 " [视图配置]
 syntax on " 语法高亮开启
-set ruler " 显示标尺 
-set number " 显示行号
 
-" [对齐配置]
-set shiftwidth=4 " 自动缩进的时候，缩进尺寸为4个空格
-set tabstop=4 " Tab宽度为4个字符
-set softtabstop=4 " 统一缩进为4
-set cino=L0 " 在任意字符后面加冒号不会跳到行首
-set expandtab " 使用空格代替制表符
-set smarttab " 删除Tab一键delete
-set smartindent " 智能对齐
+" [字典序配置选项]
+" [a]
 set autoindent " 自动缩进
-set linebreak " 数字加空格
-set wildmenu " 在命令模式下使用 Tab 自动补全的时候，将补全内容使用一个漂亮的单行菜单形式显示出来
-set fo+=mB " 打开断行模块对亚洲语言支持。m 表示允许在两个汉字之间断行，即使汉字之间没有出现空格。B 表示将两行合并为一行的时候，汉字与汉字之间不要补空格
-set scrolloff=3 " 光标移动到buffer的顶部和底部时保持3行距离 
-set completeopt=preview,menu " 代码补全 
-set completeopt=longest,menu " 打开文件类型检测, 加了这句才可以用智能补全
-
-" [高亮配置]
+set autowrite " 自动保存
+set autoread " 设置当文件被改动时自动载入
+set autochdir " 自动切换当前目录为当前文件所在的目录
+" [b]
+set backspace=2 " 使回格键（backspace）正常处理indent, eol, start等
+" [c]
+set cmdheight=2 " 总是显示状态行
 set cursorline " 高亮光标所在行
 set cursorcolumn " 高亮光标所在列
-set hlsearch " 搜索逐字符高亮
-set incsearch " 显示查找的匹配点
-set showmatch " 高亮显示匹配的括号
-set matchtime=1 " 匹配括号高亮的时间（单位是十分之一秒)
-
-" [状态栏配置]
-set cmdheight=2 " 总是显示状态行
-set laststatus=2 " 启动显示状态行(1),总是显示状态行(2)  
-set mousemodel=popup " 当右键单击窗口的时候，弹出快捷菜单
-" set shortmess=atI " 启动的时候不显示那个援助乌干达儿童的提示 
+set copyindent " 复制粘贴时保留原有的缩进
+set cino=L0 " 在任意字符后面加冒号不会跳到行首
+set confirm " 在处理未保存或只读文件的时候，弹出确认
+set completeopt=preview,menu " 代码补全
+" [d]
+" [e]
+set encoding=utf-8 " 使用编码格式utf-8
+set expandtab " 使用空格代替制表符
+" [f]
+set fo+=mB " 打开断行模块对亚洲语言支持。m 表示允许在两个汉字之间断行，即使汉字之间没有出现空格。B 表示将两行合并为一行的时候，汉字与汉字之间不要补空格
+" 在被分割的窗口间显示空白，便于阅读
+set fillchars=vert:\ ,stl:\ ,stlnc:\ 
+set fileformat=unix " 从Win上复制文件时，避免换行符错误
+" [g]
 set guioptions-=T " 隐藏工具栏
 set guioptions-=m " 隐藏菜单栏
+" [h]
+set hlsearch " 搜索时高亮显示被找到的文本
+set hidden " 允许在有未保存的修改时切换缓冲区，此时的修改由vim负责保存
+" [i]
+set ignorecase smartcase " 搜索时忽略大小写，但在有一个或以上大写字母时仍保持对大小写敏感
+set incsearch " 输入搜索内容时就显示搜索结果
+set infercase " 区分大小写
+set iskeyword+=_,$,@,%,#,- " 带有如下符号的单词不要被换行分割
+" set ignorecase " 搜索忽略大小写
+" [j]
+" [k]
+" [l]
+set linebreak " 数字加空格
+set laststatus=2 " 启动显示状态行(1),总是显示状态行(2)  
+" [m]
+set magic " 设置魔术
+set matchtime=1 " 匹配括号高亮的时间（单位是十分之一秒)
+set mousemodel=popup " 当右键单击窗口的时候，弹出快捷菜单
+set mouse=a " 可以在buffer的任何地方使用鼠标（类似office中在工作区双击鼠标定位)
+"set matchtime=2 " 短暂跳转到匹配括号的时间
+" [n]
+set number " 显示行号
+set nowrapscan " 禁止在搜索到文件两端时重新搜索
+set nofoldenable " 不许文件自动折叠
+set noerrorbells " 关闭错误信息响铃
+set novisualbell " 关闭使用可视响铃代替呼叫
+set nocompatible " 不要使用vi的键盘模式，而是vim自己的
+set nobackup " 覆盖文件时不备份
+set noswapfile " 禁止文件转换
+" [o]
+" [p]
+" [q]
+" [r]
+set ruler " 显示标尺 
+" [s]
+" set shortmess=atI " 启动的时候不显示那个援助乌干达儿童的提示 
+set shiftwidth=4 " 自动缩进的时候，缩进尺寸为4个空格
+set softtabstop=4 " 使得按退格键时可以一次删掉4个空格
+set smarttab " 删除Tab一键delete
+set smartindent " 开启新行时使用智能自动缩进
+set scrolloff=3 " 光标移动到buffer的顶部和底部时保持3行距离 
+set showmatch " 高亮显示匹配的括号
+set showmode " 在底部显示，当前处于命令模式还是插入模式
+set showcmd " 命令模式下，在底部显示，当前键入的指令。比如，键入的指令是2y3d，那么底部就会显示2y3，当键入d的时候，操作完成，显示消失。
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ %=[POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")} " 状态行显示的内容
+"set showmatch " 插入括号时，短暂地跳转到匹配的对应括号
+set selectmode=mouse,key " 使用鼠标和命令时用选择模式
+" [t]
+set tabstop=4 " Tab宽度为4个字符
+set t_vb= " 置空错误铃声的终端代码
+" [u]
+" [v]
+" [w]
+set wildmenu " 在命令模式下使用 Tab 自动补全的时候，将补全内容使用一个漂亮的单行菜单形式显示出来
+" [x]
+" [y]
+" [z]
 
 " [颜色主题]
 color xcodelight " 设置xcodelight背景主题  
 "color xcodedark " 设置xcodedark背景主题
 
-" [实用配置] 有一些不知道含义
-set nocompatible " 不要使用vi的键盘模式，而是vim自己的
-set iskeyword+=_,$,@,%,#,- " 带有如下符号的单词不要被换行分割
-set autoread " 设置当文件被改动时自动载入
-set autowrite " 自动保存
-set confirm " 在处理未保存或只读文件的时候，弹出确认
-set nobackup " 禁止生成临时文件
-set noswapfile " 禁止文件转换
-" set ignorecase " 搜索忽略大小写
-set backspace=2 " 使回格键（backspace）正常处理indent, eol, start等
-set mouse=a " 可以在buffer的任何地方使用鼠标（类似office中在工作区双击鼠标定位)
-set selectmode=mouse,key " 使用鼠标和命令时用选择模式
-" 在被分割的窗口间显示空白，便于阅读
-set fillchars=vert:\ ,stl:\ ,stlnc:\ 
-set fileformat=unix " 从Win上复制文件时，避免换行符错误
+" [自动补全]
+:inoremap ( ()<ESC>i
+:inoremap ) <c-r>=ClosePair(')')<CR>
+:inoremap { {<CR>}<ESC>O
+:inoremap } <c-r>=ClosePair('}')<CR>
+:inoremap [ []<ESC>i
+:inoremap ] <c-r>=ClosePair(']')<CR>
+:inoremap " ""<ESC>i
+":inoremap " <c-r>=ClosePair('"')<CR>
+:inoremap ' ''<ESC>i
+":inoremap ' <c-r>=ClosePair('\'')<CR>
 
 " [文件类型]
 filetype on " 侦测文件类型
@@ -182,4 +229,12 @@ function! CompileRunGcc() abort
         exec "!~/.vim/markdown.pl % > %.html &"
         exec "!firefox %.html &"
 	endif
+endfunction
+" 自动删除多余括号
+function! ClosePair(char)
+    if getline('.')[col('.') - 1] == a:char
+        return "\<Right>"
+    else
+        return a:char
+    endif
 endfunction
