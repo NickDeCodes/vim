@@ -1,5 +1,5 @@
 " Vim color file
-" create by NickDeCodes (NickDeCodes@163.com)
+" create by nickdecodes (nickdecodes@163.com)
 
 set background=dark
 set t_Co=256
@@ -9,7 +9,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "xcodelight"
+let colors_name = "vimcolor"
 " 初始化
 hi Normal         ctermfg=NONE ctermbg=NONE cterm=NONE guifg=#f0f0f0 guibg=NONE gui=NONE " 普通文本 
 hi Boolean        ctermfg=DarkMagenta ctermbg=NONE cterm=NONE guifg=DarkMagenta guibg=NONE gui=NONE " bool值高亮
