@@ -8,10 +8,10 @@
 " [文件树]
 " git clone https://github.com/scrooloose/nerdtree
 packadd nerdtree
-" Start NERDTree when Vim is started without file arguments.
+" vim不打开文件时代开文件树
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
-" Exit Vim if NERDTree is the only window left.
+" 当最后一个窗口时文件树时关闭窗口
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 " [语法检测]
@@ -47,7 +47,9 @@ set cursorcolumn " 高亮光标所在列
 set copyindent " 复制粘贴时保留原有的缩进
 set cino=L0 " 在任意字符后面加冒号不会跳到行首
 set confirm " 在处理未保存或只读文件的时候，弹出确认
+set clipboard+=unnamed " 共享剪贴板 
 set completeopt=preview,menu " 代码补全
+set completeopt=longest,menu " 打开文件类型检测, 加了这句才可以用智能补全
 " [d]
 " [e]
 set encoding=utf-8 " 使用编码格式utf-8
@@ -89,6 +91,7 @@ set novisualbell " 关闭使用可视响铃代替呼叫
 set nocompatible " 不要使用vi的键盘模式，而是vim自己的
 set nobackup " 覆盖文件时不备份
 set noswapfile " 禁止文件转换
+set noeb " 去掉输入错误的提示声音
 " [o]
 " [p]
 " [q]
@@ -119,20 +122,7 @@ set wildmenu " 在命令模式下使用 Tab 自动补全的时候，将补全内
 " [z]
 
 " [颜色主题]
-color xcodelight " 设置xcodelight背景主题  
-"color xcodedark " 设置xcodedark背景主题
-
-" [自动补全]
-:inoremap ( ()<ESC>i
-:inoremap ) <c-r>=ClosePair(')')<CR>
-:inoremap { {<CR>}<ESC>O
-:inoremap } <c-r>=ClosePair('}')<CR>
-:inoremap [ []<ESC>i
-:inoremap ] <c-r>=ClosePair(']')<CR>
-:inoremap " ""<ESC>i
-":inoremap " <c-r>=ClosePair('"')<CR>
-:inoremap ' ''<ESC>i
-":inoremap ' <c-r>=ClosePair('\'')<CR>
+color vimcolor " 设置背景主题
 
 " [文件类型]
 filetype on " 侦测文件类型
@@ -147,11 +137,9 @@ autocmd FileType scale setlocal dict+=~/.vim/dict/scale.dict
 autocmd FileType javascript setlocal dict+=~/.vim/dict/javascript.dict
 autocmd FileType html setlocal dict+=~/.vim/dict/ftdetectjavascript.dict
 autocmd FileType html setlocal dict+=~/.vim/dict/css.dict
-
-" [新建文件，自动插入文件头]
+" 新建文件，自动插入文件头
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.py exec ":call SetTitle()" 
-
-"新建文件后，自动定位到文件末尾
+" 新建文件后，自动定位到文件末尾
 autocmd BufNewFile * normal G 
 
 " [键盘配置]
@@ -229,12 +217,4 @@ function! CompileRunGcc() abort
         exec "!~/.vim/markdown.pl % > %.html &"
         exec "!firefox %.html &"
 	endif
-endfunction
-" 自动删除多余括号
-function! ClosePair(char)
-    if getline('.')[col('.') - 1] == a:char
-        return "\<Right>"
-    else
-        return a:char
-    endif
 endfunction
