@@ -74,20 +74,20 @@ hi String         ctermfg=203 ctermbg=NONE cterm=NONE guifg=#ff5f5f guibg=NONE g
 hi SpellBad       term=reverse ctermbg=9 gui=undercurl guisp=Red " 拼写检查器不能识别的单词。|spell|它会和本来应该使用的高亮进行组合
 hi SpellCap       term=reverse ctermbg=12 gui=undercurl guisp=Blue " 拼写检查器能识别但只在其它区域使用的单词
 hi SpellRare      ctermfg=203 ctermbg=NONE cterm=NONE guifg=#ff5f5f guibg=NONE gui=NONE " 拼写检查器能识别但很少使用的单词
-hi Scrollbar      ctermfg=Cyan ctermbg=Grey cterm=NONE guifg=Cyan guibg=Grey gui=NONE " 主窗口滚动条的当前背景和前景色。可用的高亮参数: guibg、guifg。
+hi Scrollbar      ctermfg=Cyan ctermbg=DarkGrey cterm=NONE guifg=Cyan guibg=DarkGrey gui=NONE " 主窗口滚动条的当前背景和前景色。可用的高亮参数: guibg、guifg。
 hi SpecialComment ctermfg=DarkGrey ctermbg=NONE cterm=NONE guifg=DarkGrey guibg=NONE gui=italic " 注释里的特殊部分
 hi Tag            ctermfg=Green ctermbg=Blue cterm=NONE guifg=Green guibg=Blue gui=NONE " 可以使用 CTRL-] 的项目
 hi Todo           ctermfg=203 ctermbg=NONE cterm=NONE guifg=#ff5f5f guibg=NONE gui=inverse,bold,italic " 需要特殊注意的部分；主要是关键字 TODO FIXME 和 XX
 hi Type           ctermfg=DarkMagenta ctermbg=NONE cterm=bold guifg=DarkMagenta guibg=NONE gui=bold " int、void、bool、char等声明语法高亮
 hi Title          ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=bold " \":set all"、":autocmd" 等输出的标题 markdown标题
-hi Tooltip	      ctermfg=Cyan ctermbg=Grey cterm=NONE guifg=Cyan guibg=Grey gui=NONE " 当前工具提示的字体、背景色和前景色。也包括工具栏。可用的高亮参数: font、guibg、guifg。
+hi Tooltip	      ctermfg=Cyan ctermbg=DarkGrey cterm=NONE guifg=Cyan guibg=DarkGrey gui=NONE " 当前工具提示的字体、背景色和前景色。也包括工具栏。可用的高亮参数: font、guibg、guifg。
 hi Typedef        ctermfg=DarkMagenta ctermbg=NONE cterm=bold guifg=DarkMagenta guibg=NONE gui=bold " typedef 定义
 hi TabLine        ctermfg=Cyan ctermbg=Grey cterm=NONE guifg=Cyan guibg=Grey gui=NONE " 标签页行，非活动标签页标签
 hi TabLineFill    ctermfg=Cyan ctermbg=Grey cterm=NONE guifg=Cyan guibg=Grey gui=NONE " 标签页行，没有标签的地方
 hi TabLineSel     ctermfg=Cyan ctermbg=Grey cterm=NONE guifg=Cyan guibg=Grey gui=NONE " 标签页行，活动标签页标签
 hi Underlined     ctermfg=Cyan ctermbg=Grey cterm=NONE guifg=Cyan guibg=Grey gui=NONE " 需要突出的文本，HTML 链接
 hi Visual         ctermfg=NONE ctermbg=LightCyan cterm=NONE guifg=NONE guibg=LightCyan gui=NONE " 可视模式的选择区
-hi VertSplit      ctermfg=NONE ctermbg=Grey cterm=NONE guifg=NONE guibg=Grey gui=NONE " 分离垂直分割窗口的列
-hi VisualNOS      ctermfg=Yellow ctermbg=Grey cterm=NONE guifg=Yellow guibg=Grey gui=NONE " Vim 是 "选择区的非拥有者" 时，可视模式的选择区
+hi VertSplit      ctermfg=NONE ctermbg=DarkGrey cterm=NONE guifg=NONE guibg=DarkGrey gui=NONE " 分离垂直分割窗口的列
+hi VisualNOS      ctermfg=Yellow ctermbg=DarkGrey cterm=NONE guifg=Yellow guibg=DarkGrey gui=NONE " Vim 是 "选择区的非拥有者" 时，可视模式的选择区
 hi WildMenu 		  ctermfg=Blue ctermbg=Grey cterm=NONE guifg=Blue guibg=Grey gui=NONE " 'wildmenu' 补全的当前匹配
 hi WarningMsg     ctermfg=Yellow ctermbg=NONE cterm=NONE guifg=Yellow guibg=NONE gui=NONE " 命令行中的警告提示
