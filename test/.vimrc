@@ -139,13 +139,23 @@ autocmd BufNewFile * normal G
 " [键盘配置]
 " 在可视化模式下control+c复制到剪切板
 vmap <C-c> "+y
-map <Esc><Esc> :w<CR> " Esc + 保存
-map <F2> :TagbarToggle<CR> " 打开标签目录 
-map <F3> :NERDTreeToggle<CR> " 列出当前目录文件
-map <F5> :call CompileRunGcc()<CR> " 快捷键编译
+" Esc + 保存
+map <Esc><Esc> :w<CR> 
+" 打开标签目录 
+map <F2> :TagbarToggle<CR> 
+" 列出当前目录文件
+map <F3> :NERDTreeToggle<CR> 
+" 垂直分割窗口比较文件  
+nnoremap <F4> :vert diffsplit<CR> 
+" 快捷键编译
+map <F5> :call CompileRunGcc()<CR> 
+" 代码格式优化化
+map <F6> :call FormartSrc()<CR><CR>
+" C,C++的GDB调试
+map <F7> :call RunGDB()<CR>
 
 " [定义函数]
-" 定义函数SetTitle，自动插入文件头 
+" 定义函数SetTitle，打开新文件时自动插入文件头 
 function! SetTitle() abort 
   " 如果文件类型为.sh文件 
   if &filetype == 'sh' 
@@ -197,7 +207,7 @@ endfunction
 function! CompileRunGcc() abort
 	exec "w"
 	if &filetype == 'c'
-		exec "!g++ % -o %<"
+		exec "!gcc % -o %<"
 		exec "!time ./%<"
 	elseif &filetype == 'cpp'
 		exec "!g++ % -std=c++11 -o %<"
@@ -210,11 +220,45 @@ function! CompileRunGcc() abort
 	elseif &filetype == 'python'
 		exec "!time python2.7 %"
     elseif &filetype == 'html'
-        exec "!firefox % &"
+        exec "!chrome % &"
     elseif &filetype == 'go'
         exec "!time go run %"
     elseif &filetype == 'mkd'
         exec "!~/.vim/markdown.pl % > %.html &"
-        exec "!firefox %.html &"
+        exec "!chrome %.html &"
 	endif
 endfunction
+" 快捷键格式化 F6检测代码格式
+function! FormartSrc() abort
+  exec "w"
+  if &filetype == 'c'
+      exec "!astyle --style=ansi -a --suffix=none %"
+  elseif &filetype == 'cpp' || &filetype == 'hpp'
+      exec "r !astyle --style=ansi --one-line=keep-statements -a --suffix=none %> /dev/null 2>&1"
+  elseif &filetype == 'perl'
+      exec "!astyle --style=gnu --suffix=none %"
+  elseif &filetype == 'py'||&filetype == 'python'
+      exec "r !autopep8 -i --aggressive %"
+  elseif &filetype == 'java'
+      exec "!astyle --style=java --suffix=none %"
+  elseif &filetype == 'jsp'
+      exec "!astyle --style=gnu --suffix=none %"
+  elseif &filetype == 'xml'
+      exec "!astyle --style=gnu --suffix=none %"
+  else
+      exec "normal gg=G"
+      return
+  endif
+  exec "e! %"
+endfunction
+" 快捷键调试 F7GDB调试
+func! RunGDB()
+  exec "w"
+  if &filetype == 'c'
+    exec "!gcc % -g -o %<"
+    exec "!gdb ./%<"
+  elseif &filetype == 'cpp'
+    exec "!g++ % -std=c++11 -g -o %<"
+    exec "!gdb ./%<"
+  endif
+endfunc
