@@ -15,7 +15,7 @@ hi Normal         ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui
 hi Boolean        ctermfg=DarkMagenta ctermbg=NONE cterm=NONE guifg=DarkMagenta guibg=NONE gui=NONE " bool值高亮
 hi Cursor         ctermfg=Cyan ctermbg=Cyan cterm=inverse guifg=Cyan guibg=Cyan gui=inverse " 光标所在的字符
 hi CursorLine     ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline " 光标当前行
-hi CursorLineNr   ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE " 光标左侧行行
+hi CursorLineNr   ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE " 光标左侧行
 hi CursorColumn   ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE " 光标当前列
 hi ColorColumn    ctermfg=Red ctermbg=Red cterm=NONE guifg=Red guibg=Red gui=NONE " 颜色列
 hi Character      ctermfg=Blue ctermbg=NONE cterm=NONE guifg=Blue guibg=NONE gui=NONE " 字符高亮
