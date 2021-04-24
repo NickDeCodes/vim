@@ -28,6 +28,16 @@ let g:syntastic_check_on_wq = 0
 " git clone https://github.com/majutsushi/tagbar
 packadd tagbar
 
+" [状态栏样式]
+" git clone https://github.com/vim-airline/vim-airline
+packadd vim-airline
+let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+" git clone https://github.com/vim-airline/vim-airline-themes
+packadd vim-airline-themes
+
 " [字典序配置选项]
 syntax on " 语法高亮开启
 " [a]
