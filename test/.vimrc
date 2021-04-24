@@ -5,6 +5,10 @@
 " git clone https://github.com/jiangmiao/auto-pairs
 packadd auto-pairs
 
+" [标签设置]
+" git clone https://github.com/majutsushi/tagbar
+packadd tagbar
+
 " [文件树]
 " git clone https://github.com/scrooloose/nerdtree
 packadd nerdtree
@@ -23,10 +27,11 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_wq = 0
-
-" [标签设置]
-" git clone https://github.com/majutsushi/tagbar
-packadd tagbar
+let g:syntastic_python_checkers = ['python']
+let g:syntastic_go_checkers = ['go']
+let g:syntastic_java_checkers = ['javac']
+let g:syntastic_javascript_checkers = ['flow']
+let g:syntastic_html_checkers = ['tidy']
 
 " [字典序配置选项]
 syntax on " 语法高亮开启
@@ -132,7 +137,7 @@ autocmd FileType javascript setlocal dict+=~/.vim/dict/javascript.dict
 autocmd FileType html setlocal dict+=~/.vim/dict/ftdetectjavascript.dict
 autocmd FileType html setlocal dict+=~/.vim/dict/css.dict
 " 新建文件，自动插入文件头
-autocmd BufNewFile *.cpp,*.[ch],*.sh,*.py,*.go exec ":call SetTitle()" 
+autocmd BufNewFile *.cpp,*.[ch],*.sh,*.py,*.go,*.java exec ":call SetTitle()" 
 " 新建文件后，自动定位到文件末尾
 autocmd BufNewFile * normal G 
 
