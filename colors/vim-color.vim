@@ -51,13 +51,13 @@ hi ModeMsg 		    ctermfg=Cyan ctermbg=NONE cterm=NONE guifg=Cyan guibg=NONE gui=
 hi MoreMsg 		    ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE " 输入栏提示
 hi NonText        ctermfg=DarkGrey ctermbg=NONE cterm=NONE guifg=DarkGrey guibg=NONE gui=NONE " 非文本区（控制字符和一些特殊字符和编辑器空白区等）
 hi Number         ctermfg=Blue ctermbg=NONE cterm=NONE guifg=Blue guibg=NONE gui=NONE " 数字
-hi Operator       ctermfg=DarkMagenta ctermbg=NONE cterm=bold guifg=DarkMagenta guibg=NONE gui=bold " "sizeof"、"+"、"*" 等
+hi Operator       ctermfg=DarkMagenta ctermbg=NONE cterm=bold guifg=DarkMagenta guibg=NONE gui=bold " \"sizeof"、"+"、"*" 等
 hi Pmenu          ctermfg=DarkGrey ctermbg=NONE cterm=NONE guifg=DarkGrey guibg=NONE gui=NONE " 弹出菜单: 普通项目 补全提示行 
 hi PmenuSel       ctermfg=27 ctermbg=Black cterm=inverse guifg=#005fff guibg=Black gui=inverse " 弹出菜单: 选中项目。 补全光标行
 hi PmenuSbar      ctermfg=Red ctermbg=Green cterm=inverse guifg=Red guibg=Green gui=inverse " 弹出菜单: 滚动条
 hi PmenuThumb     ctermfg=Cyan ctermbg=Green cterm=inverse guifg=Cyan guibg=Green gui=inverse " 弹出菜单: 滚动条的拇指 (thumb)
-hi PreProc        ctermfg=94 ctermbg=NONE cterm=NONE guifg=#875f00 guibg=NONE gui=NONE " 通用预处理命令
-hi PreCondit      ctermfg=94 ctermbg=NONE cterm=NONE guifg=#875f00 guibg=NONE gui=NONE " 预处理命令makefile ifneq
+hi PreProc        ctermfg=Brown ctermbg=NONE cterm=NONE guifg=Brown guibg=NONE gui=NONE " 通用预处理命令
+hi PreCondit      ctermfg=Brown ctermbg=NONE cterm=NONE guifg=Brown guibg=NONE gui=NONE " 预处理命令makefile ifneq
 hi Question 		  ctermfg=Cyan ctermbg=NONE cterm=NONE guifg=Cyan guibg=NONE gui=bold " |hit-enter| 提示和 yes/no 问补全时下方的提示信息1/5
 hi Repeat         ctermfg=DarkMagenta ctermbg=NONE cterm=bold guifg=DarkMagenta guibg=NONE gui=bold " for、do、while 等
 hi StatusLine     ctermfg=231 ctermbg=DarkGrey cterm=bold guifg=#ffffff guibg=DarkGrey gui=bold " 当前窗口的状态行
