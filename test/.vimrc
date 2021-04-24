@@ -121,7 +121,7 @@ set wildmenu " 在命令模式下使用 Tab 自动补全的时候，将补全内
 " [z]
 
 " [颜色主题]
-" colorscheme vim-color " 设置背景主题
+colorscheme vim-color " 设置背景主题
 
 " [文件类型]
 filetype on " 侦测文件类型
