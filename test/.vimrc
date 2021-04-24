@@ -32,18 +32,18 @@ packadd tagbar
 syntax on " 语法高亮开启
 " [a]
 set autoread " 设置当文件被改动时自动载入
-set autowrite " 自动保存
 set autochdir " 自动切换当前目录为当前文件所在的目录
+set autowrite " 自动保存
 set autoindent " 自动缩进
 " [b]
 set backspace=2 " 使回格键（backspace）正常处理indent, eol, start等
 " [c]
 set cino=L0 " 在任意字符后面加冒号不会跳到行首
 set confirm " 在处理未保存或只读文件的时候，弹出确认
-set cmdheight=2 " 总是显示状态行
+set cmdheight=1 " 命令行高度
 set clipboard+=unnamed " 共享剪贴板 
-set cursorline " 高亮光标所在行
 set copyindent " 复制粘贴时保留原有的缩进
+set cursorline " 高亮光标所在行
 set completeopt=preview,menu " 代码补全
 set completeopt=longest,menu " 打开文件类型检测, 加了这句才可以用智能补全
 set cursorcolumn " 高亮光标所在列
@@ -116,9 +116,7 @@ set wildmenu " 在命令模式下使用 Tab 自动补全的时候，将补全内
 " [z]
 
 " [颜色主题]
-" colorscheme vimcolor " 设置背景主题
-" colorscheme molokai " 设置背景主题
-" colorscheme codedark " 设置背景主题
+colorscheme vim-color " 设置背景主题
 
 " [文件类型]
 filetype on " 侦测文件类型
@@ -134,7 +132,7 @@ autocmd FileType javascript setlocal dict+=~/.vim/dict/javascript.dict
 autocmd FileType html setlocal dict+=~/.vim/dict/ftdetectjavascript.dict
 autocmd FileType html setlocal dict+=~/.vim/dict/css.dict
 " 新建文件，自动插入文件头
-autocmd BufNewFile *.cpp,*.[ch],*.sh,*.py exec ":call SetTitle()" 
+autocmd BufNewFile *.cpp,*.[ch],*.sh,*.py,*.go exec ":call SetTitle()" 
 " 新建文件后，自动定位到文件末尾
 autocmd BufNewFile * normal G 
 
@@ -159,6 +157,13 @@ function! SetTitle() abort
     call append(line(".")+1, "")
   elseif &filetype == 'md'
     call setline(1,"<head><meta charset=\"UTF-8\"></head>")
+  elseif &filetype == 'go'
+    call setline(1,"package main") 
+    call append(line("."), "")
+    call append(line(".")+1, "import (")
+    call append(line(".")+2, "    "."\"fmt\"") 
+    call append(line(".")+3, ")") 
+    call append(line(".")+4, "")
   else 
     call setline(1, "/*************************************************************************") 
     call append(line("."), "	> File Name: ".expand("%")) 
@@ -207,7 +212,6 @@ function! CompileRunGcc() abort
     elseif &filetype == 'html'
         exec "!firefox % &"
     elseif &filetype == 'go'
-"        exec "!go build %<"
         exec "!time go run %"
     elseif &filetype == 'mkd'
         exec "!~/.vim/markdown.pl % > %.html &"
