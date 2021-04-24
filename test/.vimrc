@@ -18,6 +18,16 @@ autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 " 当最后一个窗口时文件树时关闭窗口
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
+" [状态栏颜色]
+" git clone https://github.com/vim-airline/vim-airline
+" packadd vim-airline
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = '|'
+" git clone https://github.com/vim-airline/vim-airline-themes
+" packadd vim-airline-themes
+" let g:airline#extensions#tabline#formatter = 'default'
+
 " [语法检测]
 " git clone https://github.com/scrooloose/syntastic
 packadd syntastic
