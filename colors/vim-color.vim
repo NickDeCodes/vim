@@ -60,8 +60,8 @@ hi PreProc        ctermfg=Brown ctermbg=NONE cterm=NONE guifg=Brown guibg=NONE g
 hi PreCondit      ctermfg=Brown ctermbg=NONE cterm=NONE guifg=Brown guibg=NONE gui=NONE " 预处理命令makefile ifneq
 hi Question 		  ctermfg=Cyan ctermbg=NONE cterm=NONE guifg=Cyan guibg=NONE gui=bold " |hit-enter| 提示和 yes/no 问补全时下方的提示信息1/5
 hi Repeat         ctermfg=DarkMagenta ctermbg=NONE cterm=bold guifg=DarkMagenta guibg=NONE gui=bold " for、do、while 等
-hi StatusLine     ctermfg=231 ctermbg=DarkGrey cterm=bold guifg=#ffffff guibg=DarkGrey gui=bold " 当前窗口的状态行
-hi StatusLineNC   ctermfg=231 ctermbg=DarkGrey cterm=bold guifg=#ffffff guibg=DarkGrey gui=bold " 非当前窗口的状态行
+hi StatusLine     ctermfg=Grey ctermbg=237 cterm=bold guifg=Grey guibg=#3a3a3a gui=bold " 当前窗口的状态行
+hi StatusLineNC   ctermfg=DarkGrey ctermbg=237 cterm=bold guifg=DarkGrey guibg=#3a3a3a gui=bold " 非当前窗口的状态行
 hi Search         ctermfg=Yellow ctermbg=Black cterm=reverse guifg=Yellow guibg=Black gui=reverse " 查找高亮
 hi Special        ctermfg=DarkGrey ctermbg=NONE cterm=NONE guifg=DarkGrey guibg=NONE gui=NONE " python#注释
 hi SpecialChar    ctermfg=203 ctermbg=NONE cterm=NONE guifg=#ff5f5f guibg=NONE gui=NONE " %s
@@ -87,7 +87,7 @@ hi TabLineFill    ctermfg=Cyan ctermbg=Grey cterm=NONE guifg=Cyan guibg=Grey gui
 hi TabLineSel     ctermfg=Cyan ctermbg=Grey cterm=NONE guifg=Cyan guibg=Grey gui=NONE " 标签页行，活动标签页标签
 hi Underlined     ctermfg=Cyan ctermbg=Grey cterm=NONE guifg=Cyan guibg=Grey gui=NONE " 需要突出的文本，HTML 链接
 hi Visual         ctermfg=NONE ctermbg=LightCyan cterm=NONE guifg=NONE guibg=LightCyan gui=NONE " 可视模式的选择区
-hi VertSplit      ctermfg=NONE ctermbg=DarkGrey cterm=NONE guifg=NONE guibg=DarkGrey gui=NONE " 分离垂直分割窗口的列
-hi VisualNOS      ctermfg=Yellow ctermbg=DarkGrey cterm=NONE guifg=Yellow guibg=DarkGrey gui=NONE " Vim 是 "选择区的非拥有者" 时，可视模式的选择区
+hi VertSplit      ctermfg=Grey ctermbg=237 cterm=NONE guifg=Grey guibg=#3a3a3a gui=NONE " 分离垂直分割窗口的列
+hi VisualNOS      ctermfg=Yellow ctermbg=DarkGrey cterm=NONE guifg=Yellow guibg=DarkGrey gui=NONE " Vim 是选择区的非拥有者时，可视模式的选择区
 hi WildMenu 		  ctermfg=Blue ctermbg=Grey cterm=NONE guifg=Blue guibg=Grey gui=NONE " 'wildmenu' 补全的当前匹配
 hi WarningMsg     ctermfg=Yellow ctermbg=NONE cterm=NONE guifg=Yellow guibg=NONE gui=NONE " 命令行中的警告提示
