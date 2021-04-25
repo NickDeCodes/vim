@@ -105,7 +105,12 @@ set showmatch " 高亮显示匹配的括号
 set scrolloff=3 " 光标移动到buffer的顶部和底部时保持3行距离 
 set shortmess=atI " 启动的时候不显示那个援助乌干达儿童的提示 
 set shiftwidth=4 " 自动缩进的时候，缩进尺寸为4个空格
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ %=[POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")} " 状态行显示的内容
+set statusline=%F%m%r%h%w " %文件名和路径%修改缓冲区%只读缓冲区%帮助缓冲区%预览窗口
+set statusline+=\ [FORMAT=%{&ff}] " 文件系统类型
+set statusline+=\ [TYPE=%Y] " 文件类型
+set statusline+=\ %=[POS=%l,%v] " 行，列
+set statusline+=\ [%p%%] " 当前行数占总行数的的百分比
+set statusline+=\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")} " 显示日期
 set softtabstop=4 " 使得按退格键时可以一次删掉4个空格
 set smartindent " 开启新行时使用智能自动缩进
 set selectmode=mouse,key " 使用鼠标和命令时用选择模式
