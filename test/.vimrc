@@ -144,14 +144,9 @@ filetype on " 侦测文件类型
 filetype plugin on " 载入文件类型插件
 filetype indent on " 为特定文件类型载入相关缩进文件
 filetype plugin indent on " 自动检测文件类型
-autocmd FileType php setlocal dict+=~/.vim/dict/php_funclist.dict
-autocmd FileType css setlocal dict+=~/.vim/dict/css.dict
 autocmd FileType c setlocal dict+=~/.vim/dict/c.dict
 autocmd FileType cpp setlocal dict+=~/.vim/dict/cpp.dict
-autocmd FileType scale setlocal dict+=~/.vim/dict/scale.dict
-autocmd FileType javascript setlocal dict+=~/.vim/dict/javascript.dict
-autocmd FileType html setlocal dict+=~/.vim/dict/ftdetectjavascript.dict
-autocmd FileType html setlocal dict+=~/.vim/dict/css.dict
+autocmd FileType vim setlocal dict+=~/.vim/dict/vim.dict
 " 新建文件，自动插入文件头
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.py,*.go,*.java exec ":call SetTitle()" 
 " 新建文件后，自动定位到文件末尾
