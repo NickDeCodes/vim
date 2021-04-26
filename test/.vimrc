@@ -33,6 +33,12 @@ let g:syntastic_java_checkers = ['javac']
 let g:syntastic_javascript_checkers = ['flow']
 let g:syntastic_html_checkers = ['tidy']
 
+" [语法补全]
+" git clone https://github.com/honza/vim-snippets
+packadd vim-snippets
+" git clone https://github.com/sirver/ultisnips
+packadd ultisnips
+
 " [字典序配置选项]
 syntax on " 语法高亮开启
 " [a]
