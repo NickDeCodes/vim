@@ -147,6 +147,7 @@ filetype plugin indent on " 自动检测文件类型
 autocmd FileType c setlocal dict+=~/.vim/dict/c.dict
 autocmd FileType cpp setlocal dict+=~/.vim/dict/cpp.dict
 autocmd FileType vim setlocal dict+=~/.vim/dict/vim.dict
+autocmd FileType python setlocal dict+=~/.vim/dict/python.dict
 " 新建文件，自动插入文件头
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.py,*.go,*.java exec ":call SetTitle()" 
 " 新建文件后，自动定位到文件末尾
