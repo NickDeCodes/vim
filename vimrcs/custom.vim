@@ -165,7 +165,9 @@ set textwidth=0                     " 插入文本的最大宽度。更长的行
 set updatetime=100                  " 降低延迟和糟糕的用户体验
 " Vim 重新打开文件时，回到上次历史所编辑文件的位置
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
-
+autocmd FileType c setlocal dict+=~/.vim/dict/c.dict
+autocmd FileType cpp setlocal dict+=~/.vim/dict/cpp.dict
+autocmd FileType python setlocal dict+=~/.vim/dict/python.dict
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 按键映射
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
