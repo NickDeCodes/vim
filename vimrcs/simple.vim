@@ -54,7 +54,7 @@ set laststatus=2 " 启动显示状态行(1),总是显示状态行(2)
 " (m)
 set magic " 设置魔术
 set mouse=a " 可以在buffer的任何地方使用鼠标（类似office中在工作区双击鼠标定位)
-let mapleader=" " " 让leader设置为空格
+" let mapleader=" " " 让leader设置为空格, 默认为\
 set matchtime=1 " 匹配括号高亮的时间（单位是十分之一秒)
 set mousemodel=popup " 当右键单击窗口的时候，弹出快捷菜单
 " (n)
@@ -125,19 +125,15 @@ autocmd BufNewFile * normal G
 " 在可视化模式下control+c复制到剪切板
 vmap <C-c> "+y
 " Esc + 保存
-map <Esc><Esc> :w<CR> 
-" 打开标签目录 
-map <F2> :TagbarToggle<CR> 
-" 列出当前目录文件
-map <F3> :NERDTreeToggle<CR> 
-" 垂直分割窗口比较文件  
-nnoremap <F4> :vert diffsplit<CR> 
-" 快捷键编译
-map <F5> :call CompileRun()<CR> 
-" 代码格式优化化
-map <F6> :call FormartCode()<CR><CR>
-" C,C++的GDB调试
-map <F7> :call RunGDB()<CR>
+nnoremap <Esc><Esc> :w<CR> 
+" 打开标签目录 (r)efence (t)ree
+nnoremap <SPACE>rt :TagbarToggle<CR> 
+" 列出当前目录文件 (f)ilr (t)ree
+nnoremap <SPACE>ft :NERDTreeToggle<CR>
+" 快捷键编译 (c)ompiler (r)un
+nnoremap <SPACE>cr :call CompileRun()<CR>
+" C,C++的GDB调试 (gdb)
+nnoremap <SPACE>gdb :call RunGDB()<CR>
 
 " ============================================== [函数定义] ================================================= "
 " 定义函数SetTitle，打开新文件时自动插入文件头 
@@ -188,56 +184,36 @@ function! SetTitle() abort
     call append(line(".")+7,"")
   endif
 endfunction 
-" 快捷键编译 F5自动编译生成可执行文件相同文件名
+" 快捷键编译
 function! CompileRun() abort
   exec "w"
   if &filetype == 'c'
-	exec "!gcc % -o %<"
-	exec "!time ./%<"
+    silent! exec "!clear"
+	  exec "!gcc % -o %<"
+	  exec "!time ./%<"
   elseif &filetype == 'cpp'
-	exec "!g++ % -std=c++11 -o %<"
-	exec "!time ./%<"
+    silent! exec "!clear"
+	  exec "!g++ % -std=c++11 -o %<"
+	  exec "!time ./%<"
   elseif &filetype == 'java' 
-	exec "!javac %" 
-	exec "!time java %<"
+	  exec "!javac %" 
+	  exec "!time java %<"
   elseif &filetype == 'sh'
-	:!time bash %
+	  :!time bash %
   elseif &filetype == 'python'
     silent! exec "!clear"
-	exec "!time python %"
+	  exec "!time python %"
   elseif &filetype == 'html'
     exec "!chrome % &"
   elseif &filetype == 'go'
+    silent! exec "!clear"
     exec "!time go run %"
   elseif &filetype == 'mkd'
     exec "!~/.vim/markdown.pl % > %.html &"
     exec "!chrome %.html &"
   endif
 endfunction
-" 快捷键格式化 F6检测代码格式
-function! FormartCode() abort
-  exec "w"
-  if &filetype == 'c'
-    exec "!astyle --style=ansi -a --suffix=none %"
-  elseif &filetype == 'cpp' || &filetype == 'hpp'
-    exec "r !astyle --style=ansi --one-line=keep-statements -a --suffix=none %> /dev/null 2>&1"
-  elseif &filetype == 'perl'
-    exec "!astyle --style=gnu --suffix=none %"
-  elseif &filetype == 'py'||&filetype == 'python'
-    exec "r !autopep8 -i --aggressive %"
-  elseif &filetype == 'java'
-    exec "!astyle --style=java --suffix=none %"
-  elseif &filetype == 'jsp'
-    exec "!astyle --style=gnu --suffix=none %"
-  elseif &filetype == 'xml'
-    exec "!astyle --style=gnu --suffix=none %"
-  else
-    exec "normal gg=G"
-    return
-  endif
-  exec "e! %"
-endfunction
-" 快捷键调试 F7GDB调试
+" 快捷键调试
 func! RunGDB()
   exec "w"
   if &filetype == 'c'
