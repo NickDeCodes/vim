@@ -9,7 +9,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "vim-color"
+let colors_name = "custom"
 " 初始化
 hi Normal         ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE " 普通文本 
 hi Boolean        ctermfg=DarkMagenta ctermbg=NONE cterm=NONE guifg=DarkMagenta guibg=NONE gui=NONE " bool值高亮

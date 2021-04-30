@@ -3,6 +3,7 @@
 
 " ============================================== [vim配置选项] ================================================= "
 syntax enable " 语法高亮开启
+
 " (a)
 set autoread " 设置当文件被改动时自动载入
 set autochdir " 自动切换当前目录为当前文件所在的目录
@@ -318,4 +319,3 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
-
