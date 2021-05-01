@@ -55,8 +55,8 @@ set relativenumber                  " 行号以相对当前行的方式显示，
 set cursorline                      " 突出显示当前行
 set cursorcolumn                    " 突出显示当前列
 set signcolumn=auto                 " 自动绘制标号列
-autocmd InsertLeave,WinEnter * set cursorline " 正常模式高亮当前行
-autocmd InsertEnter,WinLeave * set nocursorline " 输入模式取消高亮当前行
+" autocmd InsertLeave,WinEnter * set cursorline " 正常模式高亮当前行
+" autocmd InsertEnter,WinLeave * set nocursorline " 输入模式取消高亮当前行
 " [鼠·标]----------------------------------------------------------------------------------------------------------------------------------[鼠·标] "
 set mouse=a                         " 启用鼠标
 set selection=exclusive             " 指定在选择文本时光标所在位置也属于被选中的范围
@@ -138,8 +138,9 @@ set wrap                            " 设置代码自动折行
 set foldmethod=indent               " 基于缩进进行代码折叠
 set nofoldenable                    " 启动 Vim 时关闭折叠
 " [补·全]----------------------------------------------------------------------------------------------------------------------------------[补·全] "
-set completeopt=longest,menu        " 打开预览窗口会导致下拉菜单抖动，一般都去掉预览窗口的显示
-set completeopt+=preview            " 代码补全
+autocmd FileType c,cpp map <buffer> <leader><space> :w<cr>:make<cr> " quickfix模式
+set completeopt=preview,menuone        " 代码补全
+set completeopt=longest,menuone        " 打开预览窗口会导致下拉菜单抖动，一般都去掉预览窗口的显示
 " [分·屏]----------------------------------------------------------------------------------------------------------------------------------[分·屏] "
 set splitright                      " 竖直 split 时，在右边开启
 set splitbelow                      " 水平 split 时，在下边开启
@@ -167,6 +168,8 @@ set updatetime=100                  " 降低延迟和糟糕的用户体验
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 autocmd FileType c setlocal dict+=~/.vim/dict/c.dict
 autocmd FileType cpp setlocal dict+=~/.vim/dict/cpp.dict
+autocmd FileType lua setlocal dict+=~/.vim/dict/lua.dict
+autocmd FileType java setlocal dict+=~/.vim/dict/java.dict
 autocmd FileType python setlocal dict+=~/.vim/dict/python.dict
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 按键映射

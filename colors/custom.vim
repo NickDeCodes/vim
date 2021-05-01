@@ -53,7 +53,7 @@ hi NonText        ctermfg=DarkGrey ctermbg=NONE cterm=NONE guifg=DarkGrey guibg=
 hi Number         ctermfg=Blue ctermbg=NONE cterm=NONE guifg=Blue guibg=NONE gui=NONE " 数字
 hi Operator       ctermfg=DarkMagenta ctermbg=NONE cterm=bold guifg=DarkMagenta guibg=NONE gui=bold " \"sizeof"、"+"、"*" 等
 hi Pmenu          ctermfg=DarkGrey ctermbg=NONE cterm=NONE guifg=DarkGrey guibg=NONE gui=NONE " 弹出菜单: 普通项目 补全提示行 
-hi PmenuSel       ctermfg=27 ctermbg=Black cterm=inverse guifg=#005fff guibg=Black gui=inverse " 弹出菜单: 选中项目。 补全光标行
+hi PmenuSel       ctermfg=27 ctermbg=15 cterm=inverse guifg=#005fff guibg=#ffffff gui=inverse " 弹出菜单: 选中项目。 补全光标行
 hi PmenuSbar      ctermfg=Red ctermbg=Green cterm=inverse guifg=Red guibg=Green gui=inverse " 弹出菜单: 滚动条
 hi PmenuThumb     ctermfg=Cyan ctermbg=Green cterm=inverse guifg=Cyan guibg=Green gui=inverse " 弹出菜单: 滚动条的拇指 (thumb)
 hi PreProc        ctermfg=Brown ctermbg=NONE cterm=NONE guifg=Brown guibg=NONE gui=NONE " 通用预处理命令
