@@ -63,7 +63,7 @@ set mouse=a                         " 启用鼠标
 set selection=exclusive             " 指定在选择文本时光标所在位置也属于被选中的范围
 set selectmode=mouse,key            " 使鼠标和键盘都可以控制光标选择文本
 set whichwrap+=<,>,h,l              " 允许 Backspace 和光标键跨越行边界
-set scrolloff=5                     " 光标距离顶部和底部 5 行
+set scrolloff=3                     " 光标距离顶部和底部 3 行
 " [边·框]----------------------------------------------------------------------------------------------------------------------------------[边·框] "
 set showtabline=0                   " 隐藏顶部标签栏
 set guioptions-=r                   " 隐藏右侧滚动条 
@@ -83,7 +83,8 @@ source $VIMRUNTIME/menu.vim         " 导入正常的菜单脚本
 set hlsearch                        " 高亮搜索的字符串
 set incsearch                       " 即时搜索
 set infercase                       " 区分大小写
-set ignorecase smartcase            " 搜索时忽略大小写，但在有一个或以上大写字母时仍保持对大小写敏感
+set ignorecase                      " 搜索忽略大小写
+set smartcase                       " 智能大小写敏感，只要有一个字母大写，就大小写敏感，否则不敏感
 set showmatch                       " 高亮显示匹配的括号
 set matchtime=1                     " 匹配括号高亮的时间（单位是十分之一秒） 
 " [缩·进]----------------------------------------------------------------------------------------------------------------------------------[缩·进] "
@@ -93,17 +94,15 @@ set shiftwidth=4                    " 每一级缩进是多少个空格
 set smartindent                     " 开启智能缩进
 set backspace=2                     " 设置退格键可用，正常处理indent,eol,start等
 set smarttab                        " 在行和段开始处使用制表符 删除Tab一键delete
-set ignorecase                      " 搜索忽略大小写
-set smartcase                       " 智能大小写敏感，只要有一个字母大写，就大小写敏感，否则不敏感
 set noexpandtab                     " 不允许用空格代替制表符
 set copyindent                      " 复制粘贴时保留原有的缩进
-set autoindent                      " 启用自动对齐功能，把上一行的对齐格式应用到下一行
+set autoindent cindent              " 启用自动对齐功能，把上一行的对齐格式应用到下一行
 " [命·令]----------------------------------------------------------------------------------------------------------------------------------[命·令] "
 " set showcmd                         " 输入的命令显示出来
 set report=0                        " 通过使用 :commands 命令，告诉我们文件的哪一行被改变过
 " [状态行]---------------------------------------------------------------------------------------------------------------------------------[状态行] "
 set laststatus=2                    " 总是显示状态行
-" set cmdheight=2                     " 命令行为两行
+set cmdheight=2                     " 命令行为两行
 " [状态栏]---------------------------------------------------------------------------------------------------------------------------------[状态栏] "
 set statusline=%F%m%r%h%w           " %文件名和路径%修改缓冲区%只读缓冲区%帮助缓冲区%预览窗口
 set statusline+=\ [FORMAT=%{&ff}]   " 文件系统类型
@@ -168,11 +167,6 @@ set textwidth=0                     " 插入文本的最大宽度。更长的行
 set updatetime=100                  " 降低延迟和糟糕的用户体验
 " Vim 重新打开文件时，回到上次历史所编辑文件的位置
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
-autocmd FileType c setlocal dict+=~/.vim/dict/c.dict
-autocmd FileType cpp setlocal dict+=~/.vim/dict/cpp.dict
-autocmd FileType lua setlocal dict+=~/.vim/dict/lua.dict
-autocmd FileType java setlocal dict+=~/.vim/dict/java.dict
-autocmd FileType python setlocal dict+=~/.vim/dict/python.dict
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 按键映射
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -193,32 +187,17 @@ nnoremap <Leader><Down>  :resize -5<CR>
 " [Normal 模式，按 Esc+Esc 保存]---------------------------------------------------------------------------------------[Normal 模式，按 Esc+Esc 保存] "
 noremap <Esc><Esc> :w<CR>          
 " [括号等自动补全]--------------------------------------------------------------------------------------------------------------------[括号等自动补全] "
-" inoremap ( ()<Esc>i
-" inoremap [ []<Esc>i
-" inoremap { {}<Esc>i
-" inoremap < <><Esc>i
-" inoremap " ""<Esc>i
-" inoremap ' ''<Esc>i
-" [戒掉使用方向键的习惯，善用 h、j、k 及 l 移动光标]---------------------------------------------------------[戒掉使用方向键的习惯，善用 h、j、k 及 l 移动光标] "
-" nnoremap <Up> <Nop>
-" nnoremap <Down> <Nop>
-" nnoremap <Left> <Nop>
-" nnoremap <Right> <Nop>
-" [插入模式禁用方向键]--------------------------------------------------------------------------------------------------------------[插入模式禁用方向键] "
-" inoremap <Left> <Nop>
-" inoremap <Right> <Nop>
-" inoremap <Up> <Nop>
-" inoremap <Down> <Nop>
-" [插入模式上下左右 按键映射]--------------------------------------------------------------------------------------------------[插入模式上下左右 按键映射] "
-" inoremap <C-h> <Left>
-" inoremap <C-j> <Down>
-" inoremap <C-k> <Up>
-" inoremap <C-l> <Right>
+inoremap ( ()<Esc>i
+inoremap [ []<Esc>i
+inoremap { {}<Esc>i
+inoremap < <><Esc>i
+inoremap " ""<Esc>i
+inoremap ' ''<Esc>i
 " [FN自定义]------------------------------------------------------------------------------------------------------------------------------[FN自定义] "
 "
 " [标签页导航 按键映射]------------------------------------------------------------------------------------------------------------[标签页导航 按键映射] "
 "
-" [文件操作]-----------------------------------------------------------------------------------------------------------------------------[文件操作] "
+" [文件操作]------------------------------------------------------------------------------------------------------------------------------[文件操作] "
 " 一键去除全部尾部空白(\rb)
 inoremap <Leader>rb <Esc>:let _s=@/<bar>:%s/\s\+$//e<bar>:let @/=_s<bar>:nohl<cr>
 nnoremap <Leader>rb :let _s=@/<bar>:%s/\s\+$//e<bar>:let @/=_s<bar>:nohl<cr>
@@ -231,24 +210,11 @@ vnoremap <Leader>rm <Esc>:%s/<c-v><c-m>//g<cr>
 nnoremap <Leader>e <Esc>:edit $MYVIMRC<CR>       " 当前窗口编辑配置文件
 nnoremap <Leader>ev :vsp $MYVIMRC<CR>            " 纵向分屏编辑配置文件
 nnoremap <Leader>sv :source $MYVIMRC<CR>         " 重新加载 vimrc 文件，Leader 即前缀键默认为 “\”
-" [插件按键映射]-----------------------------------------------------------------------------------------------------------------------[插件按键映射] "
-" [vim-plug]---------------------------------------------------------------------------------------------------------------------------[vim-plug] "
-nnoremap <Leader><Leader>s :PlugStatus<CR>       " 查看插件状态
-nnoremap <Leader><Leader>i :PlugInstall<CR>      " 安装在配置文件中声明的插件
-nnoremap <Leader><Leader>u :PlugUpdate<CR>       " 更新插件
-nnoremap <Leader><Leader>g :PlugUpgrade<CR>      " 升级 vim-plug 本身
-nnoremap <Leader><Leader>d :PlugDiff<CR>         " 查看插件的变化状态，简单地回滚有问题的插件
-nnoremap <Leader><Leader>c :PlugClean<CR>        " 删除插件
-nnoremap <Leader><Leader>q :q<CR>                " 关闭插件窗口
-" [tagbar]-------------------------------------------------------------------------------------------------------------------------------[tagbar] "
-nnoremap <SPACE>rt :TagbarToggle<CR>             " 打开标签目录 (r)efence (t)ree
-" [nerdtree]---------------------------------------------------------------------------------------------------------------------------[nerdtree] "
-nnoremap <SPACE>ft :NERDTreeToggle<CR>           " 列出当前目录文件 (f)ilr (t)ree
-
 " [自定义函数按键映射]-------------------------------------------------------------------------------------------------------------[自定义函数按键映射] "
 nnoremap <SPACE>cr :call CompileRun()<CR> " 快捷键编译 (c)ompiler (r)un
 nnoremap <SPACE>gdb :call RunGDB()<CR> " C,C++的GDB调试 (gdb)
-
+" [插件按键映射]-----------------------------------------------------------------------------------------------------------------------[插件按键映射] "
+"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 自定义函数
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -256,7 +222,7 @@ nnoremap <SPACE>gdb :call RunGDB()<CR> " C,C++的GDB调试 (gdb)
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.py,*.go,*.java exec ":call SetTitle()" 
 " 新建文件后，自动定位到文件末尾
 autocmd BufNewFile * normal G 
-" [定义函数SetTitle，打开新文件时自动插入文件头]-----------------------------------------------------------[剪定义函数SetTitle，打开新文件时自动插入文件头贴板] "
+" [定义函数SetTitle，打开新文件时自动插入文件头]----------------------------------------------------------[剪定义函数SetTitle，打开新文件时自动插入文件头贴板] "
 function! SetTitle() abort 
   " 如果文件类型为.sh文件 
   if &filetype == 'sh' 
@@ -304,7 +270,7 @@ function! SetTitle() abort
     call append(line(".")+7,"")
   endif
 endfunction 
-" [快捷键编译]---------------------------------------------------------------------------------------------------------------------------[快捷键编译] "
+" [快捷键编译]--------------------------------------------------------------------------------------------------------------------------[快捷键编译] "
 function! CompileRun() abort
   exec "w"
   if &filetype == 'c'
@@ -348,26 +314,6 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 插件列表
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" [vim-plug]
-call plug#begin('~/.vim/pack/package/opt')
-" [括号匹配]--------------------------------------------------------------------------{git clone https://github.com/jiangmiao/auto-pairs}[括号匹配] "
-Plug 'jiangmiao/auto-pairs'
-" [快捷注释]----------------------------------------------------------------------{git clone https://github.com/scrooloose/nerdcommenter}[快捷注释] "
-Plug 'scrooloose/nerdcommenter'
-" [文件树]------------------------------------------------------------------------------{git clone https://github.com/scrooloose/nerdtree}[文件树] "
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-" [语法检测]--------------------------------------------------------------------------{git clone https://github.com/scrooloose/syntastic}[语法检测] "
-Plug 'scrooloose/syntastic'
-" [函数标签]-----------------------------------------------------------------------------{git clone https://github.com/majutsushi/tagbar}[函数标签] "
-Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
-" [代码块补全]---------------------------------------------------------------------------{git clone https://github.com/sirver/ultisnips}[代码块补全] "
-Plug 'sirver/ultisnips'
-" [插件管理器]--------------------------------------------------------------------------{git clone https://github.com/junegunn/vim-plug}[插件管理器] "
-Plug 'junegunn/vim-plug'
-" [代码块补全]-------------------------------------------------------------------------{git clone https://github.com/honza/vim-snippets}[代码块补全] "
-Plug 'honza/vim-snippets'
-call plug#end()
-
 " [packadd]
 " [括号匹配]--------------------------------------------------------------------------{git clone https://github.com/jiangmiao/auto-pairs}[括号匹配] "
 " packadd auto-pairs
@@ -389,58 +335,7 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 插件配置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" [快捷注释配置]----------------------------------------------------------------{git clone https://github.com/scrooloose/nerdcommenter}[快捷注释配置] "
-" [nerdcommenter] 
-let g:NERDCreateDefaultMappings = 1 " 创建默认的映射
-let g:NERDSpaceDelims = 1 " 默认情况下在注释分隔符后添加空格
-let g:NERDCompactSexyComs = 1 " 使用简洁的语法来修饰多行注释
-let g:NERDDefaultAlign = 'left' " 按行对齐注释分隔符左对齐，而不是跟随代码缩进
-let g:NERDAltDelims_java = 1 " 设置一种语言以默认使用其替代分隔符
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } } " 添加您自己的自定义格式或覆盖默认值
-let g:NERDCommentEmptyLines = 1 " 允许注释和倒排空行(在注释一个区域时很有用)
-let g:NERDTrimTrailingWhitespace = 1 " 在取消注释时启用对尾随空格的修整
-let g:NERDToggleCheckAllLines = 1 " 启用NERDCommenterToggle来检查是否注释了所有选定的行
-" <leader>cc | NERDCommenterComment | 注释当前行
-" <leader>cn | NERDCommenterNested | 强制嵌套注释
-" <leader>c<space> | NERDCommenterToggle | 与上一行同步注释状态
-" <leader>cm | NERDCommenterMinimal | 块级注释
-" <leader>ci | NERDCommenterInvert | 改变当前行的注释状态
-" <leader>cs | NERDCommenterSexy | 美观注释
-" <leader>cy | NERDCommenterYank | 和...一样 抄送，但首先删除注释行
-" <leader>c$ | NERDCommenterToEOL | 注释当前行从光标到行尾。
-" <leader>cA | NERDCommenterAppend | 在行尾添加注释定界符，并在它们之间进入插入模式。
-" [count]<leader>cu | NERDCommenterUncomment | 取消注释选定的行
 
-" [文件树配置]------------------------------------------------------------------------{git clone https://github.com/scrooloose/nerdtree}[文件树配置] "
-" [nerdtree]
-autocmd StdinReadPre * let s:std_in=1
-" vim不打开文件时打开文件树
-autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | execute 'NERDTree' | endif
-" vim直接打开目录树
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') | execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
-" 当最后一个窗口时文件树时关闭窗口
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-
-" [语法检测配置]--------------------------------------------------------------------{git clone https://github.com/scrooloose/syntastic}[语法检测配置] "
-" [syntastic]
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ['python']
-let g:syntastic_go_checkers = ['go']
-let g:syntastic_java_checkers = ['javac']
-let g:syntastic_javascript_checkers = ['flow']
-let g:syntastic_html_checkers = ['tidy']
-
-" [代码块补全配置]--------------------------------------------------------------------{git clone https://github.com/sirver/ultisnips}[代码块补全配置] "
-" [ultisnips]
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsEditSplit="vertical"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " End
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
