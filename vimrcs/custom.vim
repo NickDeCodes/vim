@@ -52,12 +52,14 @@ colorscheme custom                  " 主题选择
 " [行、列]---------------------------------------------------------------------------------------------------------------------------------[行、列] "
 set number                          " 显示行号
 set ruler                           " 显示光标当前位置
-set relativenumber                  " 行号以相对当前行的方式显示，方便跳转
+" set relativenumber                  " 行号以相对当前行的方式显示，方便跳转
+set linespace=0                     " 设置行间距
+set linebreak                       " 设置行断点
 set cursorline                      " 突出显示当前行
 set cursorcolumn                    " 突出显示当前列
 set signcolumn=auto                 " 自动绘制标号列
-" autocmd InsertLeave,WinEnter * set cursorline " 正常模式高亮当前行
-" autocmd InsertEnter,WinLeave * set nocursorline " 输入模式取消高亮当前行
+autocmd InsertLeave,WinEnter * set cursorline " 正常模式高亮当前行
+autocmd InsertEnter,WinLeave * set nocursorline " 输入模式取消高亮当前行
 " [鼠·标]----------------------------------------------------------------------------------------------------------------------------------[鼠·标] "
 set mouse=a                         " 启用鼠标
 set selection=exclusive             " 指定在选择文本时光标所在位置也属于被选中的范围
@@ -135,6 +137,7 @@ set noundofile                      " 不生成 undo 文件
 set hidden                          " 允许在有未保存的修改时切换缓冲区，此时的修改由vim负责保存
 " [折·叠]----------------------------------------------------------------------------------------------------------------------------------[折·叠] "
 set wrap                            " 设置代码自动折行
+set fo+=mB
 set foldmethod=indent               " 基于缩进进行代码折叠
 set nofoldenable                    " 启动 Vim 时关闭折叠
 " [补·全]----------------------------------------------------------------------------------------------------------------------------------[补·全] "
@@ -185,7 +188,7 @@ nnoremap <Leader><Left>  :vertical resize -5<CR>
 nnoremap <Leader><Up>    :resize +5<CR>
 nnoremap <Leader><Down>  :resize -5<CR>
 " [Normal 模式，按 Esc+Esc 保存]---------------------------------------------------------------------------------------[Normal 模式，按 Esc+Esc 保存] "
-noremap <Esc><Esc> :w<CR>          
+map <Esc><Esc> :w<CR>
 " [括号等自动补全]--------------------------------------------------------------------------------------------------------------------[括号等自动补全] "
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
@@ -199,20 +202,25 @@ inoremap ' ''<Esc>i
 "
 " [文件操作]------------------------------------------------------------------------------------------------------------------------------[文件操作] "
 " 一键去除全部尾部空白(\rb)
-inoremap <Leader>rb <Esc>:let _s=@/<bar>:%s/\s\+$//e<bar>:let @/=_s<bar>:nohl<cr>
-nnoremap <Leader>rb :let _s=@/<bar>:%s/\s\+$//e<bar>:let @/=_s<bar>:nohl<cr>
-vnoremap <Leader>rb <Esc>:let _s=@/<bar>:%s/\s\+$//e<bar>:let @/=_s<bar>:nohl<cr>
+inoremap <Leader>rb <Esc>:let _s=@/<bar>:%s/\s\+$//e<bar>:let @/=_s<bar>:nohl<CR>
+nnoremap <Leader>rb :let _s=@/<bar>:%s/\s\+$//e<bar>:let @/=_s<bar>:nohl<CR>
+vnoremap <Leader>rb <Esc>:let _s=@/<bar>:%s/\s\+$//e<bar>:let @/=_s<bar>:nohl<CR>
 " 一键去除全部 ^M 字符(\rm)
-inoremap <Leader>rm <Esc>:%s/<c-v><c-m>//g<cr>
-nnoremap <Leader>rm :%s/<c-v><c-m>//g<cr>
-vnoremap <Leader>rm <Esc>:%s/<c-v><c-m>//g<cr>
+inoremap <Leader>rm <Esc>:%s/<c-v><c-m>//g<CR>
+nnoremap <Leader>rm :%s/<c-v><c-m>//g<CR>
+vnoremap <Leader>rm <Esc>:%s/<c-v><c-m>//g<CR>
 " [vimrc 配置文件按键映射]----------------------------------------------------------------------------------------------------[vimrc 配置文件按键映射] "
-nnoremap <Leader>e <Esc>:edit $MYVIMRC<CR>       " 当前窗口编辑配置文件
-nnoremap <Leader>ev :vsp $MYVIMRC<CR>            " 纵向分屏编辑配置文件
-nnoremap <Leader>sv :source $MYVIMRC<CR>         " 重新加载 vimrc 文件，Leader 即前缀键默认为 “\”
+" 当前窗口编辑配置文件
+nnoremap <Leader>e <Esc>:edit $MYVIMRC<CR>
+" 纵向分屏编辑配置文件
+nnoremap <Leader>ev :vsp $MYVIMRC<CR>
+" 重新加载 vimrc 文件，Leader 即前缀键默认为 “\”
+nnoremap <Leader>sv :source $MYVIMRC<CR>
 " [自定义函数按键映射]-------------------------------------------------------------------------------------------------------------[自定义函数按键映射] "
-nnoremap <SPACE>cr :call CompileRun()<CR> " 快捷键编译 (c)ompiler (r)un
-nnoremap <SPACE>gdb :call RunGDB()<CR> " C,C++的GDB调试 (gdb)
+" 快捷键编译 (c)ompiler (r)un
+nnoremap <SPACE>cr :call CompileRun()<CR>
+" C,C++的GDB调试 (gdb)
+nnoremap <SPACE>gdb :call RunGDB()<CR>
 " [插件按键映射]-----------------------------------------------------------------------------------------------------------------------[插件按键映射] "
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
