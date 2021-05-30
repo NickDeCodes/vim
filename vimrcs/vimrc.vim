@@ -104,7 +104,7 @@ set autoindent cindent              " 启用自动对齐功能，把上一行的
 set report=0                        " 通过使用 :commands 命令，告诉我们文件的哪一行被改变过
 " [状态行]---------------------------------------------------------------------------------------------------------------------------------[状态行] "
 set laststatus=2                    " 总是显示状态行
-set cmdheight=2                     " 命令行为两行
+" set cmdheight=2                     " 命令行为两行
 " [状态栏]---------------------------------------------------------------------------------------------------------------------------------[状态栏] "
 set statusline=%F%m%r%h%w           " %文件名和路径%修改缓冲区%只读缓冲区%帮助缓冲区%预览窗口
 set statusline+=\ [FORMAT=%{&ff}]   " 文件系统类型
@@ -196,6 +196,30 @@ map <Esc><Esc> :w<CR>
 " inoremap < <><Esc>i
 " inoremap " ""<Esc>i
 " inoremap ' ''<Esc>i
+" [标签页导航 按键映射]------------------------------------------------------------------------------------------------------------[标签页导航 按键映射] "
+" nnoremap <Leader>1 1gt
+" nnoremap <Leader>2 2gt
+" nnoremap <Leader>3 3gt
+" nnoremap <Leader>4 4gt
+" nnoremap <Leader>5 5gt
+" nnoremap <Leader>6 6gt
+" nnoremap <Leader>7 7gt
+" nnoremap <Leader>8 8gt
+" nnoremap <Leader>9 9gt
+" nnoremap <Leader>0 :tablast<CR>
+" nnoremap <C-Insert> :tabnew<CR>
+" nnoremap <C-Delete> :tabclose<CR>
+" nnoremap <silent><Tab>m :tabnew<CR>
+" nnoremap <silent><Tab>e :tabclose<CR>
+" nnoremap <silent><Tab>n :tabn<CR>
+" nnoremap <silent><Tab>p :tabp<CR>
+" nnoremap <silent><s-Tab> :tabnext<CR>
+" nnoremap <silent><Tab>m :tabnew<CR>
+" nnoremap <silent><Tab>e :tabclose<CR>
+" nnoremap <silent><Tab>n :tabn<CR>
+" nnoremap <silent><Tab>p :tabp<CR>
+" nnoremap <silent><s-Tab> :tabnext<CR>
+" inoremap <silent><s-Tab> <Esc>:tabnext<CR>
 " [FN自定义]------------------------------------------------------------------------------------------------------------------------------[FN自定义] "
 "
 " [文件操作]------------------------------------------------------------------------------------------------------------------------------[文件操作] "
@@ -236,6 +260,10 @@ nnoremap <SPACE>rt :TagbarToggle<CR>
 " [nerdtree]----------------------------------------------------------------------------------------------------------------------------[nerdtree] "
 " 列出当前目录文件 (f)ilr (t)ree
 nnoremap <SPACE>ft :NERDTreeToggle<CR>
+" [vim-airline]----------------------------------------------------------------------------------------------------------------------[vim-airline] "
+" 设置切换Buffer快捷键
+nnoremap <C-N> :bn<CR>
+nnoremap <C-P> :bp<CR>
 " [自定义函数按键映射]--------------------------------------------------------------------------------------------------------------[自定义函数按键映射] "
 " 快捷键编译 (c)ompiler (r)un
 nnoremap <SPACE>cr :call CompileRun()<CR>
@@ -350,20 +378,30 @@ call plug#begin('~/.vim/pack/package/opt')
 Plug 'eikenb/acp'
 " [括号匹配]--------------------------------------------------------------------------{git clone https://github.com/jiangmiao/auto-pairs}[括号匹配] "
 Plug 'jiangmiao/auto-pairs'
-" [gruvbox主题]-------------------------------------------------------------------------{git clone https://github.com/morhetz/gruvbox}[gruvbox主题] "
+" [gruvbox主题]------------------------------------------------------------------------{git clone https://github.com/morhetz/gruvbox}[gruvbox主题] "
 Plug 'morhetz/gruvbox'
 " [快捷注释]----------------------------------------------------------------------{git clone https://github.com/scrooloose/nerdcommenter}[快捷注释] "
 Plug 'scrooloose/nerdcommenter'
 " [文件树]------------------------------------------------------------------------------{git clone https://github.com/scrooloose/nerdtree}[文件树] "
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+" [文件树git标识]----------------------------------------------------------{git clone https://github.com/xuyuanp/nerdtree-git-plugin}[文件树git标识] "
+Plug 'xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 " [语法检测]--------------------------------------------------------------------------{git clone https://github.com/scrooloose/syntastic}[语法检测] "
 Plug 'scrooloose/syntastic'
 " [函数标签]-----------------------------------------------------------------------------{git clone https://github.com/majutsushi/tagbar}[函数标签] "
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 " [代码块补全]---------------------------------------------------------------------------{git clone https://github.com/sirver/ultisnips}[代码块补全] "
 Plug 'sirver/ultisnips'
+" [状态栏配置]--------------------------------------------------------------------{git clone https://github.com/vim-airline/vim-airline}[状态栏配置] "
+Plug 'vim-airline/vim-airline'
+" [状态栏主题]-------------------------------------------------------------{git clone https://github.com/vim-airline/vim-airline-themes}[状态栏主题] "
+Plug 'vim-airline/vim-airline-themes'
+" [git修改提示]-------------------------------------------------------------------{git clone https://github.com/airblade/vim-gitgutter}[git修改提示] "
+Plug 'airblade/vim-gitgutter'
 " [插件管理器]--------------------------------------------------------------------------{git clone https://github.com/junegunn/vim-plug}[插件管理器] "
 Plug 'junegunn/vim-plug'
+" [git标识提示]------------------------------------------------------------------------{git clone https://github.com/mhinz/vim-signify}[git标识提示] "
+Plug 'mhinz/vim-signify'
 " [代码块补全]-------------------------------------------------------------------------{git clone https://github.com/honza/vim-snippets}[代码块补全] "
 Plug 'honza/vim-snippets'
 call plug#end()
@@ -373,20 +411,30 @@ call plug#end()
 " packadd acp
 " [括号匹配]--------------------------------------------------------------------------{git clone https://github.com/jiangmiao/auto-pairs}[括号匹配] "
 " packadd auto-pairs
-" [gruvbox主题]-------------------------------------------------------------------------{git clone https://github.com/morhetz/gruvbox}[gruvbox主题] "
+" [gruvbox主题]------------------------------------------------------------------------{git clone https://github.com/morhetz/gruvbox}[gruvbox主题] "
 " packadd gruvbox
 " [快捷注释]----------------------------------------------------------------------{git clone https://github.com/scrooloose/nerdcommenter}[快捷注释] "
 " packadd nerdcommenter
 " [文件树]------------------------------------------------------------------------------{git clone https://github.com/scrooloose/nerdtree}[文件树] "
 " packadd nerdtree
+" [文件树git标识]----------------------------------------------------------{git clone https://github.com/xuyuanp/nerdtree-git-plugin}[文件树git标识] "
+" packadd nerdtree-git-plugin
 " [语法检测]--------------------------------------------------------------------------{git clone https://github.com/scrooloose/syntastic}[语法检测] "
 " packadd syntastic
 " [函数标签]-----------------------------------------------------------------------------{git clone https://github.com/majutsushi/tagbar}[函数标签] "
 " packadd tagbar
 " [代码块补全]---------------------------------------------------------------------------{git clone https://github.com/sirver/ultisnips}[代码块补全] "
 " packadd ultisnips
+" [状态栏配置]--------------------------------------------------------------------{git clone https://github.com/vim-airline/vim-airline}[状态栏配置] "
+" packadd vim-airline
+" [状态栏主题]-------------------------------------------------------------{git clone https://github.com/vim-airline/vim-airline-themes}[状态栏主题] "
+" packadd vim-airline-themes
+" [git修改提示]-------------------------------------------------------------------{git clone https://github.com/airblade/vim-gitgutter}[git修改提示] "
+" packadd vim-gitgutter
 " [插件管理器]--------------------------------------------------------------------------{git clone https://github.com/junegunn/vim-plug}[插件管理器] "
 " packadd vim-plug
+" [git标识提示]------------------------------------------------------------------------{git clone https://github.com/mhinz/vim-signify}[git标识提示] "
+" packadd vim-signify
 " [代码块补全]-------------------------------------------------------------------------{git clone https://github.com/honza/vim-snippets}[代码块补全] "
 " packadd vim-snippets
 
@@ -425,6 +473,26 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in
 " 当最后一个窗口时文件树时关闭窗口
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
+" [文件树git标识]----------------------------------------------------------{git clone https://github.com/xuyuanp/nerdtree-git-plugin}[文件树git标识] "
+" [nerdtree-git-plugin]
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'✹',
+                \ 'Staged'    :'✚',
+                \ 'Untracked' :'✭',
+                \ 'Renamed'   :'➜',
+                \ 'Unmerged'  :'═',
+                \ 'Deleted'   :'✖',
+                \ 'Dirty'     :'✗',
+                \ 'Ignored'   :'☒',
+                \ 'Clean'     :'✔︎',
+                \ 'Unknown'   :'?',
+                \ }
+let g:NERDTreeGitStatusUseNerdFonts = 1 " you should install nerdfonts by yourself. default: 0
+let g:NERDTreeGitStatusShowIgnored = 1 " a heavy feature may cost much more time. default: 0
+let g:NERDTreeGitStatusUntrackedFilesMode = 'all' " a heave feature too. default: normal
+let g:NERDTreeGitStatusShowClean = 1 " default: 0
+let g:NERDTreeGitStatusConcealBrackets = 1 " default: 0
+
 " [语法检测配置]--------------------------------------------------------------------{git clone https://github.com/scrooloose/syntastic}[语法检测配置] "
 " [syntastic]
 set statusline+=%#warningmsg#
@@ -438,6 +506,17 @@ let g:syntastic_go_checkers = ['go']
 let g:syntastic_java_checkers = ['javac']
 let g:syntastic_javascript_checkers = ['flow']
 let g:syntastic_html_checkers = ['tidy']
+
+" [状态栏配置]-----------------------------------------------------------------------{git clone https://github.com/scrooloose/syntastic}[状态栏配置] "
+" [vim-airline]
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'default'
+" 关闭状态显示空白符号计数,这个对我用处不大"
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#whitespace#symbol = '!'
 
 " [代码块补全配置]--------------------------------------------------------------------{git clone https://github.com/sirver/ultisnips}[代码块补全配置] "
 " [ultisnips]
