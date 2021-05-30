@@ -48,7 +48,6 @@ syntax on                           " 开启语法高亮
 " [主·题]----------------------------------------------------------------------------------------------------------------------------------[主·题] "
 set t_Co=256                        " 指定配色方案是256色
 set background=dark                 " 主题背景
-" colorscheme custom                  " 主题选择
 colorscheme gruvbox                 " 主题选择
 " [行、列]---------------------------------------------------------------------------------------------------------------------------------[行、列] "
 set number                          " 显示行号
@@ -347,8 +346,12 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " [vim-plug]
 call plug#begin('~/.vim/pack/package/opt')
+" [代码块补全自动弹出]--------------------------------------------------------------------{git clone https://github.com/eikenb/acp}[代码块补全自动弹出] "
+Plug 'eikenb/acp'
 " [括号匹配]--------------------------------------------------------------------------{git clone https://github.com/jiangmiao/auto-pairs}[括号匹配] "
 Plug 'jiangmiao/auto-pairs'
+" [gruvbox主题]-------------------------------------------------------------------------{git clone https://github.com/morhetz/gruvbox}[gruvbox主题] "
+Plug 'morhetz/gruvbox'
 " [快捷注释]----------------------------------------------------------------------{git clone https://github.com/scrooloose/nerdcommenter}[快捷注释] "
 Plug 'scrooloose/nerdcommenter'
 " [文件树]------------------------------------------------------------------------------{git clone https://github.com/scrooloose/nerdtree}[文件树] "
@@ -366,8 +369,12 @@ Plug 'honza/vim-snippets'
 call plug#end()
 
 " [packadd]
+" [代码块补全自动弹出]--------------------------------------------------------------------{git clone https://github.com/eikenb/acp}[代码块补全自动弹出] "
+" packadd acp
 " [括号匹配]--------------------------------------------------------------------------{git clone https://github.com/jiangmiao/auto-pairs}[括号匹配] "
 " packadd auto-pairs
+" [gruvbox主题]-------------------------------------------------------------------------{git clone https://github.com/morhetz/gruvbox}[gruvbox主题] "
+" packadd gruvbox
 " [快捷注释]----------------------------------------------------------------------{git clone https://github.com/scrooloose/nerdcommenter}[快捷注释] "
 " packadd nerdcommenter
 " [文件树]------------------------------------------------------------------------------{git clone https://github.com/scrooloose/nerdtree}[文件树] "
