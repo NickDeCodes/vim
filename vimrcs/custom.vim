@@ -48,7 +48,8 @@ syntax on                           " 开启语法高亮
 " [主·题]----------------------------------------------------------------------------------------------------------------------------------[主·题] "
 set t_Co=256                        " 指定配色方案是256色
 set background=dark                 " 主题背景
-colorscheme custom                  " 主题选择
+" colorscheme custom                  " 主题选择
+colorscheme gruvbox                 " 主题选择
 " [行、列]---------------------------------------------------------------------------------------------------------------------------------[行、列] "
 set number                          " 显示行号
 set ruler                           " 显示光标当前位置
@@ -126,7 +127,6 @@ language messages en_US.UTF-8       " 设置提示信息为英文
 filetype on                         " 检测文件类型
 filetype indent on                  " 为特定文件类型载入相关缩进文件
 filetype plugin on                  " 允许载入文件类型插件
-filetype plugin indent on           " Vim 对不同类型的文件进行补全时，设置不同文件类型的补全函数，需要打开文件类型检测
 set fileformat=unix                 " 设置以 UNIX 的格式保存文件
 set autoread                        " 设置当文件被改动时自动载入
 set autowrite                       " 文件修改自动保存
@@ -140,11 +140,6 @@ set wrap                            " 设置代码自动折行
 set fo+=mB
 set foldmethod=indent               " 基于缩进进行代码折叠
 set nofoldenable                    " 启动 Vim 时关闭折叠
-" [补·全]----------------------------------------------------------------------------------------------------------------------------------[补·全] "
-autocmd FileType c,cpp map <buffer> <leader><space> :w<cr>:make<cr> " quickfix模式
-set completeopt=preview,menu,popup  " 代码补全
-set completeopt=longest,menu,popup  " 打开预览窗口会导致下拉菜单抖动，一般都去掉预览窗口的显示
-set completepopup=height:10,width:60,highlight:InfoPopup " 弹出窗口信息 
 " [分·屏]----------------------------------------------------------------------------------------------------------------------------------[分·屏] "
 set splitright                      " 竖直 split 时，在右边开启
 set splitbelow                      " 水平 split 时，在下边开启
@@ -158,6 +153,16 @@ set noeb                            " 去掉输入错误的提示声音
 set noerrorbells                    " 关闭错误信息响铃
 set novisualbell                    " 关闭使用可视响铃代替呼叫
 set t_vb=                           " 置空错误铃声的终端代码
+" [补·全]----------------------------------------------------------------------------------------------------------------------------------[补·全] "
+set completeopt=preview,longest,menu,popup  " 代码补全
+autocmd FileType c setlocal dict+=~/.vim/dict/c.dict
+autocmd FileType cpp setlocal dict+=~/.vim/dict/cpp.dict
+autocmd FileType vim setlocal dict+=~/.vim/dict/vim.dict
+autocmd FileType lua setlocal dict+=~/.vim/dict/lua.dict
+autocmd FileType java setlocal dict+=~/.vim/dict/java.dict
+autocmd FileType python setlocal dict+=~/.vim/dict/python.dict
+autocmd FileType javascript setlocal dict+=~/.vim/dict/javascript.dict
+autocmd FileType c,cpp map <buffer> <leader><space> :w<cr>:make<cr> " quickfix模式
 " [其·它]----------------------------------------------------------------------------------------------------------------------------------[其·它] "
 set magic                           " 设置魔术
 set title                           " Show file in titlebar
@@ -170,18 +175,9 @@ set textwidth=0                     " 插入文本的最大宽度。更长的行
 set updatetime=100                  " 降低延迟和糟糕的用户体验
 " Vim 重新打开文件时，回到上次历史所编辑文件的位置
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
-autocmd FileType c setlocal dict+=~/.vim/dict/c.dict
-autocmd FileType cpp setlocal dict+=~/.vim/dict/cpp.dict
-autocmd FileType lua setlocal dict+=~/.vim/dict/lua.dict
-autocmd FileType java setlocal dict+=~/.vim/dict/java.dict
-autocmd FileType python setlocal dict+=~/.vim/dict/python.dict
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 按键映射
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 尽量使用 nnoremap 代替 nmap，比如： :map 递归映射，可以映射的模式：normal, visual, operator-pending
-" nmap j k                        " nmap 是递归映射，会出现不可预期的问题
-" nmap k G                        " 当按下 j 键时，实际上执行的是 G 键
-" let mapleader = ","             " 定义 <Leader> 前缀键由 "\" 变为 ","
 " [剪贴板]---------------------------------------------------------------------------------------------------------------------------------[剪贴板] "
 " 在可视化模式下control+c复制到剪切板
 vnoremap <C-c> "+y
@@ -201,24 +197,7 @@ map <Esc><Esc> :w<CR>
 " inoremap < <><Esc>i
 " inoremap " ""<Esc>i
 " inoremap ' ''<Esc>i
-" [戒掉使用方向键的习惯，善用 h、j、k 及 l 移动光标]---------------------------------------------------------[戒掉使用方向键的习惯，善用 h、j、k 及 l 移动光标] "
-" nnoremap <Up> <Nop>
-" nnoremap <Down> <Nop>
-" nnoremap <Left> <Nop>
-" nnoremap <Right> <Nop>
-" [插入模式禁用方向键]--------------------------------------------------------------------------------------------------------------[插入模式禁用方向键] "
-" inoremap <Left> <Nop>
-" inoremap <Right> <Nop>
-" inoremap <Up> <Nop>
-" inoremap <Down> <Nop>
-" [插入模式上下左右 按键映射]--------------------------------------------------------------------------------------------------[插入模式上下左右 按键映射] "
-" inoremap <C-h> <Left>
-" inoremap <C-j> <Down>
-" inoremap <C-k> <Up>
-" inoremap <C-l> <Right>
 " [FN自定义]------------------------------------------------------------------------------------------------------------------------------[FN自定义] "
-"
-" [标签页导航 按键映射]------------------------------------------------------------------------------------------------------------[标签页导航 按键映射] "
 "
 " [文件操作]------------------------------------------------------------------------------------------------------------------------------[文件操作] "
 " 一键去除全部尾部空白(\rb)
@@ -261,8 +240,8 @@ nnoremap <SPACE>ft :NERDTreeToggle<CR>
 " [自定义函数按键映射]--------------------------------------------------------------------------------------------------------------[自定义函数按键映射] "
 " 快捷键编译 (c)ompiler (r)un
 nnoremap <SPACE>cr :call CompileRun()<CR>
-" C,C++的GDB调试 (gdb)
-nnoremap <SPACE>gdb :call RunGDB()<CR>
+" C,C++的GDB调试 (r)un (g)db
+nnoremap <SPACE>rg :call RunGDB()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 自定义函数
