@@ -267,6 +267,11 @@ nnoremap <SPACE>ft :NERDTreeToggle<CR>
 nnoremap <SPACE>tn :bn<CR>
 " 切换上个Buffer (t)ab (p)revious
 nnoremap <SPACE>tp :bp<CR>
+" [窗口切换操作]------------------------------------------------------------------------------------------------------------------------[窗口切换操作] "
+" 切换下个Window (w)indow (n)ext
+nnoremap <SPACE>wn <C-w>w<CR>
+" 切换上个Window (w)indow (p)revious
+nnoremap <SPACE>wp <C-w>W<CR>
 " [自定义函数按键映射]--------------------------------------------------------------------------------------------------------------[自定义函数按键映射] "
 " 快捷键编译 (c)ompiler (r)un
 nnoremap <SPACE>cr :call CompileRun()<CR>
