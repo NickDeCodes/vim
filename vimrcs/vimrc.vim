@@ -232,12 +232,13 @@ inoremap <Leader>rm <Esc>:%s/<c-v><c-m>//g<CR>
 nnoremap <Leader>rm :%s/<c-v><c-m>//g<CR>
 vnoremap <Leader>rm <Esc>:%s/<c-v><c-m>//g<CR>
 " [vimrc 配置文件按键映射]-----------------------------------------------------------------------------------------------------[vimrc 配置文件按键映射] "
-" 当前窗口编辑配置文件
-nnoremap <Leader>e <Esc>:edit $MYVIMRC<CR>
-" 纵向分屏编辑配置文件
-nnoremap <Leader>ev :vsp $MYVIMRC<CR>
-" 重新加载 vimrc 文件，Leader 即前缀键默认为 “\”
-nnoremap <Leader>sv :source $MYVIMRC<CR>
+" Leader 即前缀键默认为 “\”
+" 当前窗口编辑配置文件 (e)dit (m)yvimrc
+nnoremap <Leader>em <Esc>:edit $MYVIMRC<CR>
+" 纵向分屏编辑配置文件 (v)sp (m)vimrc
+nnoremap <Leader>vm :vsp $MYVIMRC<CR>
+" 重新加载 vimrc 文件 (s)ource (m)yvimrc
+nnoremap <Leader>sm :source $MYVIMRC<CR>
 " [插件按键映射]------------------------------------------------------------------------------------------------------------------------[插件按键映射] "
 " [vim-plug]----------------------------------------------------------------------------------------------------------------------------[vim-plug] "
 " 查看插件状态
@@ -262,9 +263,9 @@ nnoremap <SPACE>rt :TagbarToggle<CR>
 nnoremap <SPACE>ft :NERDTreeToggle<CR>
 " [vim-airline]----------------------------------------------------------------------------------------------------------------------[vim-airline] "
 " 设置切换Buffer快捷键
-" (t)ab (n)ext
+" 切换下个Buffer (t)ab (n)ext
 nnoremap <SPACE>tn :bn<CR>
-" (t)ab (p)revious
+" 切换上个Buffer (t)ab (p)revious
 nnoremap <SPACE>tp :bp<CR>
 " [自定义函数按键映射]--------------------------------------------------------------------------------------------------------------[自定义函数按键映射] "
 " 快捷键编译 (c)ompiler (r)un
