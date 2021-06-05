@@ -419,6 +419,11 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in
 " 当最后一个窗口时文件树时关闭窗口
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
+" [SuperTa配置]---------------------------------------------------------------------{git clone https://github.com/ervandew/supertab}[SuperTa配置] "
+" [SuperTab]
+let g:SuperTabMappingForward = '<s-tab>'
+let g:SuperTabMappingBackward = '<tab>'
+
 " [语法检测配置]--------------------------------------------------------------------{git clone https://github.com/scrooloose/syntastic}[语法检测配置] "
 " [syntastic]
 set statusline+=%#warningmsg#
