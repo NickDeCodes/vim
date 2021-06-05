@@ -231,6 +231,9 @@ nnoremap <Leader><Leader>d :PlugDiff<CR>
 nnoremap <Leader><Leader>c :PlugClean<CR>
 " 关闭插件窗口
 nnoremap <Leader><Leader>q :q<CR>
+" [tagbar]--------------------------------------------------------------------------------------------------------------------------------[tagbar] "
+ " 打开标签目录 (r)efence (t)ree
+ nnoremap <SPACE>rt :TagbarToggle<CR>
 " [nerdtree]----------------------------------------------------------------------------------------------------------------------------[nerdtree] "
 " 列出当前目录文件 (f)ilr (t)ree
 nnoremap <SPACE>ft :NERDTreeToggle<CR>
@@ -354,10 +357,14 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " [超级TAB]------------------------------------------------------------------------------{git clone https://github.com/ervandew/supertab}[超级TAB] "
 Plug 'ervandew/supertab'
+" [函数标签]-----------------------------------------------------------------------------{git clone https://github.com/majutsushi/tagbar}[函数标签] "
+ Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 " [语法检测]--------------------------------------------------------------------------{git clone https://github.com/scrooloose/syntastic}[语法检测] "
 Plug 'scrooloose/syntastic'
 " [代码块补全]---------------------------------------------------------------------------{git clone https://github.com/sirver/ultisnips}[代码块补全] "
 Plug 'sirver/ultisnips'
+" [显示文件图标]------------------------------------------------------------------{git clone https://github.com/ryanoasis/vim-devicons}[显示文件图标] "
+ Plug 'ryanoasis/vim-devicons'
 " [插件管理器]--------------------------------------------------------------------------{git clone https://github.com/junegunn/vim-plug}[插件管理器] "
 Plug 'junegunn/vim-plug'
 " [git标识提示]------------------------------------------------------------------------{git clone https://github.com/mhinz/vim-signify}[git标识提示] "
@@ -377,8 +384,12 @@ call plug#end()
 " packadd supertab
 " [语法检测]--------------------------------------------------------------------------{git clone https://github.com/scrooloose/syntastic}[语法检测] "
 " packadd syntastic
+" [函数标签]-----------------------------------------------------------------------------{git clone https://github.com/majutsushi/tagbar}[函数标签] "
+ " packadd tagbar
 " [代码块补全]---------------------------------------------------------------------------{git clone https://github.com/sirver/ultisnips}[代码块补全] "
 " packadd ultisnips
+" [显示文件图标]------------------------------------------------------------------{git clone https://github.com/ryanoasis/vim-devicons}[显示文件图标] "
+ " packadd vim-devicons
 " [插件管理器]--------------------------------------------------------------------------{git clone https://github.com/junegunn/vim-plug}[插件管理器] "
 " packadd vim-plug
 " [git标识提示]------------------------------------------------------------------------{git clone https://github.com/mhinz/vim-signify}[git标识提示] "
