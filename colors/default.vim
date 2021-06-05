@@ -241,7 +241,20 @@ hi! link NERDTreeCWD DefaultGreen
 hi! link NERDTreeHelp DefaultFg1
 hi! link NERDTreeToggleOn DefaultGreen
 hi! link NERDTreeToggleOff DefaultRed
-" " }}}
+" }}}
+" tagbar: {{{
+hi! link TagbarComment Comment
+hi! link TagbarKind DefaultAqua
+hi! link TagbarNestedKind DefaultOrange
+hi! link TagbarScope DefaultAqua
+hi! link TagbarType DefaultYellow
+hi! link TagbarTagLineN LineNr
+hi! link TagbarSignature DefaultAqua
+hi! link TagbarFoldIcon Comment
+hi! link TagbarHighlight DefaultAqua
+hi! link TagbarVisibilityPublic DefaultGreen
+hi! link TagbarVisibilityProtected DefaultOrange
+hi! link TagbarVisibilityPrivate DefaultRed
 
 " Filetype specific
 " Diff: {{{
