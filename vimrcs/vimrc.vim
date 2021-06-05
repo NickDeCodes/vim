@@ -48,18 +48,18 @@ syntax on                           " 开启语法高亮
 " [主·题]----------------------------------------------------------------------------------------------------------------------------------[主·题] "
 set t_Co=256                        " 指定配色方案是256色
 set background=dark                 " 主题背景
-colorscheme gruvbox                 " 主题选择
+colorscheme default                 " 主题选择
 " [行、列]---------------------------------------------------------------------------------------------------------------------------------[行、列] "
 set number                          " 显示行号
 set ruler                           " 显示光标当前位置
-" set relativenumber                  " 行号以相对当前行的方式显示，方便跳转
+set relativenumber                  " 行号以相对当前行的方式显示，方便跳转
 set linespace=0                     " 设置行间距
 set linebreak                       " 设置行断点
 set cursorline                      " 突出显示当前行
 set cursorcolumn                    " 突出显示当前列
 set signcolumn=auto                 " 自动绘制标号列
-autocmd InsertLeave,WinEnter * set cursorline " 正常模式高亮当前行
-autocmd InsertEnter,WinLeave * set nocursorline " 输入模式取消高亮当前行
+" autocmd InsertLeave,WinEnter * set cursorline " 正常模式高亮当前行
+" autocmd InsertEnter,WinLeave * set nocursorline " 输入模式取消高亮当前行
 " [鼠·标]----------------------------------------------------------------------------------------------------------------------------------[鼠·标] "
 set mouse=a                         " 启用鼠标
 set selection=exclusive             " 指定在选择文本时光标所在位置也属于被选中的范围
@@ -196,30 +196,6 @@ map <Esc><Esc> :w<CR>
 " inoremap < <><Esc>i
 " inoremap " ""<Esc>i
 " inoremap ' ''<Esc>i
-" [标签页导航 按键映射]------------------------------------------------------------------------------------------------------------[标签页导航 按键映射] "
-" nnoremap <Leader>1 1gt
-" nnoremap <Leader>2 2gt
-" nnoremap <Leader>3 3gt
-" nnoremap <Leader>4 4gt
-" nnoremap <Leader>5 5gt
-" nnoremap <Leader>6 6gt
-" nnoremap <Leader>7 7gt
-" nnoremap <Leader>8 8gt
-" nnoremap <Leader>9 9gt
-" nnoremap <Leader>0 :tablast<CR>
-" nnoremap <C-Insert> :tabnew<CR>
-" nnoremap <C-Delete> :tabclose<CR>
-" nnoremap <silent><Tab>m :tabnew<CR>
-" nnoremap <silent><Tab>e :tabclose<CR>
-" nnoremap <silent><Tab>n :tabn<CR>
-" nnoremap <silent><Tab>p :tabp<CR>
-" nnoremap <silent><s-Tab> :tabnext<CR>
-" nnoremap <silent><Tab>m :tabnew<CR>
-" nnoremap <silent><Tab>e :tabclose<CR>
-" nnoremap <silent><Tab>n :tabn<CR>
-" nnoremap <silent><Tab>p :tabp<CR>
-" nnoremap <silent><s-Tab> :tabnext<CR>
-" inoremap <silent><s-Tab> <Esc>:tabnext<CR>
 " [FN自定义]------------------------------------------------------------------------------------------------------------------------------[FN自定义] "
 "
 " [文件操作]------------------------------------------------------------------------------------------------------------------------------[文件操作] "
@@ -255,23 +231,9 @@ nnoremap <Leader><Leader>d :PlugDiff<CR>
 nnoremap <Leader><Leader>c :PlugClean<CR>
 " 关闭插件窗口
 nnoremap <Leader><Leader>q :q<CR>
-" [tagbar]--------------------------------------------------------------------------------------------------------------------------------[tagbar] "
-" 打开标签目录 (r)efence (t)ree
-nnoremap <SPACE>rt :TagbarToggle<CR>
 " [nerdtree]----------------------------------------------------------------------------------------------------------------------------[nerdtree] "
 " 列出当前目录文件 (f)ilr (t)ree
 nnoremap <SPACE>ft :NERDTreeToggle<CR>
-" [vim-airline]----------------------------------------------------------------------------------------------------------------------[vim-airline] "
-" 设置切换Buffer快捷键
-" 切换下个Buffer (t)ab (n)ext
-nnoremap <SPACE>tn :bn<CR>
-" 切换上个Buffer (t)ab (p)revious
-nnoremap <SPACE>tp :bp<CR>
-" [窗口切换操作]------------------------------------------------------------------------------------------------------------------------[窗口切换操作] "
-" 切换下个Window (w)indow (n)ext
-nnoremap <SPACE>wn <C-w>w<CR>
-" 切换上个Window (w)indow (p)revious
-nnoremap <SPACE>wp <C-w>W<CR>
 " [自定义函数按键映射]--------------------------------------------------------------------------------------------------------------[自定义函数按键映射] "
 " 快捷键编译 (c)ompiler (r)un
 nnoremap <SPACE>cr :call CompileRun()<CR>
@@ -386,48 +348,20 @@ call plug#begin('~/.vim/pack/package/opt')
 Plug 'eikenb/acp'
 " [括号匹配]--------------------------------------------------------------------------{git clone https://github.com/jiangmiao/auto-pairs}[括号匹配] "
 Plug 'jiangmiao/auto-pairs'
-" [电池显示]---------------------------------------------------------------------------------{https://github.com/lambdalisue/battery.vim}[电池显示] "
-Plug 'lambdalisue/battery.vim'
-" [快速跳转]----------------------------------------------------------------------------{git clone https://github.com/ctrlpvim/ctrlp.vim}[快速跳转] "
-Plug 'ctrlpvim/ctrlp.vim'
-" [字体下载]-------------------------------------------------------------------------------{git clone https://github.com/powerline/fonts}[字体下载] "
-Plug 'powerline/fonts'
-" [gruvbox主题]------------------------------------------------------------------------{git clone https://github.com/morhetz/gruvbox}[gruvbox主题] "
-Plug 'morhetz/gruvbox'
 " [快捷注释]----------------------------------------------------------------------{git clone https://github.com/scrooloose/nerdcommenter}[快捷注释] "
 Plug 'scrooloose/nerdcommenter'
 " [文件树]------------------------------------------------------------------------------{git clone https://github.com/scrooloose/nerdtree}[文件树] "
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-" [文件树git标识]----------------------------------------------------------{git clone https://github.com/xuyuanp/nerdtree-git-plugin}[文件树git标识] "
-Plug 'xuyuanp/nerdtree-git-plugin'
-" [提供状态栏样式]------------------------------------------------------------------{git clone https://github.com/powerline/powerline}[提供状态栏样式] "
-Plug 'powerline/powerline'
 " [超级TAB]------------------------------------------------------------------------------{git clone https://github.com/ervandew/supertab}[超级TAB] "
 Plug 'ervandew/supertab'
 " [语法检测]--------------------------------------------------------------------------{git clone https://github.com/scrooloose/syntastic}[语法检测] "
 Plug 'scrooloose/syntastic'
-" [函数标签]-----------------------------------------------------------------------------{git clone https://github.com/majutsushi/tagbar}[函数标签] "
-Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
-" [标签链接]-----------------------------------------------------------------------{git clone https://github.com/vim-scripts/taglist.vim}[标签链接] "
-Plug 'vim-scripts/taglist.vim'
 " [代码块补全]---------------------------------------------------------------------------{git clone https://github.com/sirver/ultisnips}[代码块补全] "
 Plug 'sirver/ultisnips'
-" [状态栏配置]--------------------------------------------------------------------{git clone https://github.com/vim-airline/vim-airline}[状态栏配置] "
-Plug 'vim-airline/vim-airline'
-" [状态栏主题]-------------------------------------------------------------{git clone https://github.com/vim-airline/vim-airline-themes}[状态栏主题] "
-Plug 'vim-airline/vim-airline-themes'
-" [显示文件图标]------------------------------------------------------------------{git clone https://github.com/ryanoasis/vim-devicons}[显示文件图标] "
-Plug 'ryanoasis/vim-devicons'
-" [状态栏显示git分支信息]----------------------------------------------------{git clone git://github.com/tpope/vim-fugitive.git}[状态栏显示git分支信息] "
-Plug 'tpope/vim-fugitive'
-" [git修改提示]-------------------------------------------------------------------{git clone https://github.com/airblade/vim-gitgutter}[git修改提示] "
-Plug 'airblade/vim-gitgutter'
 " [插件管理器]--------------------------------------------------------------------------{git clone https://github.com/junegunn/vim-plug}[插件管理器] "
 Plug 'junegunn/vim-plug'
 " [git标识提示]------------------------------------------------------------------------{git clone https://github.com/mhinz/vim-signify}[git标识提示] "
 Plug 'mhinz/vim-signify'
-" [代码块补全]-------------------------------------------------------------------------{git clone https://github.com/honza/vim-snippets}[代码块补全] "
-Plug 'honza/vim-snippets'
 call plug#end()
 
 " [packadd]
@@ -435,58 +369,24 @@ call plug#end()
 " packadd acp
 " [括号匹配]--------------------------------------------------------------------------{git clone https://github.com/jiangmiao/auto-pairs}[括号匹配] "
 " packadd auto-pairs
-" [电池显示]---------------------------------------------------------------------------------{https://github.com/lambdalisue/battery.vim}[电池显示] "
-" packadd battery.vim
-" [快速跳转]----------------------------------------------------------------------------{git clone https://github.com/ctrlpvim/ctrlp.vim}[快速跳转] "
-" packadd ctrlp.vim
-" [字体下载]-------------------------------------------------------------------------------{git clone https://github.com/powerline/fonts}[字体下载] "
-" packadd fonts
-" [gruvbox主题]------------------------------------------------------------------------{git clone https://github.com/morhetz/gruvbox}[gruvbox主题] "
-" packadd gruvbox
 " [快捷注释]----------------------------------------------------------------------{git clone https://github.com/scrooloose/nerdcommenter}[快捷注释] "
 " packadd nerdcommenter
 " [文件树]------------------------------------------------------------------------------{git clone https://github.com/scrooloose/nerdtree}[文件树] "
 " packadd nerdtree
-" [文件树git标识]----------------------------------------------------------{git clone https://github.com/xuyuanp/nerdtree-git-plugin}[文件树git标识] "
-" packadd nerdtree-git-plugin
-" [提供状态栏样式]------------------------------------------------------------------{git clone https://github.com/powerline/powerline}[提供状态栏样式] "
-" packadd powerline
 " [超级TAB]------------------------------------------------------------------------------{git clone https://github.com/ervandew/supertab}[超级TAB] "
 " packadd supertab
 " [语法检测]--------------------------------------------------------------------------{git clone https://github.com/scrooloose/syntastic}[语法检测] "
 " packadd syntastic
-" [函数标签]-----------------------------------------------------------------------------{git clone https://github.com/majutsushi/tagbar}[函数标签] "
-" packadd tagbar
-" [标签链接]-----------------------------------------------------------------------{git clone https://github.com/vim-scripts/taglist.vim}[标签链接] "
-" packadd taglist.vim
 " [代码块补全]---------------------------------------------------------------------------{git clone https://github.com/sirver/ultisnips}[代码块补全] "
 " packadd ultisnips
-" [状态栏配置]--------------------------------------------------------------------{git clone https://github.com/vim-airline/vim-airline}[状态栏配置] "
-" packadd vim-airline
-" [状态栏主题]-------------------------------------------------------------{git clone https://github.com/vim-airline/vim-airline-themes}[状态栏主题] "
-" packadd vim-airline-themes
-" [显示文件图标]------------------------------------------------------------------{git clone https://github.com/ryanoasis/vim-devicons}[显示文件图标] "
-" packadd vim-devicons
-" [状态栏显示git分支信息]----------------------------------------------------{git clone git://github.com/tpope/vim-fugitive.git}[状态栏显示git分支信息] "
-" packadd vim-fugitive
-" [git修改提示]-------------------------------------------------------------------{git clone https://github.com/airblade/vim-gitgutter}[git修改提示] "
-" packadd vim-gitgutter
 " [插件管理器]--------------------------------------------------------------------------{git clone https://github.com/junegunn/vim-plug}[插件管理器] "
 " packadd vim-plug
 " [git标识提示]------------------------------------------------------------------------{git clone https://github.com/mhinz/vim-signify}[git标识提示] "
 " packadd vim-signify
-" [代码块补全]-------------------------------------------------------------------------{git clone https://github.com/honza/vim-snippets}[代码块补全] "
-" packadd vim-snippets
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 插件配置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" [电量显示配置]---------------------------------------------------------------------------{https://github.com/lambdalisue/battery.vim}[电量显示配置] "
-" [battery.vim] 
-let g:battery#component_format = ' %v%% %g⚡' " 默认'%s %v%% %g' 暂时不需要图形
-let g:battery#graph_symbol_fill = '' " 图形填充有电格
-let g:battery#graph_symbol_null = '' " 图形填充无电格
-
 " [快捷注释配置]----------------------------------------------------------------{git clone https://github.com/scrooloose/nerdcommenter}[快捷注释配置] "
 " [nerdcommenter] 
 let g:NERDCreateDefaultMappings = 1 " 创建默认的映射
@@ -512,35 +412,12 @@ let g:NERDToggleCheckAllLines = 1 " 启用NERDCommenterToggle来检查是否注�
 " [文件树配置]------------------------------------------------------------------------{git clone https://github.com/scrooloose/nerdtree}[文件树配置] "
 " [nerdtree]
 autocmd StdinReadPre * let s:std_in=1
-" let NERDTreeShowLineNumbers=1 " 显示行号
-" let NERDTreeShowHidden=1 " 显示隐藏文件
 " vim不打开文件时打开文件树
 autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | execute 'NERDTree' | endif
 " vim直接打开目录树
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') | execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
 " 当最后一个窗口时文件树时关闭窗口
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-
-" [文件树git标识]----------------------------------------------------------{git clone https://github.com/xuyuanp/nerdtree-git-plugin}[文件树git标识] "
-" [nerdtree-git-plugin]
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-  \ 'Modified'  :'✹',
-  \ 'Staged'    :'✚',
-  \ 'Untracked' :'✭',
-  \ 'Renamed'   :'➜',
-  \ 'Unmerged'  :'═',
-  \ 'Deleted'   :'✖',
-  \ 'Dirty'     :'✗',
-  \ 'Ignored'   :'☒',
-  \ 'Clean'     :'✔︎',
-  \ 'Unknown'   :'?',
-  \ }
-let g:NERDTreeGitStatusUseNerdFonts = 1 " you should install nerdfonts by yourself. default: 0
-let g:NERDTreeGitStatusShowIgnored = 1 " a heavy feature may cost much more time. default: 0
-let g:NERDTreeGitStatusUntrackedFilesMode = 'all' " a heave feature too. default: normal
-" let g:NERDTreeGitStatusGitBinPath = '/usr/local/bin' " default: git (auto find in path)
-let g:NERDTreeGitStatusShowClean = 1 " default: 0
-let g:NERDTreeGitStatusConcealBrackets = 1 " default: 0
 
 " [语法检测配置]--------------------------------------------------------------------{git clone https://github.com/scrooloose/syntastic}[语法检测配置] "
 " [syntastic]
@@ -557,33 +434,6 @@ let g:syntastic_go_checkers = ['go']
 let g:syntastic_java_checkers = ['javac']
 let g:syntastic_javascript_checkers = ['flow']
 let g:syntastic_html_checkers = ['tidy']
-
-" [状态栏配置]-----------------------------------------------------------------------{git clone https://github.com/scrooloose/syntastic}[状态栏配置] "
-" [vim-airline]
-let g:airline_powerline_fonts = 1 " 使用字体
-let g:airline#extensions#tabline#enabled = 1 " 显示窗口tab和buffer
-let g:airline#extensions#tabline#buffer_nr_show = 1 " 配置是否应显示缓冲区编号
-let g:airline#extensions#tabline#left_sep = '' " tabline中未激活buffer两端的分隔字符
-let g:airline#extensions#tabline#left_alt_sep = '' " tabline中buffer显示编号
-let g:airline#extensions#tabline#formatter = 'default'
-let g:airline#extensions#battery#enabled = 1 " 显示电池信息
-let g:airline#extensions#branch#enabled = 1 " 显示git分支信息
-let g:airline#extensions#tabline#buffer_idx_mode = 1 " 映射到标签的快捷键使用<Leader>number
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-" powerline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.notexists = 'Ɇ'
-let g:airline_symbols.colnr = ' :'
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ' :'
-let g:airline_symbols.maxlinenr = ' ☰ '
-let g:airline_symbols.dirty ='⚡'
 
 " [代码块补全配置]--------------------------------------------------------------------{git clone https://github.com/sirver/ultisnips}[代码块补全配置] "
 " [ultisnips]
