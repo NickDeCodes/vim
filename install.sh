@@ -42,7 +42,7 @@ mv -f ~/vim ~/.vim
 mv -f ~/.vimrc ~/.vimrc_old
 
 # 将新的vimrc配置移除至家目录
-mv -f ~/.vim/.vimrc ~/
+mv -f ~/.vim/vimrcs/vimrc.vim ~/
 
 # 克隆vundle(vim插件管理)并重新命名
 git clone https://github.com/junegunn/vim-plug ~/.vim/pack/package/opt/
@@ -51,7 +51,7 @@ cp ~/.vim/pack/package/opt/vim-plug/plug.vim ~/.vim/autoload/
 # 开始安装
 echo "🍷Nick.vim install plug" > Nick.Vim
 echo "🍷Nick.vim exit automatically after completion" >> Nick.Vim
-vim Nick.vim -c "PlugInstall" -c "q" -c "q"
+sudo vim Nick.vim -c "PlugInstall" -c "q" -c "q"
 rm Nick.vim
 
 # 安装完成
