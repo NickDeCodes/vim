@@ -30,7 +30,7 @@ sudo ln -s /usr/bin/ctags /usr/local/bin/ctags
 mv -f ~/vim ~/vim_old
 
 # 转到家目录下，并克隆Vim配置库
-cd ~/ && git clone https://github.com/NickDeCodes/vim.git
+cd ~/ && git clone https://github.com/nickdecodes/vim.git
 
 # 如果已经有.vim配置将重置为.vim_old
 mv -f ~/.vim ~/.vim_old
