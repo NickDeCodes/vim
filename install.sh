@@ -42,7 +42,7 @@ mv -f ~/vim ~/.vim
 mv -f ~/.vimrc ~/.vimrc_old
 
 # 将新的vimrc配置移除至家目录
-mv -f ~/.vim/vimrcs/vimrc.vim ~/
+mv -f ~/.vim/vimrcs/vimrc.vim ~/.vimrc
 
 # 克隆vundle(vim插件管理)并重新命名
 git clone https://github.com/junegunn/vim-plug ~/.vim/pack/package/opt/
