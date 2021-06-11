@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "🍷Nick.vim install ..."
+echo "Nick.vim install ..."
 
 #--------------------安装工具介绍-----------------------#
 #      gcc-----------------------gcc编译工具
@@ -19,7 +19,7 @@ fi
 
 # Add HomeBrew support on Mac OS
 if which brew >/dev/null; then
-    echo "🍺HomeBrew is already installed"
+    echo "HomeBrew is already installed"
     brew install vim ctags git
 fi
 
@@ -50,10 +50,10 @@ cp ~/.vim/autoload/vim-plug/plug.vim ~/.vim/autoload/
 rm -rf ~/.vim/autoload/vim-plug/
 
 # 开始安装
-echo "🍷Nick.vim install plug" > Nick.Vim
-echo "🍷Nick.vim exit automatically after completion" >> Nick.Vim
+echo "Nick.vim install plug" > Nick.Vim
+echo "Nick.vim exit automatically after completion" >> Nick.Vim
 vim Nick.vim -c "PlugInstall" -c "q" -c "q"
 rm Nick.vim
 
 # 安装完成
-echo "🍷Nick.vim is already installed"
+echo "Nick.vim is already installed"
