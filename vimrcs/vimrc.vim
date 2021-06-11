@@ -182,11 +182,6 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 vnoremap <C-c> "+y
 " 在普通模式下control+p复制剪切板到vim
 nnoremap <C-p> "+p
-" [分割窗口调整大小]----------------------------------------------------------------------------------------------------------------[分割窗口调整大小] "
-nnoremap <Leader><Right> :vertical resize +5<CR>
-nnoremap <Leader><Left>  :vertical resize -5<CR>
-nnoremap <Leader><Up>    :resize +5<CR>
-nnoremap <Leader><Down>  :resize -5<CR>
 " [Normal 模式，按 Esc+Esc 保存]---------------------------------------------------------------------------------------[Normal 模式，按 Esc+Esc 保存] "
 map <Esc><Esc> :w<CR>
 " [括号等自动补全]--------------------------------------------------------------------------------------------------------------------[括号等自动补全] "
@@ -198,15 +193,6 @@ map <Esc><Esc> :w<CR>
 " inoremap ' ''<Esc>i
 " [FN自定义]------------------------------------------------------------------------------------------------------------------------------[FN自定义] "
 "
-" [文件操作]------------------------------------------------------------------------------------------------------------------------------[文件操作] "
-" 一键去除全部尾部空白(\rb)
-inoremap <Leader>rb <Esc>:let _s=@/<bar>:%s/\s\+$//e<bar>:let @/=_s<bar>:nohl<CR>
-nnoremap <Leader>rb :let _s=@/<bar>:%s/\s\+$//e<bar>:let @/=_s<bar>:nohl<CR>
-vnoremap <Leader>rb <Esc>:let _s=@/<bar>:%s/\s\+$//e<bar>:let @/=_s<bar>:nohl<CR>
-" 一键去除全部 ^M 字符(\rm)
-inoremap <Leader>rm <Esc>:%s/<c-v><c-m>//g<CR>
-nnoremap <Leader>rm :%s/<c-v><c-m>//g<CR>
-vnoremap <Leader>rm <Esc>:%s/<c-v><c-m>//g<CR>
 " [vimrc 配置文件按键映射]-----------------------------------------------------------------------------------------------------[vimrc 配置文件按键映射] "
 " Leader 即前缀键默认为 “\”
 " 当前窗口编辑配置文件 (e)dit (m)yvimrc
@@ -351,8 +337,6 @@ call plug#begin('~/.vim/pack/package/opt')
 Plug 'eikenb/acp'
 " [括号匹配]--------------------------------------------------------------------------{git clone https://github.com/jiangmiao/auto-pairs}[括号匹配] "
 Plug 'jiangmiao/auto-pairs'
-" [快捷注释]----------------------------------------------------------------------{git clone https://github.com/scrooloose/nerdcommenter}[快捷注释] "
-Plug 'scrooloose/nerdcommenter'
 " [文件树]------------------------------------------------------------------------------{git clone https://github.com/scrooloose/nerdtree}[文件树] "
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " [超级TAB]------------------------------------------------------------------------------{git clone https://github.com/ervandew/supertab}[超级TAB] "
@@ -363,8 +347,6 @@ Plug 'ervandew/supertab'
 Plug 'scrooloose/syntastic'
 " [代码块补全]---------------------------------------------------------------------------{git clone https://github.com/sirver/ultisnips}[代码块补全] "
 Plug 'sirver/ultisnips'
-" [显示文件图标]------------------------------------------------------------------{git clone https://github.com/ryanoasis/vim-devicons}[显示文件图标] "
- Plug 'ryanoasis/vim-devicons'
 " [插件管理器]--------------------------------------------------------------------------{git clone https://github.com/junegunn/vim-plug}[插件管理器] "
 Plug 'junegunn/vim-plug'
 " [git标识提示]------------------------------------------------------------------------{git clone https://github.com/mhinz/vim-signify}[git标识提示] "
@@ -376,8 +358,6 @@ call plug#end()
 " packadd acp
 " [括号匹配]--------------------------------------------------------------------------{git clone https://github.com/jiangmiao/auto-pairs}[括号匹配] "
 " packadd auto-pairs
-" [快捷注释]----------------------------------------------------------------------{git clone https://github.com/scrooloose/nerdcommenter}[快捷注释] "
-" packadd nerdcommenter
 " [文件树]------------------------------------------------------------------------------{git clone https://github.com/scrooloose/nerdtree}[文件树] "
 " packadd nerdtree
 " [超级TAB]------------------------------------------------------------------------------{git clone https://github.com/ervandew/supertab}[超级TAB] "
@@ -385,11 +365,9 @@ call plug#end()
 " [语法检测]--------------------------------------------------------------------------{git clone https://github.com/scrooloose/syntastic}[语法检测] "
 " packadd syntastic
 " [函数标签]-----------------------------------------------------------------------------{git clone https://github.com/majutsushi/tagbar}[函数标签] "
- " packadd tagbar
+" packadd tagbar
 " [代码块补全]---------------------------------------------------------------------------{git clone https://github.com/sirver/ultisnips}[代码块补全] "
 " packadd ultisnips
-" [显示文件图标]------------------------------------------------------------------{git clone https://github.com/ryanoasis/vim-devicons}[显示文件图标] "
- " packadd vim-devicons
 " [插件管理器]--------------------------------------------------------------------------{git clone https://github.com/junegunn/vim-plug}[插件管理器] "
 " packadd vim-plug
 " [git标识提示]------------------------------------------------------------------------{git clone https://github.com/mhinz/vim-signify}[git标识提示] "
@@ -398,28 +376,6 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 插件配置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" [快捷注释配置]----------------------------------------------------------------{git clone https://github.com/scrooloose/nerdcommenter}[快捷注释配置] "
-" [nerdcommenter] 
-let g:NERDCreateDefaultMappings = 1 " 创建默认的映射
-let g:NERDSpaceDelims = 1 " 默认情况下在注释分隔符后添加空格
-let g:NERDCompactSexyComs = 1 " 使用简洁的语法来修饰多行注释
-let g:NERDDefaultAlign = 'left' " 按行对齐注释分隔符左对齐，而不是跟随代码缩进
-let g:NERDAltDelims_java = 1 " 设置一种语言以默认使用其替代分隔符
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } } " 添加您自己的自定义格式或覆盖默认值
-let g:NERDCommentEmptyLines = 1 " 允许注释和倒排空行(在注释一个区域时很有用)
-let g:NERDTrimTrailingWhitespace = 1 " 在取消注释时启用对尾随空格的修整
-let g:NERDToggleCheckAllLines = 1 " 启用NERDCommenterToggle来检查是否注释了所有选定的行
-" <leader>cc | NERDCommenterComment | 注释当前行
-" <leader>cn | NERDCommenterNested | 强制嵌套注释
-" <leader>c<space> | NERDCommenterToggle | 与上一行同步注释状态
-" <leader>cm | NERDCommenterMinimal | 块级注释
-" <leader>ci | NERDCommenterInvert | 改变当前行的注释状态
-" <leader>cs | NERDCommenterSexy | 美观注释
-" <leader>cy | NERDCommenterYank | 和...一样 抄送，但首先删除注释行
-" <leader>c$ | NERDCommenterToEOL | 注释当前行从光标到行尾。
-" <leader>cA | NERDCommenterAppend | 在行尾添加注释定界符，并在它们之间进入插入模式。
-" [count]<leader>cu | NERDCommenterUncomment | 取消注释选定的行
-
 " [文件树配置]------------------------------------------------------------------------{git clone https://github.com/scrooloose/nerdtree}[文件树配置] "
 " [nerdtree]
 autocmd StdinReadPre * let s:std_in=1
