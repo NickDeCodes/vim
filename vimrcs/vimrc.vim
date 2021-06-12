@@ -293,7 +293,8 @@ function! SetTitle() abort
   if expand("%:e") == 'h'
     call append(line(".")+6, "#ifndef _".toupper(expand("%:r"))."_H")
     call append(line(".")+7, "#define _".toupper(expand("%:r"))."_H")
-    call append(line(".")+8, "#endif")
+    call append(line(".")+8, "")
+    call append(line(".")+9, "#endif")
   endif
   if &filetype == 'java'
     call append(line(".")+6,"public class ".expand("%:r"))
