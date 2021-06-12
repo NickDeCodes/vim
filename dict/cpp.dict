@@ -1,3 +1,15 @@
+asm
+this
+throw
+explicit
+true
+export
+try
+catch
+false
+char
+goto
+mutable
 auto
 bool
 break
@@ -163,7 +175,6 @@ not_eq
 numeric
 ofstream
 open
-operator
 operator
 or
 or_eq

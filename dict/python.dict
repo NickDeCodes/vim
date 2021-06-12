@@ -30,6 +30,8 @@ def
 finally
 in
 print
+with
+nonlocal
 
 --- string type attributes and methods. (These were manually inputted). Only works with quotes not objects. eg 'foo'.startswith(  ---
 .__add__

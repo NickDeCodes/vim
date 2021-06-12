@@ -362,8 +362,6 @@ Plug 'ervandew/supertab'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 " [语法检测]--------------------------------------------------------------------------{git clone https://github.com/scrooloose/syntastic}[语法检测] "
 Plug 'scrooloose/syntastic'
-" [代码块补全]---------------------------------------------------------------------------{git clone https://github.com/sirver/ultisnips}[代码块补全] "
-Plug 'sirver/ultisnips'
 " [插件管理器]--------------------------------------------------------------------------{git clone https://github.com/junegunn/vim-plug}[插件管理器] "
 Plug 'junegunn/vim-plug'
 " [git标识提示]------------------------------------------------------------------------{git clone https://github.com/mhinz/vim-signify}[git标识提示] "
@@ -385,8 +383,6 @@ call plug#end()
 " packadd syntastic
 " [函数标签]-----------------------------------------------------------------------------{git clone https://github.com/majutsushi/tagbar}[函数标签] "
 " packadd tagbar
-" [代码块补全]---------------------------------------------------------------------------{git clone https://github.com/sirver/ultisnips}[代码块补全] "
-" packadd ultisnips
 " [插件管理器]--------------------------------------------------------------------------{git clone https://github.com/junegunn/vim-plug}[插件管理器] "
 " packadd vim-plug
 " [git标识提示]------------------------------------------------------------------------{git clone https://github.com/mhinz/vim-signify}[git标识提示] "
@@ -437,13 +433,6 @@ let g:syntastic_go_checkers = ['go']
 let g:syntastic_java_checkers = ['javac']
 let g:syntastic_javascript_checkers = ['flow']
 let g:syntastic_html_checkers = ['tidy']
-
-" [代码块补全配置]--------------------------------------------------------------------{git clone https://github.com/sirver/ultisnips}[代码块补全配置] "
-" [ultisnips]
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsEditSplit="vertical"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " End
