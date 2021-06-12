@@ -1,5 +1,5 @@
 " Vim color file
-" create by NickDeCodes (NickDeCodes@163.com) 
+" create by nickdecodes (nickdecodes@163.com) 
 " =================================================================================================================================================
 " 
 " +----------+-------------------------------------------------------------------------------------------------------------------------------------
@@ -26,7 +26,7 @@ let g:colors_name='Default'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " [调色板palette]-------------------------------------------------------------------------------------------------------------------[调色板palette] "
 let s:pal = {} " 定义一个字典配置调色板
-let s:pal.none = ['NONE', 'NONE']
+let s:pal.none    = ['NONE', 'NONE']    " 空
 
 let s:pal.bg0  = ['#282828', 235] " 40-40-40
 let s:pal.bg1  = ['#3c3836', 237] " 60-56-54
@@ -40,24 +40,26 @@ let s:pal.fg2 = ['#d5c4a1', 250] " 213-196-161
 let s:pal.fg3 = ['#bdae93', 248] " 189-174-147
 let s:pal.fg4 = ['#a89984', 246] " 168-153-132
 
+let s:pal.gray    = ['#928374', 245] " 146-131-116
+
 let s:pal.red     = ['#fb4934', 167] " 251-73-52
-let s:pal.green   = ['#b8bb26', 142] " 184-187-38
+let s:pal.orange  = ['#fe8019', 208] " 254-128-25
 let s:pal.yellow  = ['#fabd2f', 214] " 250-189-47
+let s:pal.green   = ['#b8bb26', 142] " 184-187-38
+let s:pal.cyan    = ['#5fd7ff', 81]  " 95-215-255
 let s:pal.blue    = ['#83a598', 109] " 131-165-152
 let s:pal.purple  = ['#d3869b', 175] " 211-134-155
 let s:pal.aqua    = ['#8ec07c', 108] " 142-192-124
-let s:pal.orange  = ['#fe8019', 208] " 254-128-25
-let s:pal.gray    = ['#928374', 245] " 146-131-116
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " [强调emphasis]--------------------------------------------------------------------------------------------------------------------[强调emphasis] "
 let s:emp = {} " 设置一个强调字典
-let s:emp.none = ''
-let s:emp.bold = 'bold,' " 加粗
-let s:emp.italic = 'italic,' " 斜体 
-let s:emp.underline = 'underline,' " 下划线
-let s:emp.undercurl = 'undercurl,' " 下划当前 
-let s:emp.inverse = 'inverse,' " 逆透 
+let s:emp.none      = ''            " 空
+let s:emp.bold      = 'bold,'       " 加粗
+let s:emp.italic    = 'italic,'     " 斜体 
+let s:emp.underline = 'underline,'  " 下划线
+let s:emp.undercurl = 'undercurl,'  " 下划当前 
+let s:emp.inverse   = 'inverse,'    " 逆透 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " [高亮函数]------------------------------------------------------------------------------------------------------------------------------[高亮函数] "
@@ -103,118 +105,160 @@ call s:HL('DefaultFg1', s:pal.fg1)
 call s:HL('DefaultFg2', s:pal.fg2)
 call s:HL('DefaultFg3', s:pal.fg3)
 call s:HL('DefaultFg4', s:pal.fg4)
+ 
+call s:HL('DefaultGray',    s:pal.gray)     " 默认灰
 
-call s:HL('DefaultRed',     s:pal.red)
-call s:HL('DefaultGreen',   s:pal.green)
-call s:HL('DefaultYellow',  s:pal.yellow)
-call s:HL('DefaultBlue',    s:pal.blue)
-call s:HL('DefaultPurple',  s:pal.purple)
-call s:HL('DefaultAqua',    s:pal.aqua)
-call s:HL('DefaultOrange',  s:pal.orange)
-call s:HL('DefaultGray',    s:pal.gray)
+call s:HL('DefaultRed',     s:pal.red)      " 默认赤
+call s:HL('DefaultOrange',  s:pal.orange)   " 默认橙
+call s:HL('DefaultYellow',  s:pal.yellow)   " 默认黄
+call s:HL('DefaultGreen',   s:pal.green)    " 默认绿
+call s:HL('DefaultCyan',    s:pal.cyan)     " 默认青
+call s:HL('DefaultBlue',    s:pal.blue)     " 默认蓝
+call s:HL('DefaultPurple',  s:pal.purple)   " 默认紫
+call s:HL('DefaultAqua',    s:pal.aqua)     " 默认浅绿
 
-call s:HL('DefaultRedBold',     s:pal.red,      s:pal.none,     s:emp.bold)
-call s:HL('DefaultGreenBold',   s:pal.green,    s:pal.none,     s:emp.bold)
-call s:HL('DefaultYellowBold',  s:pal.yellow,   s:pal.none,     s:emp.bold)
-call s:HL('DefaultBlueBold',    s:pal.blue,     s:pal.none,     s:emp.bold)
-call s:HL('DefaultPurpleBold',  s:pal.purple,   s:pal.none,     s:emp.bold)
-call s:HL('DefaultAquaBold',    s:pal.aqua,     s:pal.none,     s:emp.bold)
-call s:HL('DefaultOrangeBold',  s:pal.orange,   s:pal.none,     s:emp.bold)
+call s:HL('DefaultGrayBold',    s:pal.gray,     s:pal.none,    s:emp.bold) " 默认加粗灰
+call s:HL('DefaultRedBold',     s:pal.red,      s:pal.none,    s:emp.bold) " 默认加粗赤
+call s:HL('DefaultOrangeBold',  s:pal.orange,   s:pal.none,    s:emp.bold) " 默认加粗橙
+call s:HL('DefaultYellowBold',  s:pal.yellow,   s:pal.none,    s:emp.bold) " 默认加粗黄
+call s:HL('DefaultGreenBold',   s:pal.green,    s:pal.none,    s:emp.bold) " 默认加粗绿
+call s:HL('DefaultCyanBold',    s:pal.cyan,     s:pal.none,    s:emp.bold) " 默认加粗青
+call s:HL('DefaultBlueBold',    s:pal.blue,     s:pal.none,    s:emp.bold) " 默认加粗蓝
+call s:HL('DefaultPurpleBold',  s:pal.purple,   s:pal.none,    s:emp.bold) " 默认加粗紫
+call s:HL('DefaultAquaBold',    s:pal.aqua,     s:pal.none,    s:emp.bold) " 默认加粗浅绿
 
-call s:HL('DefaultRedSign',     s:pal.red,      s:pal.bg1,      s:emp.inverse)
-call s:HL('DefaultGreenSign',   s:pal.green,    s:pal.bg1,      s:emp.inverse)
-call s:HL('DefaultYellowSign',  s:pal.yellow,   s:pal.bg1,      s:emp.inverse)
-call s:HL('DefaultBlueSign',    s:pal.blue,     s:pal.bg1,      s:emp.inverse)
-call s:HL('DefaultPurpleSign',  s:pal.purple,   s:pal.bg1,      s:emp.inverse)
-call s:HL('DefaultAquaSign',    s:pal.aqua,     s:pal.bg1,      s:emp.inverse)
-call s:HL('DefaultOrangeSign',  s:pal.orange,   s:pal.bg1,      s:emp.inverse)
+call s:HL('DefaultGrayBox',     s:pal.bg0,      s:pal.gray,    s:emp.inverse) " 默认盒子灰
+call s:HL('DefaultRedBox',      s:pal.bg0,      s:pal.red,     s:emp.inverse) " 默认盒子赤
+call s:HL('DefaultOrangeBox',   s:pal.bg0,      s:pal.orange,  s:emp.inverse) " 默认盒子橙
+call s:HL('DefaultYellowBox',   s:pal.bg0,      s:pal.yellow,  s:emp.inverse) " 默认盒子黄
+call s:HL('DefaultGreenBox',    s:pal.bg0,      s:pal.green,   s:emp.inverse) " 默认盒子绿
+call s:HL('DefaultCyanBox',     s:pal.bg0,      s:pal.cyan,    s:emp.inverse) " 默认盒子青
+call s:HL('DefaultBlueBox',     s:pal.bg0,      s:pal.blue,    s:emp.inverse) " 默认盒子蓝
+call s:HL('DefaultPurpleBox',   s:pal.bg0,      s:pal.purple,  s:emp.inverse) " 默认盒子紫
+call s:HL('DefaultAquaBox',     s:pal.bg0,      s:pal.aqua,    s:emp.inverse) " 默认加粗盒子浅绿
+
+call s:HL('DefaultGraySign',    s:pal.gray,     s:pal.bg1,     s:emp.inverse) " 默认逆透灰
+call s:HL('DefaultRedSign',     s:pal.red,      s:pal.bg1,     s:emp.inverse) " 默认逆透赤
+call s:HL('DefaultOrangeSign',  s:pal.orange,   s:pal.bg1,     s:emp.inverse) " 默认逆透橙
+call s:HL('DefaultYellowSign',  s:pal.yellow,   s:pal.bg1,     s:emp.inverse) " 默认逆透黄
+call s:HL('DefaultGreenSign',   s:pal.green,    s:pal.bg1,     s:emp.inverse) " 默认逆透绿
+call s:HL('DefaultCyanSign',    s:pal.cyan,     s:pal.bg1,     s:emp.inverse) " 默认逆透青
+call s:HL('DefaultBlueSign',    s:pal.blue,     s:pal.bg1,     s:emp.inverse) " 默认逆透蓝
+call s:HL('DefaultPurpleSign',  s:pal.purple,   s:pal.bg1,     s:emp.inverse) " 默认逆透紫
+call s:HL('DefaultAquaSign',    s:pal.aqua,     s:pal.bg1,     s:emp.inverse) " 默认逆透浅绿
 
 " 通用设置 适用任何情况
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call s:HL('Normal', s:pal.none)
-hi! link SpecialKey DefaultBg2 " -------------------------------------------------------[^[]":map" 一般的: 和实际内容显示上有差异的文本] "
-hi! link NonText DefaultBg2 " ----------------------------------------------------------[非文本区（控制字符和一些特殊字符和编辑器空白区等）] "
-hi! link Directory DefaultGreenBold " --------------------------------------------------[目录名 (还有列表里的其它特殊名字)] "
-call s:HL('ErrorMsg', s:pal.bg0, s:pal.red, s:emp.bold) " ------------------------------[命令行上的错误信息] "
-call s:HL('IncSearch', s:pal.orange, s:pal.bg0, s:emp.inverse) " -----------------------[高亮；也用于被 ":s///c" 替换的文本] "
-call s:HL('Search', s:pal.yellow, s:pal.bg0, s:emp.inverse) " --------------------------[查找高亮,包含QuickFixLine] "
-hi! link MoreMsg DefaultYellowBold " ---------------------------------------------------[使用 |set showcmd| 时输入栏提示] "
-hi! link ModeMsg DefaultYellowBold " ---------------------------------------------------[模式提示 (例如，"-- INSERT --")] "
-call s:HL('LineNr', s:pal.bg4, s:pal.none) " -------------------------------------------[置位 'number' 或 'relativenumber' 选项时的行号] "
-call s:HL('CursorLineNr', s:pal.yellow, s:pal.bg1) " -----------------------------------[置位 'number' 或 'relativenumber' 选项时的光标行号] "
-hi! link LineNrAbove LineNr " ----------------------------------------------------------[置位 'relativenumber' 选项时，光标上方的行号] "
-hi! link LineNrBelow LineNr " ----------------------------------------------------------[置位 'relativenumber' 选项时，光标下方的行号] "
-hi! link Question DefaultOrangeBold " --------------------------------------------------[|hit-enter| 提示和 yes/no 问补全时下方的提示信息1/5] "
-call s:HL('StatusLine', s:pal.bg2, s:pal.fg1, s:emp.inverse) " -------------------------[当前窗口的状态行] "
-call s:HL('StatusLineNC', s:pal.bg1, s:pal.fg4, s:emp.inverse) " -----------------------[非当前窗口的状态行] "
-call s:HL('VertSplit', s:pal.bg3, s:pal.bg0) " -----------------------------------------[分离垂直分割窗口的列] "
-hi! link Title DefaultGreenBold " ------------------------------------------------------[\ ":set all"、":autocmd" 等输出的标题 markdown标题] "
-call s:HL('Visual', s:pal.none, s:pal.bg3) " -------------------------------------------[可视模式的选择区] "
-hi! link VisualNOS Visual " ------------------------------------------------------------[Vim 是选择区的非拥有者时，可视模式的选择区] "
-hi! link WarningMsg DefaultRedBold " ---------------------------------------------------[警告消息] "
-call s:HL('WildMenu', s:pal.blue, s:pal.bg2, s:emp.bold) " -----------------------------[补全的当前匹配] "
-call s:HL('Folded', s:pal.gray, s:pal.bg1, s:emp.italic) " -----------------------------[用于关闭的折叠的行] "
-call s:HL('FoldColumn', s:pal.gray, s:pal.bg1) " ---------------------------------------[用于关闭的折叠的列] "
-call s:HL('DiffAdd', s:pal.green, s:pal.bg0, s:emp.inverse) " --------------------------[增加的行] "
-call s:HL('DiffChange', s:pal.aqua, s:pal.bg0, s:emp.inverse) " ------------------------[改变的行] "
-call s:HL('DiffDelete', s:pal.red, s:pal.bg0, s:emp.inverse) " -------------------------[删除的行] "
-call s:HL('DiffText', s:pal.yellow, s:pal.bg0, s:emp.inverse) " ------------------------[改变行里的改动文本] "
-call s:HL('SignColumn', s:pal.none, s:pal.bg1) " ---------------------------------------[显示 |signs| 的列, 左侧边栏填充] "
-call s:HL('Conceal', s:pal.blue, s:pal.none) " -----------------------------------------[代替隐藏文本的填充字符 \lambda → λ] "
-call s:HL('SpellCap', s:pal.green, s:pal.none, s:emp.bold . s:emp.italic) " ------------[应该大写字母开头的单词] "
-hi! link SpellBad DefaultRedSign " -----------------------------------------------------[拼写检查器不能识别的单词] "
-hi! link SpellLocal DefaultBlueSigncall " ----------------------------------------------[拼写检查器能识别但只在其它区域使用的单词] "
-hi! link SpellRare DefaultPurpleSigncall " ---------------------------------------------[拼写检查器能识别但很少使用的单词] "
-call s:HL('Pmenu', s:pal.fg1, s:pal.bg2) " ---------------------------------------------[弹出菜单: 普通项目 补全提示行 ] "
-call s:HL('PmenuSel', s:pal.bg2, s:pal.blue, s:emp.bold) " -----------------------------[弹出菜单: 选中项目 补全光标行] "
-call s:HL('PmenuSbar', s:pal.none, s:pal.bg2) " ----------------------------------------[弹出菜单: 滚动条] "
-call s:HL('PmenuThumb', s:pal.none, s:pal.bg4) " ---------------------------------------[弹出菜单: 滚动条的拇指 (thumb)] "
-call s:HL('TabLineSel', s:pal.green, s:pal.bg1, s:emp.inverse) " -----------------------[活动标签页标签] "
-call s:HL('TabLineFill', s:pal.bg4, s:pal.bg1) " ---------------------------------------[没有标签的地方] "
-hi! link TabLine TabLineFill " ---------------------------------------------------------[非活动标签页标签] "
-call s:HL('CursorLine', s:pal.none, s:pal.bg1) " ---------------------------------------[光标所在的屏幕行] "
-hi! link CursorColumn CursorLine " -----------------------------------------------------[光标所在的屏幕列] "
-call s:HL('ColorColumn', s:pal.none, s:pal.bg1) " --------------------------------------[设置屏幕列] "
-call s:HL('Cursor', s:pal.none, s:pal.none, s:emp.inverse) " ---------------------------[光标所在字符] "
-hi! link vCursor Cursor " --------------------------------------------------------------[可视化模式光标所在字符] "
-hi! link iCursor Cursor " --------------------------------------------------------------[插入模式光标所在字符] "
-hi! link lCursor Cursor " --------------------------------------------------------------[语言模式光标所在字符] "
-call s:HL('MatchParen', s:pal.none, s:pal.aqua, s:emp.bold) " --------------------------[括号匹配] "
-call s:HL('Comment', s:pal.gray, s:pal.none, s:emp.italic) " ---------------------------[文件头部文本] "
-hi! link Constant DefaultPurple " ------------------------------------------------------[任何常数] "
-call s:HL('String', s:pal.green, s:pal.none, s:emp.none) " -----------------------------[字符串] "
-hi! link Character DefaultPurple " -----------------------------------------------------[字符] "
-hi! link Number DefaultPurple " --------------------------------------------------------[数字] "
-hi! link Boolean DefaultPurple " -------------------------------------------------------[bool值] "
-hi! link Float DefaultPurple " ---------------------------------------------------------[float值高亮] "
-hi! link Special DefaultOrange " -------------------------------------------------------[特殊字段] "
-hi! link Tag DefaultGreen " ------------------------------------------------------------[可以使用 CTRL-] 的项目] "
-hi! link SpecialChar DefaultRed " ------------------------------------------------------[%s] "
-hi! link Delimiter Normal " ------------------------------------------------------------[需要注意的字 分隔符<>] "
-hi! link SpecialComment Normal " -------------------------------------------------------[注释里的特殊部分] "
-hi! link Debug Normal " ----------------------------------------------------------------[调试语句] "
-hi! link Identifier DefaultBlue " ------------------------------------------------------[任何定义] "
-hi! link Function DefaultGreenBold " ---------------------------------------------------[函数名 (也包括: 类的方法名)] "
-hi! link Statement DefaultRed " --------------------------------------------------------[任何声明] "
-hi! link Conditional DefaultRed " ------------------------------------------------------[if、then、else、endif、switch 等] "
-hi! link Repeat DefaultRed " -----------------------------------------------------------[for、do、while 等] "
-hi! link Label DefaultRed " ------------------------------------------------------------[case、default 等] "
-hi! link Operator DefaultPurple " ------------------------------------------------------[\ sizeof、+、* 等] "
-hi! link Keyword DefaultRed " ----------------------------------------------------------[其它关键字] "
-hi! link Exception DefaultRed " --------------------------------------------------------[try、catch、throw] "
-hi! link PreProc DefaultAqua " ---------------------------------------------------------[通用预处理命令] "
-hi! link Include DefaultAqua " ---------------------------------------------------------[#include] "
-hi! link Define DefaultAqua " ----------------------------------------------------------[#define] "
-hi! link Macro DefaultAqua " -----------------------------------------------------------[宏] "
-hi! link PreCondit DefaultAqua " -------------------------------------------------------[makefile ifneq] "
-hi! link Type DefaultYellow " ----------------------------------------------------------[任何类型] "
-hi! link StorageClass DefaultOrange " --------------------------------------------------[static、register、volatile 等] "
-hi! link Structure DefaultAqua " -------------------------------------------------------[struct、union、enum 等] "
-hi! link Typedef DefaultYellow " -------------------------------------------------------[typedef] "
-call s:HL('Underlined', s:pal.blue, s:pal.none, s:emp.underline) " ---------------------[需要突出的文本，HTML 链接 包括helpUnderlined] "
-hi! link Ignore Comment " --------------------------------------------------------------[文件头部声明] "
-call s:HL('Error', s:pal.red, s:pal.none, s:emp.bold . s:emp.inverse) " ----------------[错误提示 左侧栏 >>] "
-call s:HL('Todo', s:pal.none, s:pal.none, s:emp.bold . s:emp.italic) " -----------------[需要特殊注意的部分；主要是关键字 TODO FIXME 和 XX] "
+" General: {{{
+hi! link SpecialKey DefaultBg2 " ---------------------------------------------[^[]":map" 一般的: 和实际内容显示上有差异的文本, 如using] "
+hi! link NonText DefaultBg2 " ------------------------------------------------[非文本区（控制字符和一些特殊字符和编辑器空白区~等）] "
+hi! link Directory DefaultGreenBold " ----------------------------------------[目录名 (还有列表里的其它特殊名字)] "
+hi! link Question DefaultOrangeBold " ----------------------------------------[|hit-enter| 提示和 yes/no 问补全时下方的提示信息1/5] "
+hi! link Title DefaultGreenBold " --------------------------------------------[":set all"、":autocmd" 等输出的标题 markdown标题] "
+hi! link Conceal DefaultBlue " -----------------------------------------------[代替隐藏文本的填充字符 lambda → λ] "
+" }}}
+" Complete: {{{
+call s:HL('WildMenu', s:pal.blue, s:pal.bg2, s:emp.bold) " -------------------[补全的当前匹配] "
+call s:HL('Pmenu', s:pal.fg1, s:pal.bg2) " -----------------------------------[弹出菜单: 普通项目 补全提示行] "
+call s:HL('PmenuSel', s:pal.bg2, s:pal.blue, s:emp.bold) " -------------------[弹出菜单: 选中项目 补全光标行] "
+call s:HL('PmenuSbar', s:pal.none, s:pal.bg2) " ------------------------------[弹出菜单: 滚动条] "
+call s:HL('PmenuThumb', s:pal.none, s:pal.bg4) " -----------------------------[弹出菜单: 滚动条的拇指 (thumb)] "
+" }}}
+" Cursor: {{{
+call s:HL('LineNr', s:pal.bg4, s:pal.none) " ---------------------------------[置位 'number' 或 'relativenumber' 选项时的行号] "
+hi! link LineNrAbove LineNr " ------------------------------------------------[置位 'relativenumber' 选项时，光标上方的行号] "
+hi! link LineNrBelow LineNr " ------------------------------------------------[置位 'relativenumber' 选项时，光标下方的行号] "
+call s:HL('Cursor', s:pal.none, s:pal.none, s:emp.inverse) " -----------------[光标所在字符] "
+call s:HL('ColorColumn', s:pal.none, s:pal.bg1) " ----------------------------[设置屏幕列] "
+hi! link vCursor Cursor " ----------------------------------------------------[可视化模式光标所在字符] "
+hi! link iCursor Cursor " ----------------------------------------------------[插入模式光标所在字符] "
+hi! link lCursor Cursor " ----------------------------------------------------[语言模式光标所在字符] "
+call s:HL('CursorLineNr', s:pal.yellow, s:pal.bg1) " -------------------------[置位 'number' 或 'relativenumber' 选项时的光标所在位置的行号] "
+call s:HL('CursorLine', s:pal.none, s:pal.bg1) " -----------------------------[光标所在的屏幕行] "
+hi! link CursorColumn CursorLine " -------------------------------------------[光标所在的屏幕列] "
+call s:HL('SignColumn', s:pal.none, s:pal.bg1) " -----------------------------[显示 |signs| 的列, 左侧边栏填充] "
+" }}}
+" Search: {{{
+call s:HL('Search', s:pal.yellow, s:pal.bg0, s:emp.inverse) " ----------------[查找高亮,包含QuickFixLine] "
+call s:HL('IncSearch', s:pal.orange, s:pal.bg0, s:emp.inverse) " -------------[高亮；也用于被 ":s///c" 替换的文本] "
+call s:HL('MatchParen', s:pal.none, s:pal.aqua, s:emp.bold) " ----------------[括号匹配] "
+" }}}
+" Visual: {{{
+call s:HL('Visual', s:pal.none, s:pal.bg3) " ---------------------------------[可视模式的选择区] "
+hi! link VisualNOS Visual " --------------------------------------------------[Vim 是选择区的非拥有者时，可视模式的选择区] "
+" }}}
+" Fold: {{{
+call s:HL('Folded', s:pal.gray, s:pal.bg1, s:emp.italic) " -------------------[用于关闭的折叠的行] "
+call s:HL('FoldColumn', s:pal.gray, s:pal.bg1) " -----------------------------[用于关闭的折叠的列] "
+" }}}
+" Diff: {{{
+call s:HL('DiffAdd', s:pal.green, s:pal.bg0, s:emp.inverse) " ----------------[增加的行] "
+call s:HL('DiffChange', s:pal.aqua, s:pal.bg0, s:emp.inverse) " --------------[改变的行] "
+call s:HL('DiffDelete', s:pal.red, s:pal.bg0, s:emp.inverse) " ---------------[删除的行] "
+call s:HL('DiffText', s:pal.yellow, s:pal.bg0, s:emp.inverse) " --------------[改变行里的改动文本] "
+" }}}
+" Spell: {{{
+hi! link SpellCap DefaultGreenBox " ------------------------------------------[应该大写字母开头的单词] "
+hi! link SpellBad DefaultRedBox " --------------------------------------------[拼写检查器不能识别的单词] "
+hi! link SpellLocal DefaultBlueBox " -----------------------------------------[拼写检查器能识别但只在其它区域使用的单词] "
+hi! link SpellRare DefaultPurpleBox " ----------------------------------------[拼写检查器能识别但很少使用的单词] "
+" }}}
+" TabLine: {{{
+call s:HL('TabLineSel', s:pal.green, s:pal.bg1, s:emp.inverse) " -------------[活动标签页标签] "
+call s:HL('TabLineFill', s:pal.bg4, s:pal.bg1) " -----------------------------[没有标签的地方] "
+hi! link TabLine TabLineFill " -----------------------------------------------[非活动标签页标签] "
+" }}}
+" StatusLine: {{{
+call s:HL('StatusLine', s:pal.bg2, s:pal.fg1, s:emp.inverse) " ---------------[当前窗口的状态行] "
+call s:HL('StatusLineNC', s:pal.bg1, s:pal.fg4, s:emp.inverse) " -------------[非当前窗口的状态行] "
+" }}}
+" Message: {{{
+hi! link MoreMsg DefaultYellowBold " -----------------------------------------[使用 |set showcmd| 时输入栏提示] "
+hi! link ModeMsg DefaultYellowBold " -----------------------------------------[模式提示 (例如，"-- INSERT --")] "
+hi! link WarningMsg DefaultRedBold " -----------------------------------------[状态栏警告消息] "
+call s:HL('Error', s:pal.red, s:pal.none, s:emp.bold . s:emp.inverse) " ------[错误提示 左侧栏 >>] "
+call s:HL('ErrorMsg', s:pal.bg0, s:pal.red, s:emp.bold) " --------------------[命令行上的错误信息] "
+" }}}
+" Window: {{{
+call s:HL('VertSplit', s:pal.bg3, s:pal.bg0) " -------------------------------[分离垂直分割窗口的列] "
+" }}}
+" Syntax: {{{
+call s:HL('Comment', s:pal.gray, s:pal.none, s:emp.italic) " -----------------[文件头部文本] "
+hi! link Constant DefaultPurple " --------------------------------------------[任何常数] "
+call s:HL('String', s:pal.green, s:pal.none, s:emp.none) " -------------------[字符串] "
+hi! link Character DefaultPurple " -------------------------------------------[字符] "
+hi! link Number DefaultPurple " ----------------------------------------------[数字] "
+hi! link Boolean DefaultPurple " ---------------------------------------------[bool值] "
+hi! link Float DefaultPurple " -----------------------------------------------[float值高亮] "
+hi! link Special DefaultOrange " ---------------------------------------------[特殊字段] "
+hi! link Tag DefaultGreen " --------------------------------------------------[可以使用 CTRL-] 的项目] "
+hi! link SpecialChar DefaultRed " --------------------------------------------[%s] "
+hi! link Delimiter Normal " --------------------------------------------------[需要注意的字 分隔符<>] "
+hi! link SpecialComment Normal " ---------------------------------------------[注释里的特殊部分] "
+hi! link Debug Normal " ------------------------------------------------------[调试语句] "
+hi! link Identifier DefaultBlue " ---------------------------------------------[任何定义] "
+hi! link Function DefaultGreenBold " -----------------------------------------[函数名 (也包括: 类的方法名)] "
+hi! link Statement DefaultRed " ----------------------------------------------[任何声明] "
+hi! link Conditional DefaultRed " --------------------------------------------[if、then、else、endif、switch 等] "
+hi! link Repeat DefaultRed " -------------------------------------------------[for、do、while 等] "
+hi! link Label DefaultRed " --------------------------------------------------[case、default 等] "
+hi! link Operator DefaultPurple " --------------------------------------------[\ sizeof、+、* 等] "
+hi! link Keyword DefaultRed " ------------------------------------------------[其它关键字] "
+hi! link Exception DefaultRed " ----------------------------------------------[try、catch、throw] "
+hi! link PreProc DefaultAqua " -----------------------------------------------[通用预处理命令] "
+hi! link Include DefaultAqua " -----------------------------------------------[#include] "
+hi! link Define DefaultAqua " -------------------------------------------------[#define] "
+hi! link Macro DefaultAqua " -------------------------------------------------[宏] "
+hi! link PreCondit DefaultAqua " ---------------------------------------------[makefile ifneq] "
+hi! link Type DefaultYellow " ------------------------------------------------[任何类型] "
+hi! link StorageClass DefaultOrange " ----------------------------------------[static、register、volatile 等] "
+hi! link Structure DefaultAqua " ---------------------------------------------[struct、union、enum 等] "
+hi! link Typedef DefaultYellow " ---------------------------------------------[typedef] "
+hi! link Underlined DefaultNone " --------------------------------------------[需要突出的文本，HTML 链接 包括helpUnderlined] "
+hi! link Ignore Comment " ----------------------------------------------------[文件头部声明] "
+call s:HL('Todo', s:pal.none, s:pal.none, s:emp.bold . s:emp.italic) " -------[需要特殊注意的部分；主要是关键字 TODO FIXME 和 XX] "
+" }}}
 
 " 插件高亮配置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

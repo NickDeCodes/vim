@@ -1,6 +1,6 @@
 " =================================================================================================================================================
 " complex vim configure
-" Copyright 2021 NickDeCodes
+" Copyright 2021 nickdecodes
 " License: MIT
 " =================================================================================================================================================
 " 
@@ -52,7 +52,7 @@ colorscheme default                 " 主题选择
 " [行、列]---------------------------------------------------------------------------------------------------------------------------------[行、列] "
 set number                          " 显示行号
 set ruler                           " 显示光标当前位置
-set relativenumber                  " 行号以相对当前行的方式显示，方便跳转
+" set relativenumber                  " 行号以相对当前行的方式显示，方便跳转
 set linespace=0                     " 设置行间距
 set linebreak                       " 设置行断点
 set cursorline                      " 突出显示当前行
@@ -196,33 +196,47 @@ map <Esc><Esc> :w<CR>
 " [vimrc 配置文件按键映射]-----------------------------------------------------------------------------------------------------[vimrc 配置文件按键映射] "
 " Leader 即前缀键默认为 “\”
 " 当前窗口编辑配置文件 (e)dit (m)yvimrc
-nnoremap <Leader>em <Esc>:edit $MYVIMRC<CR>
+nnoremap <SPACE>em <Esc>:edit $MYVIMRC<CR>
 " 纵向分屏编辑配置文件 (v)sp (m)vimrc
-nnoremap <Leader>vm :vsp $MYVIMRC<CR>
+nnoremap <SPACE>vm :vsp $MYVIMRC<CR>
 " 重新加载 vimrc 文件 (s)ource (m)yvimrc
-nnoremap <Leader>sm :source $MYVIMRC<CR>
+nnoremap <SPACE>sm :source $MYVIMRC<CR>
 " [插件按键映射]------------------------------------------------------------------------------------------------------------------------[插件按键映射] "
 " [vim-plug]----------------------------------------------------------------------------------------------------------------------------[vim-plug] "
 " 查看插件状态
-nnoremap <Leader><Leader>s :PlugStatus<CR>
+nnoremap <SPACE>ps :PlugStatus<CR>
 " 安装在配置文件中声明的插件
-nnoremap <Leader><Leader>i :PlugInstall<CR>
+nnoremap <SPACE>pi :PlugInstall<CR>
 " 更新插件
-nnoremap <Leader><Leader>u :PlugUpdate<CR>
+nnoremap <SPACE>pu :PlugUpdate<CR>
 " 升级 vim-plug 本身
-nnoremap <Leader><Leader>g :PlugUpgrade<CR>
+nnoremap <SPACE>pug :PlugUpgrade<CR>
 " 查看插件的变化状态，简单地回滚有问题的插件
-nnoremap <Leader><Leader>d :PlugDiff<CR>
+nnoremap <SPACE>pd :PlugDiff<CR>
 " 删除插件
-nnoremap <Leader><Leader>c :PlugClean<CR>
+nnoremap <SPACE>pc :PlugClean<CR>
 " 关闭插件窗口
-nnoremap <Leader><Leader>q :q<CR>
+nnoremap <SPACE>q :q<CR>
+" [插件按键映射]------------------------------------------------------------------------------------------------------------------------[插件按键映射] "
+" [vim-plug]----------------------------------------------------------------------------------------------------------------------------[vim-plug] "
+" 打开标签目录 (r)efence (t)ree
 " [tagbar]--------------------------------------------------------------------------------------------------------------------------------[tagbar] "
- " 打开标签目录 (r)efence (t)ree
- nnoremap <SPACE>rt :TagbarToggle<CR>
+" 打开标签目录 (r)efence (t)ree
+nnoremap <SPACE>rt :TagbarToggle<CR>
 " [nerdtree]----------------------------------------------------------------------------------------------------------------------------[nerdtree] "
 " 列出当前目录文件 (f)ilr (t)ree
 nnoremap <SPACE>ft :NERDTreeToggle<CR>
+" [nerdcommenter]----------------------------------------------------------------------------------------------------------------------------[nerdtree] "
+map <SPACE>cc <plug>NERDCommenterComment " 注释当前行
+map <SPACE>cn <plug>NERDCommenterNested " 强制嵌套注释
+map <SPACE>c<SPACE> <plug>NERDCommenterToggle " 与上一行同步注释状态
+map <SPACE>cm <plug>NERDCommenterMinimal " 块级注释
+map <SPACE>ci <plug>NERDCommenterInvert " 改变当前行的注释状态
+map <SPACE>cs <plug>NERDCommenterSexy " 美观注释
+map <SPACE>cy <plug>NERDCommenterYank " 和...一样 抄送，但首先删除注释行
+map <SPACE>c$ <plug>NERDCommenterToEOL " 注释当前行从光标到行尾。
+map <SPACE>cA <plug>NERDCommenterAppend " 在行尾添加注释定界符，并在它们之间进入插入模式。
+map <SPACE>cu <plug>NERDCommenterUncomment " 取消注释选定的行
 " [自定义函数按键映射]--------------------------------------------------------------------------------------------------------------[自定义函数按键映射] "
 " 快捷键编译 (c)ompiler (r)un
 nnoremap <SPACE>cr :call CompileRun()<CR>
@@ -337,12 +351,14 @@ call plug#begin('~/.vim/pack/package/opt')
 Plug 'eikenb/acp'
 " [括号匹配]--------------------------------------------------------------------------{git clone https://github.com/jiangmiao/auto-pairs}[括号匹配] "
 Plug 'jiangmiao/auto-pairs'
+" [快捷注释]----------------------------------------------------------------------{git clone https://github.com/scrooloose/nerdcommenter}[快捷注释] "
+Plug 'scrooloose/nerdcommenter'
 " [文件树]------------------------------------------------------------------------------{git clone https://github.com/scrooloose/nerdtree}[文件树] "
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " [超级TAB]------------------------------------------------------------------------------{git clone https://github.com/ervandew/supertab}[超级TAB] "
 Plug 'ervandew/supertab'
 " [函数标签]-----------------------------------------------------------------------------{git clone https://github.com/majutsushi/tagbar}[函数标签] "
- Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 " [语法检测]--------------------------------------------------------------------------{git clone https://github.com/scrooloose/syntastic}[语法检测] "
 Plug 'scrooloose/syntastic'
 " [代码块补全]---------------------------------------------------------------------------{git clone https://github.com/sirver/ultisnips}[代码块补全] "
@@ -358,6 +374,8 @@ call plug#end()
 " packadd acp
 " [括号匹配]--------------------------------------------------------------------------{git clone https://github.com/jiangmiao/auto-pairs}[括号匹配] "
 " packadd auto-pairs
+" [快捷注释]----------------------------------------------------------------------{git clone https://github.com/scrooloose/nerdcommenter}[快捷注释] "
+" packadd nerdcommenter
 " [文件树]------------------------------------------------------------------------------{git clone https://github.com/scrooloose/nerdtree}[文件树] "
 " packadd nerdtree
 " [超级TAB]------------------------------------------------------------------------------{git clone https://github.com/ervandew/supertab}[超级TAB] "
@@ -376,6 +394,18 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 插件配置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" [快捷注释配置]----------------------------------------------------------------{git clone https://github.com/scrooloose/nerdcommenter}[快捷注释配置] "
+" [nerdcommenter] 
+let g:NERDCreateDefaultMappings = 1 " 创建默认的映射
+let g:NERDSpaceDelims = 1 " 默认情况下在注释分隔符后添加空格
+let g:NERDCompactSexyComs = 1 " 使用简洁的语法来修饰多行注释
+let g:NERDDefaultAlign = 'left' " 按行对齐注释分隔符左对齐，而不是跟随代码缩进
+let g:NERDAltDelims_java = 1 " 设置一种语言以默认使用其替代分隔符
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } } " 添加您自己的自定义格式或覆盖默认值
+let g:NERDCommentEmptyLines = 1 " 允许注释和倒排空行(在注释一个区域时很有用)
+let g:NERDTrimTrailingWhitespace = 1 " 在取消注释时启用对尾随空格的修整
+let g:NERDToggleCheckAllLines = 1 " 启用NERDCommenterToggle来检查是否注释了所有选定的行
+
 " [文件树配置]------------------------------------------------------------------------{git clone https://github.com/scrooloose/nerdtree}[文件树配置] "
 " [nerdtree]
 autocmd StdinReadPre * let s:std_in=1
