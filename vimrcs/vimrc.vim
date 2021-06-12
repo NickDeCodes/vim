@@ -155,6 +155,7 @@ set t_vb=                           " 置空错误铃声的终端代码
 " [补·全]----------------------------------------------------------------------------------------------------------------------------------[补·全] "
 set completeopt=preview,longest,menu,popup  " 代码补全
 autocmd FileType c setlocal dict+=~/.vim/dict/c.dict
+autocmd FileType go setlocal dict+=~/.vim/dict/go.dict
 autocmd FileType cpp setlocal dict+=~/.vim/dict/cpp.dict
 autocmd FileType vim setlocal dict+=~/.vim/dict/vim.dict
 autocmd FileType lua setlocal dict+=~/.vim/dict/lua.dict
