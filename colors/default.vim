@@ -189,7 +189,7 @@ call s:HL('Visual', s:pal.none, s:pal.bg3) " ---------------------------------[�
 hi! link VisualNOS Visual " --------------------------------------------------[Vim 是选择区的非拥有者时，可视模式的选择区] "
 " }}}
 " Fold: {{{
-call s:HL('Folded', s:pal.gray, s:pal.bg1, s:emp.italic) " -------------------[用于关闭的折叠的行] "
+call s:HL('Folded', s:pal.gray, s:pal.bg1) " -------------------[用于关闭的折叠的行] "
 call s:HL('FoldColumn', s:pal.gray, s:pal.bg1) " -----------------------------[用于关闭的折叠的列] "
 " }}}
 " Diff: {{{
@@ -224,7 +224,7 @@ call s:HL('ErrorMsg', s:pal.bg0, s:pal.red, s:emp.bold) " --------------------[�
 call s:HL('VertSplit', s:pal.bg3, s:pal.bg0) " -------------------------------[分离垂直分割窗口的列] "
 " }}}
 " Syntax: {{{
-call s:HL('Comment', s:pal.gray, s:pal.none, s:emp.italic) " -----------------[文件头部文本] "
+call s:HL('Comment', s:pal.gray, s:pal.none) " -----------------[文件头部文本] "
 hi! link Constant DefaultPurple " --------------------------------------------[任何常数] "
 call s:HL('String', s:pal.green, s:pal.none, s:emp.none) " -------------------[字符串] "
 hi! link Character DefaultPurple " -------------------------------------------[字符] "
@@ -257,7 +257,7 @@ hi! link Structure DefaultAqua " ---------------------------------------------[s
 hi! link Typedef DefaultYellow " ---------------------------------------------[typedef] "
 hi! link Underlined DefaultNone " --------------------------------------------[需要突出的文本，HTML 链接 包括helpUnderlined] "
 hi! link Ignore Comment " ----------------------------------------------------[文件头部声明] "
-call s:HL('Todo', s:pal.none, s:pal.none, s:emp.bold . s:emp.italic) " -------[需要特殊注意的部分；主要是关键字 TODO FIXME 和 XX] "
+call s:HL('Todo', s:pal.none, s:pal.none, s:emp.bold) " -------[需要特殊注意的部分；主要是关键字 TODO FIXME 和 XX] "
 " }}}
 
 " 插件高亮配置
@@ -348,7 +348,7 @@ hi! link xmlEntity DefaultOrange
 hi! link xmlEntityPunct DefaultOrange
 " }}}
 " Vim: {{{
-call s:HL('vimCommentTitle', s:pal.fg4, s:pal.none, s:emp.bold . s:emp.italic)
+call s:HL('vimCommentTitle', s:pal.fg4, s:pal.none, s:emp.bold)
 hi! link vimNotation DefaultOrange
 hi! link vimBracket DefaultOrange
 hi! link vimMapModKey DefaultOrange
