@@ -247,6 +247,14 @@ nnoremap <SPACE>rg :call RunGDB()<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 自定义函数
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 有的时候vimrc无法检测文件类型，导致文件头错误
+autocmd BufNewFile,BufRead *.c setfiletype c
+autocmd BufNewFile,BufRead *.sh setfiletype sh
+autocmd BufNewFile,BufRead *.py setfiletype python
+autocmd BufNewFile,BufRead *.md setfiletype md
+autocmd BufNewFile,BufRead *.go setfiletype go
+autocmd BufNewFile,BufRead *.cpp setfiletype cpp
+autocmd BufNewFile,BufRead *.java setfiletype java
 " 新建文件，自动插入文件头
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.py,*.go,*.java exec ":call SetTitle()" 
 " 新建文件后，自动定位到文件末尾
