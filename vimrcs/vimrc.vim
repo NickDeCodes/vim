@@ -57,7 +57,7 @@ set linespace=0                     " 设置行间距
 set linebreak                       " 设置行断点
 set cursorline                      " 突出显示当前行
 set cursorcolumn                    " 突出显示当前列
-set signcolumn=auto                 " 自动绘制标号列
+" set signcolumn=auto                 " 自动绘制标号列
 " autocmd InsertLeave,WinEnter * set cursorline " 正常模式高亮当前行
 " autocmd InsertEnter,WinLeave * set nocursorline " 输入模式取消高亮当前行
 " [鼠·标]----------------------------------------------------------------------------------------------------------------------------------[鼠·标] "
@@ -153,7 +153,7 @@ set noerrorbells                    " 关闭错误信息响铃
 set novisualbell                    " 关闭使用可视响铃代替呼叫
 set t_vb=                           " 置空错误铃声的终端代码
 " [补·全]----------------------------------------------------------------------------------------------------------------------------------[补·全] "
-set completeopt=preview,longest,menu,popup  " 代码补全
+set completeopt=preview,longest " ,menu,popup  " 代码补全
 autocmd FileType c setlocal dict+=~/.vim/dict/c.dict
 autocmd FileType go setlocal dict+=~/.vim/dict/go.dict
 autocmd FileType cpp setlocal dict+=~/.vim/dict/cpp.dict
