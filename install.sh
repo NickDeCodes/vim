@@ -53,7 +53,7 @@ rm -rf ~/.vim/autoload/vim-plug/
 echo "Nick.vim install plug" > Nick.Vim
 echo "Nick.vim exit automatically after completion" >> Nick.Vim
 vim Nick.vim -c "PlugInstall" -c "q" -c "q"
-rm Nick.vim
+rm -y Nick.vim
 
 # 安装完成
 echo "Nick.vim is already installed"
