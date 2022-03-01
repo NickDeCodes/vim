@@ -268,7 +268,7 @@ function! SetTitle() abort
     call append(line("."), "") 
   elseif &filetype == 'python'
     call setline(1,"# !/usr/bin/env python")
-    call append(line("."),"# coding=utf-8")
+    call append(line("."),"# -*- coding: utf-8 -*-")
     call append(line(".")+1, "")
   elseif &filetype == 'md'
     call setline(1,"<head><meta charset=\"UTF-8\"></head>")
