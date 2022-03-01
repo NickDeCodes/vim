@@ -264,10 +264,10 @@ autocmd BufNewFile * normal G
 function! SetTitle() abort 
   " 如果文件类型为.sh文件 
   if &filetype == 'sh' 
-    call setline(1,"\#!/bin/bash") 
+    call setline(1,"\# !/bin/bash") 
     call append(line("."), "") 
   elseif &filetype == 'python'
-    call setline(1,"#!/usr/bin/env python")
+    call setline(1,"# !/usr/bin/env python")
     call append(line("."),"# coding=utf-8")
     call append(line(".")+1, "")
   elseif &filetype == 'md'
