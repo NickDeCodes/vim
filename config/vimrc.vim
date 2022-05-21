@@ -198,7 +198,7 @@ map <Esc><Esc> :w<CR>
 " Leader 即前缀键默认为 “\”
 " 当前窗口编辑配置文件 (e)dit (m)yvimrc
 nnoremap <SPACE>em <Esc>:edit $MYVIMRC<CR>
-" 纵向分屏编辑配置文件 (v)sp (m)vimrc
+" 纵向分屏编辑配置文件 (v)sp (m)yvimrc
 nnoremap <SPACE>vm :vsp $MYVIMRC<CR>
 " 重新加载 vimrc 文件 (s)ource (m)yvimrc
 nnoremap <SPACE>sm :source $MYVIMRC<CR>
@@ -218,16 +218,13 @@ nnoremap <SPACE>pd :PlugDiff<CR>
 nnoremap <SPACE>pc :PlugClean<CR>
 " 关闭插件窗口
 nnoremap <SPACE>q :q<CR>
-" [插件按键映射]------------------------------------------------------------------------------------------------------------------------[插件按键映射] "
-" [vim-plug]----------------------------------------------------------------------------------------------------------------------------[vim-plug] "
-" 打开标签目录 (r)efence (t)ree
 " [tagbar]--------------------------------------------------------------------------------------------------------------------------------[tagbar] "
 " 打开标签目录 (r)efence (t)ree
 nnoremap <SPACE>rt :TagbarToggle<CR>
 " [nerdtree]----------------------------------------------------------------------------------------------------------------------------[nerdtree] "
 " 列出当前目录文件 (f)ilr (t)ree
 nnoremap <SPACE>ft :NERDTreeToggle<CR>
-" [nerdcommenter]----------------------------------------------------------------------------------------------------------------------------[nerdtree] "
+" [nerdcommenter]-----------------------------------------------------------------------------------------------------------------------[nerdtree] "
 map <SPACE>cc <plug>NERDCommenterComment " 注释当前行
 map <SPACE>cn <plug>NERDCommenterNested " 强制嵌套注释
 map <SPACE>c<SPACE> <plug>NERDCommenterToggle " 与上一行同步注释状态
@@ -422,7 +419,7 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in
 " 当最后一个窗口时文件树时关闭窗口
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
-" [SuperTa配置]---------------------------------------------------------------------{git clone https://github.com/ervandew/supertab}[SuperTa配置] "
+" [SuperTab配置]---------------------------------------------------------------------{git clone https://github.com/ervandew/supertab}[SuperTa配置] "
 " [SuperTab]
 let g:SuperTabMappingForward = '<s-tab>'
 let g:SuperTabMappingBackward = '<tab>'
