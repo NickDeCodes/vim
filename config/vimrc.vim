@@ -182,21 +182,20 @@ autocmd BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '
 " 按键映射
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ShortcutDict = {}
-function! s:names(...)
+function! s:shortcut_desc(...) abort
   return keys(g:ShortcutDict)
 endfunction
-command! -nargs=1 -bar -bang -complete=customlist,s:names ShowShortcut echo g:ShortcutDict[<f-args>]
-map <SPACE><SPACE> :ShowShortcut <SPACE>
+command! -nargs=1 -bar -bang -complete=customlist,s:shortcut_desc ShowShortcut echo g:ShortcutDict[<f-args>]
+nnoremap <Space>ss :ShowShortcut <Space>
 " [剪贴板]---------------------------------------------------------------------------------------------------------------------------------[剪贴板] "
 " 在可视化模式下control+c复制到剪切板
 vnoremap <C-c> "+y
-let g:ShortcutDict["复制到剪切板"] = "vnoremap <C-c>"
+let g:ShortcutDict["(C)opy (c)lipboard"] = "vnoremap <C-c>"
 " 在普通模式下control+p复制剪切板到vim
 nnoremap <C-p> "+p
-let g:ShortcutDict["复制剪切板到vim"] = "nnoremap <C-p>"
+let g:ShortcutDict["(C)lipboard (p)aste"] = "nnoremap <C-p>"
 " [Normal 模式，按 Esc+Esc 保存]---------------------------------------------------------------------------------------[Normal 模式，按 Esc+Esc 保存] "
 map <Esc><Esc> :w<CR>
-let g:ShortcutDict["Esc+Esc保存"] = "map <Esc><Esc> :w<CR>"
 " [括号等自动补全]--------------------------------------------------------------------------------------------------------------------[括号等自动补全] "
 " inoremap ( ()<Esc>i
 " inoremap [ []<Esc>i
@@ -208,101 +207,102 @@ let g:ShortcutDict["Esc+Esc保存"] = "map <Esc><Esc> :w<CR>"
 "
 " [分割窗口调整大小]------------------------------------------------------------------------------------------------------------------[分割窗口调整大小] "
 " Leader 即前缀键默认为 “\”
-nnoremap <Leader><Right> :vertical resize +5<CR>
-nnoremap <Leader><Left>  :vertical resize -5<CR>
-nnoremap <Leader><Up>    :resize +5<CR>
-nnoremap <Leader><Down>  :resize -5<CR>
-let g:ShortcutDict["分割窗口调整大"] = "nnoremap <Leader>[上下左右]"
+nnoremap <Space>rw<Right> :vertical resize +5<CR>
+nnoremap <Space>rw<Left>  :vertical resize -5<CR>
+nnoremap <Space>rw<Up>    :resize +5<CR>
+nnoremap <Space>rw<Down>  :resize -5<CR>
+let g:ShortcutDict["(r)esize (w)indow"] = "nnoremap <Space>rw[hjkl]"
+nnoremap <Space>cw :close <CR>
+let g:ShortcutDict["(c)lose (w)indow"] = "nnoremap <Space>cw"
+nnoremap <Space>qw :wq <CR>
+let g:ShortcutDict["(q)uit (w)indow"] = "nnoremap <Space>qw"
 " [文件操作]------------------------------------------------------------------------------------------------------------------------------[文件操作] "
 " 一键去除全部尾部空白(\rb)
 inoremap <Leader>rb <Esc>:let _s=@/<bar>:%s/\s\+$//e<bar>:let @/=_s<bar>:nohl<CR>
-nnoremap <Leader>rb :let _s=@/<bar>:%s/\s\+$//e<bar>:let @/=_s<bar>:nohl<CR>
+nnoremap <Space>rb :let _s=@/<bar>:%s/\s\+$//e<bar>:let @/=_s<bar>:nohl<CR>
+let g:ShortcutDict["(r)emove (b)lack"] = "nnoremap <Space>rb"
 vnoremap <Leader>rb <Esc>:let _s=@/<bar>:%s/\s\+$//e<bar>:let @/=_s<bar>:nohl<CR>
-let g:ShortcutDict["一键去除全部尾部空白"] = "nnoremap <Leader>rb"
 " 一键去除全部 ^M 字符(\rm)
 inoremap <Leader>rm <Esc>:%s/<c-v><c-m>//g<CR>
-nnoremap <Leader>rm :%s/<c-v><c-m>//g<CR>
+nnoremap <Space>rm :%s/<c-v><c-m>//g<CR>
+let g:ShortcutDict["(r)emove (m)char"] = "nnoremap <Space>rm"
 vnoremap <Leader>rm <Esc>:%s/<c-v><c-m>//g<CR>
-let g:ShortcutDict["一键去除全部尾部空白"] = "nnoremap <Leader>rm"
 " [vimrc 配置文件按键映射]-----------------------------------------------------------------------------------------------------[vimrc 配置文件按键映射] "
 " 当前窗口编辑配置文件 (e)dit (m)yvimrc
-nnoremap <SPACE>em <Esc>:edit $MYVIMRC<CR>
-let g:ShortcutDict["当前窗口编辑配置文件"] = "nnoremap <SPACE>em"
+nnoremap <Space>hm <Esc>:sp $MYVIMRC<CR>
+let g:ShortcutDict["(e)dit (m)yvimrc"] = "nnoremap <Space>em"
 " 纵向分屏编辑配置文件 (v)sp (m)yvimrc
-nnoremap <SPACE>vm :vsp $MYVIMRC<CR>
-let g:ShortcutDict["纵向分屏编辑配置文件"] = "nnoremap <SPACE>vm"
+nnoremap <Space>vm :vsp $MYVIMRC<CR>
+let g:ShortcutDict["(v)sp (m)yvimrc"] = "nnoremap <Space>vm"
 " 重新加载vimrc文件 (s)ource (m)yvimrc
-nnoremap <SPACE>sm :source $MYVIMRC<CR>
-let g:ShortcutDict["重新加载vimrc文件"] = "nnoremap <SPACE>sm"
+nnoremap <Space>sm :source $MYVIMRC<CR>
+let g:ShortcutDict["(s)ource (m)yvimrc"] = "nnoremap <Space>sm"
 " [插件按键映射]------------------------------------------------------------------------------------------------------------------------[插件按键映射] "
 " [vim-plug]----------------------------------------------------------------------------------------------------------------------------[vim-plug] "
 " 查看插件状态
-nnoremap <SPACE>ps :PlugStatus<CR>
-let g:ShortcutDict["查看插件状态"] = "nnoremap <SPACE>ps"
+nnoremap <Space>ps :PlugStatus<CR>
+let g:ShortcutDict["(p)lug (s)tatus"] = "nnoremap <Space>ps"
 " 安装在配置文件中声明的插件
-nnoremap <SPACE>pi :PlugInstall<CR>
-let g:ShortcutDict["安装配置插件"] = "nnoremap <SPACE>pi"
+nnoremap <Space>pi :PlugInstall<CR>
+let g:ShortcutDict["(p)lug (i)nstall"] = "nnoremap <Space>pi"
 " 更新插件
-nnoremap <SPACE>pu :PlugUpdate<CR>
-let g:ShortcutDict["更新插件"] = "nnoremap <SPACE>pu"
+nnoremap <Space>pu :PlugUpdate<CR>
+let g:ShortcutDict["(p)lug (u)pdate"] = "nnoremap <Space>pu"
 " 升级vim-plug本身
-nnoremap <SPACE>pug :PlugUpgrade<CR>
-let g:ShortcutDict["升级vim-plug本身"] = "nnoremap <SPACE>pug"
+nnoremap <Space>pug :PlugUpgrade<CR>
+let g:ShortcutDict["(p)lug (u)p(g)rade"] = "nnoremap <Space>pug"
 " 查看插件的变化状态，简单地回滚有问题的插件
-nnoremap <SPACE>pd :PlugDiff<CR>
-let g:ShortcutDict["查看插件的变化状态"] = "nnoremap <SPACE>pd"
+nnoremap <Space>pd :PlugDiff<CR>
+let g:ShortcutDict["(p)lug (d)iff"] = "nnoremap <Space>pd"
 " 删除插件
-nnoremap <SPACE>pc :PlugClean<CR>
-let g:ShortcutDict["删除插件"] = "nnoremap <SPACE>pc"
-" 关闭插件窗口
-nnoremap <SPACE>q :q<CR>
-let g:ShortcutDict["重新加载vimrc文件"] = "nnoremap <SPACE>sm"
+nnoremap <Space>pc :PlugClean<CR>
+let g:ShortcutDict["(p)lug (c)lean"] = "nnoremap <Space>pc"
 " [tagbar]--------------------------------------------------------------------------------------------------------------------------------[tagbar] "
 " 打开标签目录 (r)efence (t)ree
-nnoremap <SPACE>rt :TagbarToggle<CR>
-let g:ShortcutDict["打开标签目录"] = "nnoremap <SPACE>rt"
+nnoremap <Space>rt :TagbarToggle<CR>
+let g:ShortcutDict["(r)efence (t)ree"] = "nnoremap <Space>rt"
 " [nerdtree]----------------------------------------------------------------------------------------------------------------------------[nerdtree] "
 " 列出当前目录文件 (f)ile (t)ree
-nnoremap <SPACE>ft :NERDTreeToggle<CR>
-let g:ShortcutDict["列出当前目录文件"] = "nnoremap <SPACE>ft"
+nnoremap <Space>ft :NERDTreeToggle<CR>
+let g:ShortcutDict["(f)ile (t)ree"] = "nnoremap <Space>ft"
 " [nerdcommenter]-----------------------------------------------------------------------------------------------------------------------[nerdtree] "
 " 注释当前行
-map <SPACE>cc <plug>NERDCommenterComment
-let g:ShortcutDict["注释当前行"] = "map <SPACE>cc"
+nnoremap <Space>cc <plug>NERDCommenterComment
+let g:ShortcutDict["(c)ommenter (c)omment"] = "nnoremap <Space>cc"
 " 强制嵌套注释
-map <SPACE>cn <plug>NERDCommenterNested 
-let g:ShortcutDict["强制嵌套注释"] = "map <SPACE>cn"
+nnoremap <Space>cn <plug>NERDCommenterNested 
+let g:ShortcutDict["(c)ommenter (n)ested"] = "nnoremap <Space>cn"
 " 与上一行同步注释状态
-map <SPACE>c<SPACE> <plug>NERDCommenterToggle 
-let g:ShortcutDict["与上一行同步注释状态"] = "map <SPACE>c<SPACE>"
+nnoremap <Space>ct <plug>NERDCommenterToggle 
+let g:ShortcutDict["(c)ommenter (t)oggle "] = "nnoremap <Space>ct"
 " 块级注释
-map <SPACE>cm <plug>NERDCommenterMinimal 
-let g:ShortcutDict["块级注释"] = "map <SPACE>cm"
+nnoremap <Space>cm <plug>NERDCommenterMinimal 
+let g:ShortcutDict["(c)ommenter (m)inimal"] = "nnoremap <Space>cm"
 " 改变当前行的注释状态
-map <SPACE>ci <plug>NERDCommenterInvert 
-let g:ShortcutDict["改变当前行的注释状态"] = "map <SPACE>ci"
+nnoremap <Space>cI <plug>NERDCommenterInvert 
+let g:ShortcutDict["(c)ommenter (I)nvert"] = "nnoremap <Space>cI"
 " 美观注释
-map <SPACE>cs <plug>NERDCommenterSexy 
-let g:ShortcutDict["美观注释"] = "map <SPACE>cs"
+nnoremap <Space>cs <plug>NERDCommenterSexy 
+let g:ShortcutDict["(c)ommenter (s)exy"] = "nnoremap <Space>cs"
 " 和...一样 抄送，但首先删除注释行
-map <SPACE>cy <plug>NERDCommenterYank 
-let g:ShortcutDict["和...一样 抄送，但首先删除注释行"] = "map <SPACE>cy"
+nnoremap <Space>cy <plug>NERDCommenterYank 
+let g:ShortcutDict["(c)ommenter (y)ank "] = "nnoremap <Space>cy"
 " 注释当前行从光标到行尾
-map <SPACE>c$ <plug>NERDCommenterToEOL 
-let g:ShortcutDict["注释当前行从光标到行尾"] = "map <SPACE>c$"
+nnoremap <Space>c$ <plug>NERDCommenterToEOL 
+let g:ShortcutDict["(c)ommenter ($)"] = "nnoremap <Space>c$"
 " 在行尾添加注释定界符，并在它们之间进入插入模式。
-map <SPACE>cA <plug>NERDCommenterAppend 
-let g:ShortcutDict["在行尾添加注释定界符，并在它们之间进入插入模式"] = "map <SPACE>cA"
+nnoremap <Space>cA <plug>NERDCommenterAppend 
+let g:ShortcutDict["(c)ommenter (A)ppend"] = "nnoremap <Space>cA"
 " 取消注释选定的行
-map <SPACE>cu <plug>NERDCommenterUncomment
-let g:ShortcutDict["取消注释选定的行"] = "map <SPACE>cu"
+nnoremap <Space>cu <plug>NERDCommenterUncomment
+let g:ShortcutDict["(c)ommenter (u)ncomment"] = "nnoremap <Space>cu"
 " [自定义函数按键映射]--------------------------------------------------------------------------------------------------------------[自定义函数按键映射] "
 " 快捷键编译 (c)ompiler (r)un
-nnoremap <SPACE>cr :call CompileRun()<CR>
-let g:ShortcutDict["快捷键编译"] = "nnoremap <SPACE>cr"
+nnoremap <Space>cr :call CompileRun()<CR>
+let g:ShortcutDict["(c)ompiler (r)un"] = "nnoremap <Space>cr"
 " C,C++的GDB调试 (r)un (g)db
-nnoremap <SPACE>rg :call RunGDB()<CR>
-let g:ShortcutDict["C,C++的GDB调试"] = "nnoremap <SPACE>rg"
+nnoremap <Space>rg :call RunGDB()<CR>
+let g:ShortcutDict["(r)un (g)db"] = "nnoremap <Space>rg"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 自定义函数
