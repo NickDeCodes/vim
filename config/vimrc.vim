@@ -111,7 +111,7 @@ set statusline+=\ [FORMAT=%{&ff}]   " 文件系统类型
 set statusline+=\ [TYPE=%Y]\        " 文件类型
 set statusline+=\ %=[POS=%l,%v]     " 行，列
 set statusline+=\ [%p%%]            " 当前行数占总行数的的百分比
-set statusline+=\ %{strftime(\"%y/%m/%d-%H:%M\")} " 显示日期
+set statusline+=\ %{strftime(\"%Y/%m/%d-%H:%M\")} " 显示日期
 " [语·言]----------------------------------------------------------------------------------------------------------------------------------[语·言] "
 set encoding=utf-8                  " Vim 内部 buffer (缓冲区)、菜单文本等使用的编码方式
 set termencoding=utf-8              " Vim 所工作的终端的字符编码方式
@@ -281,7 +281,7 @@ function! SetHead(line) abort
   call append(a:line+1, " @Email   : ")
   call append(a:line+2, " @Usage   : ")
   call append(a:line+3, " @FileName: ".expand("%")) 
-  call append(a:line+4, " @DateTime: ".strftime("%c")) 
+  call append(a:line+4, " @DateTime: ".strftime("%Y/%m/%d %H:%M")) 
   call append(a:line+5, " @SoftWare: vim") 
 endfunction
 
