@@ -29,7 +29,7 @@
 " 环境设置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible                   " 必须先设定的选项，关闭兼容 vi 模式，使用 Vim 自身的
-set shell=/bin/bash                " Vim 需要一个符合 Posix 的 Shell
+set shell=$SHELL                   " Vim 需要一个符合 Posix 的 Shell
 set viminfo=<100,'100,/50,:100,h,r$TEMP:,s10
 "           |    |    |   |    | |       + 不保存超过10KB寄存器
 "           |    |    |   |    | + 不保存TEMP目录下文件的相关信息
@@ -52,14 +52,14 @@ colorscheme default                 " 主题选择
 " [行、列]---------------------------------------------------------------------------------------------------------------------------------[行、列] "
 set number                          " 显示行号
 set ruler                           " 显示光标当前位置
-" set relativenumber                  " 行号以相对当前行的方式显示，方便跳转
+"  set relativenumber                  " 行号以相对当前行的方式显示，方便跳转
 set linespace=0                     " 设置行间距
 set linebreak                       " 设置行断点
 set cursorline                      " 突出显示当前行
 set cursorcolumn                    " 突出显示当前列
-" set signcolumn=auto                 " 自动绘制标号列
-" autocmd InsertLeave,WinEnter * set cursorline " 正常模式高亮当前行
-" autocmd InsertEnter,WinLeave * set nocursorline " 输入模式取消高亮当前行
+set signcolumn=auto                 " 自动绘制标号列
+autocmd InsertLeave,WinEnter * set cursorline " 正常模式高亮当前行
+autocmd InsertEnter,WinLeave * set nocursorline " 输入模式取消高亮当前行
 " [鼠·标]----------------------------------------------------------------------------------------------------------------------------------[鼠·标] "
 set mouse=a                         " 启用鼠标
 set selection=exclusive             " 指定在选择文本时光标所在位置也属于被选中的范围
@@ -104,7 +104,7 @@ set autoindent cindent              " 启用自动对齐功能，把上一行的
 set report=0                        " 通过使用 :commands 命令，告诉我们文件的哪一行被改变过
 " [状态行]---------------------------------------------------------------------------------------------------------------------------------[状态行] "
 set laststatus=2                    " 总是显示状态行
-" set cmdheight=2                     " 命令行为两行
+"  set cmdheight=2                     " 命令行为两行
 " [状态栏]---------------------------------------------------------------------------------------------------------------------------------[状态栏] "
 set statusline=%F%m%r%h%w           " %文件名和路径%修改缓冲区%只读缓冲区%帮助缓冲区%预览窗口
 set statusline+=\ [FORMAT=%{&ff}]   " 文件系统类型
@@ -115,24 +115,24 @@ set statusline+=\ %{strftime(\"%y/%m/%d-%H:%M\")} " 显示日期
 " [语·言]----------------------------------------------------------------------------------------------------------------------------------[语·言] "
 set encoding=utf-8                  " Vim 内部 buffer (缓冲区)、菜单文本等使用的编码方式
 set termencoding=utf-8              " Vim 所工作的终端的字符编码方式
-set fileencoding=utf-8              " 当前编辑文件的字符编码方式，保存文件也使用这种编码方式
-set fileencodings=uft-8,gbk         " Vim 启动时逐一按顺序使用第一个匹配到的编码方式打开文件
+set fileencoding=utf-8               " 当前编辑文件的字符编码方式，保存文件也使用这种编码方式
+set fileencodings=uft-8,gbk          " Vim 启动时逐一按顺序使用第一个匹配到的编码方式打开文件
 set helplang=cn                     " 帮助系统设置为中文
 "set langmenu=zh_CN.UTF-8           " 显示中文菜单语言
 set langmenu=en_US.UTF-8            " 显示英文菜单语言
 "language messages zh_CN.utf-8      " 设置提示信息为中文
 language messages en_US.UTF-8       " 设置提示信息为英文
 " [文·件]----------------------------------------------------------------------------------------------------------------------------------[文·件] "
-filetype on                         " 检测文件类型
-filetype indent on                  " 为特定文件类型载入相关缩进文件
-filetype plugin on                  " 允许载入文件类型插件
-set fileformat=unix                 " 设置以 UNIX 的格式保存文件
+filetype on                          " 检测文件类型
+filetype indent on                   " 为特定文件类型载入相关缩进文件
+filetype plugin on                   " 允许载入文件类型插件
+set fileformat=unix                  " 设置以 UNIX 的格式保存文件
 set autoread                        " 设置当文件被改动时自动载入
 set autowrite                       " 文件修改自动保存
 set nobackup                        " 禁止文件自动备份
-set noswapfile                      " 禁止生成临时文件
-set confirm                         " 在处理未保存或只读文件的时候，弹出确认
-set noundofile                      " 不生成 undo 文件
+set noswapfile                       " 禁止生成临时文件
+set confirm                          " 在处理未保存或只读文件的时候，弹出确认
+set noundofile                       " 不生成 undo 文件
 set hidden                          " 允许在有未保存的修改时切换缓冲区，此时的修改由vim负责保存
 " [折·叠]----------------------------------------------------------------------------------------------------------------------------------[折·叠] "
 set wrap                            " 设置代码自动折行
@@ -146,7 +146,7 @@ set equalalways                     " 分割窗口时保持相等的宽/高
 set fillchars=vert:\ ,stl:\ ,stlnc:\ " 分屏是空白分割
 " [剪贴板]---------------------------------------------------------------------------------------------------------------------------------[剪贴板] "
 set clipboard+=unnamed              " 共享剪贴板  
-set fileformat=unix                 " 从Win上复制文件时，避免换行符错误
+set fileformat=unix                  " 从Win上复制文件时，避免换行符错误
 " [响·铃]----------------------------------------------------------------------------------------------------------------------------------[响·铃] "
 set noeb                            " 去掉输入错误的提示声音
 set noerrorbells                    " 关闭错误信息响铃
@@ -162,6 +162,9 @@ autocmd FileType lua setlocal dict+=~/.vim/dict/lua.dict
 autocmd FileType java setlocal dict+=~/.vim/dict/java.dict
 autocmd FileType python setlocal dict+=~/.vim/dict/python.dict
 autocmd FileType javascript setlocal dict+=~/.vim/dict/javascript.dict
+autocmd FileType html setlocal dict+=~/.vim/dict/javascript.dict
+autocmd FileType html setlocal dict+=~/.vim/dict/css.dict
+autocmd FileType css setlocal dict+=~/.vim/dict/css.dict
 autocmd FileType c,cpp map <buffer> <leader><space> :w<cr>:make<cr> " quickfix模式
 " [其·它]----------------------------------------------------------------------------------------------------------------------------------[其·它] "
 set magic                           " 设置魔术
@@ -174,7 +177,7 @@ set iskeyword+=_,$,@,%,#,-          " 带有如下符号的单词不要被换行
 set textwidth=0                     " 插入文本的最大宽度。更长的行会在空白之后截断，以达到此宽度。设为零关闭此项功能
 set updatetime=100                  " 降低延迟和糟糕的用户体验
 " Vim 重新打开文件时，回到上次历史所编辑文件的位置
-au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
+autocmd BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 按键映射
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -248,16 +251,26 @@ nnoremap <SPACE>rg :call RunGDB()<CR>
 autocmd BufNewFile,BufRead *.c setfiletype c
 autocmd BufNewFile,BufRead *.sh setfiletype sh
 autocmd BufNewFile,BufRead *.py setfiletype python
-autocmd BufNewFile,BufRead *.md setfiletype md
+autocmd BufNewFile,BufRead *.{md,mdown,mkd,mkdn,markdown,mdwn} setfiletype md
 autocmd BufNewFile,BufRead *.go setfiletype go
-autocmd BufNewFile,BufRead *.cpp setfiletype cpp
+autocmd BufNewFile,BufRead *.{cpp,hpp} setfiletype cpp
 autocmd BufNewFile,BufRead *.java setfiletype java
+autocmd BufRead,BufNewFile *.js setfiletype javascript
 " 新建文件，自动插入文件头
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.py,*.go,*.java exec ":call SetTitle()" 
 " 新建文件后，自动定位到文件末尾
 autocmd BufNewFile * normal G 
 
 " [定义函数SetTitle，打开新文件时自动插入文件头]-----------------------------------------------------------[剪定义函数SetTitle，打开新文件时自动插入文件头贴板] "
+function! SetHead(line) abort
+  call append(a:line, " @Author  : ") 
+  call append(a:line+1, " @Email   : ")
+  call append(a:line+2, " @Usage   : ")
+  call append(a:line+3, " @FileName: ".expand("%")) 
+  call append(a:line+4, " @DateTime: ".strftime("%c")) 
+  call append(a:line+5, " @SoftWare: vim") 
+endfunction
+
 function! SetTitle() abort 
   " 如果文件类型为.sh文件 
   if &filetype == 'sh' 
@@ -267,6 +280,10 @@ function! SetTitle() abort
     call setline(1,"# !/usr/bin/env python")
     call append(line("."),"# -*- coding: utf-8 -*-")
     call append(line(".")+1, "")
+    call append(line(".")+2, "\"\"\"")
+    call SetHead(line(".")+3)
+    call append(line(".")+9, "\"\"\"")
+    call append(line(".")+10, "")
   elseif &filetype == 'md'
     call setline(1,"<head><meta charset=\"UTF-8\"></head>")
   elseif &filetype == 'go'
@@ -278,32 +295,29 @@ function! SetTitle() abort
     call append(line(".")+4, "")
   else 
     call setline(1, "/*************************************************************************") 
-    call append(line("."), "	> File Name: ".expand("%")) 
-    call append(line(".")+1, "	> Author: ") 
-    call append(line(".")+2, "	> Mail: ") 
-    call append(line(".")+3, "	> Created Time: ".strftime("%c")) 
-    call append(line(".")+4, " ************************************************************************/") 
-    call append(line(".")+5, "")
+    call SetHead(line("."))
+    call append(line(".")+6, "*************************************************************************/") 
+    call append(line(".")+7, "")
   endif
 
   if expand("%:e") == 'cpp'
-    call append(line(".")+6, "#include <iostream>")
-    call append(line(".")+7, "using namespace std;")
-    call append(line(".")+8, "")
+    call append(line(".")+8, "#include <iostream>")
+    call append(line(".")+9, "using namespace std;")
+    call append(line(".")+10, "")
   endif
   if &filetype == 'c'
-    call append(line(".")+6, "#include <stdio.h>")
-    call append(line(".")+7, "")
+    call append(line(".")+8, "#include <stdio.h>")
+    call append(line(".")+9, "")
   endif
   if expand("%:e") == 'h'
-    call append(line(".")+6, "#ifndef _".toupper(expand("%:r"))."_H")
-    call append(line(".")+7, "#define _".toupper(expand("%:r"))."_H")
-    call append(line(".")+8, "")
-    call append(line(".")+9, "#endif")
+    call append(line(".")+8, "#ifndef _".toupper(expand("%:r"))."_H")
+    call append(line(".")+9, "#define _".toupper(expand("%:r"))."_H")
+    call append(line(".")+10, "")
+    call append(line(".")+11, "#endif")
   endif
   if &filetype == 'java'
-    call append(line(".")+6,"public class ".expand("%:r"))
-    call append(line(".")+7,"")
+    call append(line(".")+8,"public class ".expand("%:r"))
+    call append(line(".")+9,"")
   endif
 endfunction 
 
@@ -372,6 +386,8 @@ Plug 'scrooloose/syntastic'
 Plug 'junegunn/vim-plug'
 " [git标识提示]------------------------------------------------------------------------{git clone https://github.com/mhinz/vim-signify}[git标识提示] "
 Plug 'mhinz/vim-signify'
+" [文件搜索]---------------------------------------------------------------------------------{git clone https://github.com/kien/ctrlp.vim}[文件搜索] "
+Plug 'kien/ctrlp.vim'
 call plug#end()
 
 " [packadd]
@@ -393,6 +409,8 @@ call plug#end()
 " packadd vim-plug
 " [git标识提示]------------------------------------------------------------------------{git clone https://github.com/mhinz/vim-signify}[git标识提示] "
 " packadd vim-signify
+" [文件搜索]---------------------------------------------------------------------------------{git clone https://github.com/kien/ctrlp.vim}[文件搜索] "
+" packadd ctrlp.vim
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 插件配置
@@ -434,7 +452,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
-let g:syntastic_python_checkers = ['python']
+let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_go_checkers = ['go']
 let g:syntastic_java_checkers = ['javac']
 let g:syntastic_javascript_checkers = ['flow']
