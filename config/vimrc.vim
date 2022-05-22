@@ -197,8 +197,22 @@ map <Esc><Esc> :w<CR>
 " inoremap ' ''<Esc>i
 " [FN自定义]------------------------------------------------------------------------------------------------------------------------------[FN自定义] "
 "
-" [vimrc 配置文件按键映射]-----------------------------------------------------------------------------------------------------[vimrc 配置文件按键映射] "
+" [分割窗口调整大小]------------------------------------------------------------------------------------------------------------------[分割窗口调整大小] "
 " Leader 即前缀键默认为 “\”
+nnoremap <Leader><Right> :vertical resize +5<CR>
+nnoremap <Leader><Left>  :vertical resize -5<CR>
+nnoremap <Leader><Up>    :resize +5<CR>
+nnoremap <Leader><Down>  :resize -5<CR>
+" [文件操作]------------------------------------------------------------------------------------------------------------------------------[文件操作] "
+ " 一键去除全部尾部空白(\rb)
+ inoremap <Leader>rb <Esc>:let _s=@/<bar>:%s/\s\+$//e<bar>:let @/=_s<bar>:nohl<CR>
+ nnoremap <Leader>rb :let _s=@/<bar>:%s/\s\+$//e<bar>:let @/=_s<bar>:nohl<CR>
+ vnoremap <Leader>rb <Esc>:let _s=@/<bar>:%s/\s\+$//e<bar>:let @/=_s<bar>:nohl<CR>
+ " 一键去除全部 ^M 字符(\rm)
+ inoremap <Leader>rm <Esc>:%s/<c-v><c-m>//g<CR>
+ nnoremap <Leader>rm :%s/<c-v><c-m>//g<CR>
+ vnoremap <Leader>rm <Esc>:%s/<c-v><c-m>//g<CR>
+" [vimrc 配置文件按键映射]-----------------------------------------------------------------------------------------------------[vimrc 配置文件按键映射] "
 " 当前窗口编辑配置文件 (e)dit (m)yvimrc
 nnoremap <SPACE>em <Esc>:edit $MYVIMRC<CR>
 " 纵向分屏编辑配置文件 (v)sp (m)yvimrc
