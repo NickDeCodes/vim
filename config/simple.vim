@@ -323,9 +323,9 @@ function! SetTitle() abort
     call append(line(".")+3, ")") 
     call append(line(".")+4, "")
   else 
-    call setline(1, "/*************************************************************************") 
+    call setline(1, "/*") 
     call SetHead(line("."))
-    call append(line(".")+6, "*************************************************************************/") 
+    call append(line(".")+6, "*/") 
     call append(line(".")+7, "")
   endif
 
