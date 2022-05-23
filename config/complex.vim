@@ -323,12 +323,12 @@ autocmd BufNewFile * normal G
 
 " [定义函数SetTitle，打开新文件时自动插入文件头]-----------------------------------------------------------[剪定义函数SetTitle，打开新文件时自动插入文件头贴板] "
 function! SetHead(line) abort
-  call append(a:line, " @Author  : ") 
-  call append(a:line+1, " @Email   : ")
-  call append(a:line+2, " @Usage   : ")
-  call append(a:line+3, " @FileName: ".expand("%")) 
-  call append(a:line+4, " @DateTime: ".strftime("%Y/%m/%d %H:%M")) 
-  call append(a:line+5, " @SoftWare: vim") 
+  call append(a:line, " @author  : ") 
+  call append(a:line+1, " @email   : ")
+  call append(a:line+2, " @usage   : ")
+  call append(a:line+3, " @filename: ".expand("%")) 
+  call append(a:line+4, " @datetime: ".strftime("%Y/%m/%d %H:%M")) 
+  call append(a:line+5, " @software: vim") 
 endfunction
 
 function! SetTitle() abort 
